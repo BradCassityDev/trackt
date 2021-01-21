@@ -5,9 +5,14 @@ import Auth from '../utils/auth';
 const Home = () => {
 
   return (
-    <main>
-      Main content
-    </main>
+    <div className="row">
+      <div className="col-12 col-md-5">
+        left
+      </div>
+      <div className="col-12 col-md-7">
+        right
+      </div>
+    </div>
   );
 };
 
