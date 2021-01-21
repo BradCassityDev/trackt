@@ -12,9 +12,9 @@ const Header = () => {
 
     return (
         <header>
-            <h4>
-                <Link to="/">TRACKT</Link>
-            </h4>
+            <h5>
+                <Link className="site-logo" to="/">TRACKT</Link>
+            </h5>
 
             <nav>
             </nav>
