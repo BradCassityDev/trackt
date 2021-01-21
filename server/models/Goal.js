@@ -11,7 +11,7 @@ const goalSchema = new Schema(
       minlength: 1,
       maxlength: 280
     },
-    goalDescriptione: {
+    goalDescription: {
         type: String,
         required: 'You need name a goal Description!',
         minlength: 1,

@@ -1,8 +1,10 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Goal } = require('.');
+const { User, Goal } = require('../models');
 const { signToken } = require('../utils/auth');
+const { GraphQLDate } = require('graphql-iso-date');
 
 const resolvers = {
+    Date: GraphQLDate,
     Query: {
       me: async (parent, args, context) => {
         if (context.user) {
@@ -34,7 +36,7 @@ const resolvers = {
         const params = username ? { username } : {};
         return Goal.find(params).sort({ createdAt: -1 });
       },  
-      Goal: async (parent, { _id }) => {
+      goal: async (parent, { _id }) => {
         return Goal.findOne({ _id });
       }          
     },
@@ -155,7 +157,7 @@ const resolvers = {
         
           throw new AuthenticationError('You need to be logged in!');
         }, 
-        deleteFreind:  async (parent, { friendId }, context) => {
+        deleteFriend:  async (parent, { friendId }, context) => {
           if (context.user) {
             const updatedUser = await User.findOneAndUpdate(
               { _id: context.user._id },

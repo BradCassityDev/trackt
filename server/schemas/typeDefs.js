@@ -3,13 +3,23 @@ const { gql } = require('apollo-server-express');
 
 // create our typeDefs
 const typeDefs = gql`
+  scalar Date
+
   type User {
     _id: ID
     username: String
-    email: Stringser
+    displayName: String
+    email: String
+    firstName: String
+    lastName: String
     friendCount: Int
     goals: [Goal]
     friends: [User]
+  }
+  
+  type Milestone {
+    _id: ID
+    title: String
   }
   type Goal {
     _id: ID
@@ -17,10 +27,10 @@ const typeDefs = gql`
     goalDescription: String
     goalStatus: String
     goalCategory: String
-    startDate: Date
+    createdAt: Date!
+    startDate: Date!
     dueDate: Date
     milestones: [Milestone]
-    createdAt: Date
     username: String
     commentCount: Int
     comments: [Comment]
@@ -39,12 +49,12 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
-    goals(username: String): [Gaol]
+    goals(username: String): [Goal]
     goal(_id: ID!): Goal
   }
   type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, displayName: String!, firstName: String!, lastName: String!, password: String!, profilePhoto: String, interests: String): Auth
+    addUser(username: String!, email: String!, displayName: String!, firstName: String!, lastName: String!, password: String!, profilePhoto: String, interests: String): User
     editUser(username: String!, email: String!, displayName: String!, firstName: String!, lastName: String!, password: String!, profilePhoto: String): Auth
     addGoal(goalTitle: String!, goalDescription: String!, goalStatus: String!, goalCategory: String, startDate: Date!, dueDate: Date): Goal
     editGoal(goalTitle: String!, goalDescription: String!, goalStatus: String!, goalCategory: String, startDate: Date!, dueDate: Date): Goal
