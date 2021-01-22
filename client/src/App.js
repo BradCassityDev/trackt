@@ -31,7 +31,7 @@ function App() {
       <Router>
         <div className="page-container">
           <Header />
-          <div className="container">
+          <div className="main-container">
             <Switch>
               <Route exact path="/" component={Home} />
               <Route component={NoMatch} />
