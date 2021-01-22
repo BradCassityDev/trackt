@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import {  } from '../utils/mutations';
+// import { ADD_USER } from '../utils/mutations';
 import { Link } from 'react-router-dom';
 
 import Auth from '../utils/auth';
@@ -9,8 +9,8 @@ const Signup = () => {
     // Form state
     const [formState, setFormState] = useState({ email: '', password: '' });
 
-    // Signup mutation
-    // const [Signup, { error }] = useMutation();
+    // Add user mutation
+    // const [addUser, { error }] = useMutation(ADD_USER);
 
     // Handle form state if change is detected
     const formChange = event => {
@@ -25,17 +25,42 @@ const Signup = () => {
     };
 
     // Handle Signup form submit
-    const handleFormSubmit = event => {
+    const handleFormSubmit = async event => {
         event.preventDefault();
+
+        // try {
+        //     const { data } = await addUser({
+        //         variables: { ...formState }
+        //     });
+
+        //     // Save token to local storage and redirect user profile home page
+        //     Auth.login(data.addUser.token);
+        // } catch (err) {
+        //     console.log(err);
+        // }
     };
 
     return (
         <div className="card login-signup-card shadow-sm">
             <div className="card-body">
-                <h4>Login</h4>
+                <h4>Create Account</h4>
                 <hr></hr>
-                {true && <div className="alert alert-dange">Login failed. Incorrect email or password.</div>}
+                {true && <div className="alert alert-danger">Something went wrong while signing up.</div>}
                 <form onSubmit={handleFormSubmit} className="login-form">
+                    <div className="row">
+                        <div className="col-12 mb-3">
+                            <label className="form-label">Username</label>
+                            <input
+                                className='form-control'
+                                placeholder='Username'
+                                name='username'
+                                type='username'
+                                id='username'
+                                value={formState.username}
+                                onChange={formChange}
+                            />
+                        </div>
+                    </div>
                     <div className="row">
                         <div className="col-12 mb-3">
                             <label className="form-label">Email</label>

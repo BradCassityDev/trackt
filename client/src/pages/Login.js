@@ -10,7 +10,7 @@ const Login = () => {
     const [formState, setFormState] = useState({ email: '', password: '' });
 
     // Login mutation
-    // const [Login, { error }] = useMutation();
+    // const [login, { error }] = useMutation(LOGIN_USER);
 
     // Handle form state if change is detected
     const formChange = event => {
@@ -25,8 +25,18 @@ const Login = () => {
     };
 
     // Handle login form submit
-    const handleFormSubmit = event => {
+    const handleFormSubmit =  async event => {
         event.preventDefault();
+
+        // try {
+        //     const { data } = await login({
+        //         variables: { ...formState }
+        //     });
+
+        //     Auth.login(data.login.token);
+        // } catch (err) {
+        //     console.log(err);
+        // }
     };
 
     return (
@@ -34,7 +44,7 @@ const Login = () => {
             <div className="card-body">
                 <h4>Login</h4>
                 <hr></hr>
-                {true && <div className="alert alert-dange" role="alert">Login failed. Incorrect email or password.</div>}
+                {true && <div className="alert alert-danger">Login failed. Incorrect email or password.</div>}
                 <form onSubmit={handleFormSubmit} className="login-form">
                     <div className="row">
                         <div className="col-12 mb-3">
