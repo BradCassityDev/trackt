@@ -10,8 +10,8 @@ const ProfileMenu = () => {
                 <ul className="nav nav-pills">
                     <li className="profile-menu-item disabled"><a href="#">Everyone's Goals</a></li>
                     <li className="profile-menu-item"><a href="#">My Goals</a></li>
-                    <li className="profile-menu-item"><a href="#">My Goals</a></li>
-                    <li className="profile-menu-item"><a href="#">My Goals</a></li>
+                    <li className="profile-menu-item"><a href="#">People</a></li>
+                    <li className="profile-menu-item"><a href="#">Shame Board</a></li>
                 </ul>
             </nav>
             <hr></hr>
