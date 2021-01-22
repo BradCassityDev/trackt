@@ -4,6 +4,8 @@ import Auth from '../utils/auth';
 import image from '../images/placeholder-profile-pic.png';
 import ProfileCard from '../components/ProfileCard';
 import FriendList from '../components/FriendList';
+import ProfileMenu from '../components/ProfileMenu';
+import GoalList from '../components/GoalList';
 
 const Home = () => {
 
@@ -22,7 +24,7 @@ const Home = () => {
     friends: [
         {
             _id: "123456",
-            username: "JaneDoe",
+            username: "MarkZuckerberg",
             profilePhoto: image,
         },
         {
@@ -32,27 +34,27 @@ const Home = () => {
         },
         {
             _id: "543252345",
-            username: "BradCassity",
+            username: "SteveJobs",
             profilePhoto: image,
         },
         {
           _id: "13423643",
-          username: "BradCassity",
+          username: "ElonMusk",
           profilePhoto: image,
         },
         {
           _id: "4315345",
-          username: "BradCassity",
+          username: "JordanPeterson",
           profilePhoto: image,
         },
         {
           _id: "23453224",
-          username: "BradCassity",
+          username: "DaveRamsey",
           profilePhoto: image,
         },
         {
           _id: "6322345342",
-          username: "BradCassity",
+          username: "WarrenBuffett",
           profilePhoto: image,
         }
     ]
@@ -65,7 +67,8 @@ const Home = () => {
         <FriendList userInfo={fakeUser} />
       </div>
       <div className="col-12 col-md-8">
-        right
+        <ProfileMenu />
+        <GoalList />
       </div>
     </div>
   );
