@@ -1,9 +1,10 @@
 :root {
+  --primary-color: #0167B5;
   --primary: #0167B5;
-  --secondary: #5A5A5A;
+  --secondary: #F6FBFF;
   --alarm: #B12704;
   --bg-color: #FDFDFF;
-  --bg-color-secondary: #E2E2E2;
+  --bg-color-secondary: #EDF6FF;
 }
 
 * {
@@ -25,7 +26,7 @@ body {
 header {
   color: #FFFFFF;
   width: 100%;
-  background-color: var(--primary);
+  background-color: var(--primary-color);
   padding: 10px 25px;
   position: fixed;
   top: 0;
@@ -38,7 +39,17 @@ header a {
 }
 header h5 {
   margin: 0;
+  display: inline;
 }
+
+header nav {
+  float: right;
+}
+
+.header-nav-link {
+  margin-left: 15px;
+}
+
 .site-logo {
   text-decoration: none;
 }
@@ -58,7 +69,7 @@ footer {
 }
 
 .bg-light {
-  background-color: var(--primary) !important;
+  background-color: var(--primary-color) !important;
 }
 
 .page-container {
@@ -84,13 +95,21 @@ footer {
 .profile-image {
   width: 100px;
   height: 100px;
+  margin-bottom: 20px;
+}
+.profile-image-md {
+  width: 75px;
+  height: 75px;
+  margin-bottom: 15px;
 }
 .profile-image-sm {
   width: 50px;
   height: 50px;
+  margin-bottom: 10px;
 }
+
 .btn-default {
-  background-color: var(--primary) !important;
+  background-color: var(--primary-color) !important;
   color: #FFFFFF !important;
   margin: 10px 0;
 }
@@ -136,4 +155,9 @@ footer {
   margin-top: 35px;
   text-align: center;
   font-weight: bold;
+}
+
+.people-card {
+  margin-bottom: 35px;
+  text-align: center;
 }

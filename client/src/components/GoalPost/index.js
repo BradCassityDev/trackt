@@ -3,7 +3,6 @@ import Auth from '../../utils/auth';
 import image from '../../images/placeholder-profile-pic.png';
 
 const GoalPost = ({ goal }) => {
-    console.log(goal);
     return (
         <div className="card goal-post-card shadow-sm">
             <div className="card-header">
