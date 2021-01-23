@@ -13,7 +13,11 @@ const Header = () => {
     return (
         <header>
             <h5>
-                <Link className="site-logo" to="/">TRACKT</Link>
+                {Auth.loggedIn() ? 
+                    <Link className="site-logo" to="/">TRACKT</Link>
+                :
+                    <Link className="site-logo" to="/login">TRACKT</Link>
+                }
             </h5>
 
            <nav>

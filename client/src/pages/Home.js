@@ -15,6 +15,7 @@ import fakeUser from '../fakeUser';
 import fakePeopleList from '../fakePeopleList';
 
 const Home = () => {
+
   // Home menu state
   const [menuState, setMenuState] = useState("Everyone's Goals");
 
