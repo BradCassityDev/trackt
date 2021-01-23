@@ -51,7 +51,7 @@ const Login = () => {
             <div className="card-body">
                 <h4>Login</h4>
                 <hr></hr>
-                {true && <div className="alert alert-danger">Login failed. Incorrect email or password.</div>}
+                {error && <div className="alert alert-danger">Login failed. Incorrect email or password.</div>}
                 <form onSubmit={handleFormSubmit} className="login-form">
                     <div className="row">
                         <div className="col-12 mb-3">

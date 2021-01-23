@@ -46,7 +46,7 @@ const Signup = () => {
             <div className="card-body">
                 <h4>Create Account</h4>
                 <hr></hr>
-                {true && <div className="alert alert-danger">Something went wrong while signing up.</div>}
+                {error && <div className="alert alert-danger">Something went wrong while signing up.</div>}
                 <form onSubmit={handleFormSubmit} className="login-form">
                     <div className="row">
                         <div className="col-12 mb-3">

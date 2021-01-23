@@ -17,10 +17,10 @@ const Header = () => {
             </h5>
 
            <nav>
-               {true && 
+               {Auth.loggedIn() && 
                 <>
                     <span className="header-nav-link">
-                        <Link to="/">Username</Link>
+                        <Link to="/">{Auth.getProfile().data.username}</Link>
                     </span>
                     <span className="header-nav-link">
                         <a href="/login" onClick={logout}>

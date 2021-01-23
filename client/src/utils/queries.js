@@ -63,8 +63,6 @@ export const QUERY_USER = gql`
       goals {
         _id
         goalTitle
-        createdAt
-        commentCount
       }
     }
   }
