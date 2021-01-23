@@ -41,7 +41,7 @@ const Home = () => {
           return
       }
 
-  }, [menuState, componentState] );
+  }, [menuState] );
 
 
   return (

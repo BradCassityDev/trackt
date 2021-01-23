@@ -10,7 +10,7 @@ const GoalList = ({ goals, title }) => {
         <div className="content-wrapper">
             <h4>{title}</h4>
             {goals.map(goal => (
-                <GoalPost goal={goal} />
+                <GoalPost goal={goal} key="goal._id" />
             ))}
         </div>
     );
