@@ -14,6 +14,7 @@ const GoalList = ({ goals, title }) => {
                 <Link 
                     to="/goal/test"
                     className="btn btn-add float-right"
+                    newGoal="true"
                 >+ Add Goal</Link>
             </div>
 

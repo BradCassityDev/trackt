@@ -17,10 +17,12 @@ const FriendList = ({userInfo}) => {
                 <div className="card-body">
                 <h5 className="card-title">Friends List</h5>
                     <span>({friendCount}) Friends</span>
+                    
                     <hr></hr>
                     <div className="row">
                         {friends.map(friend => (
-                            <div key={friend._id} className="col-6 col-sm-4">
+                            <div key={friend._id} className="col-6 col-sm-4" key={friend.username}>
+                                <Link to={"/" + friend.username}>
                                 <div className="card friend-card">
                                     <div className="row">
                                         <div className="col-12">
@@ -33,6 +35,7 @@ const FriendList = ({userInfo}) => {
                                         </div>
                                     </div>
                                 </div>
+                                </Link>
                             </div>
                         ))}
                     </div>

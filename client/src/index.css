@@ -227,3 +227,7 @@ footer {
 .floating-right {
   margin-left: auto;
 }
+
+.post-header-text {
+  color: black;
+}
