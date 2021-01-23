@@ -1,24 +1,20 @@
 import React from 'react';
 import Auth from '../../utils/auth';
 import image from '../../images/placeholder-profile-pic.png';
+import { Link } from 'react-router-dom';
 
 import GoalPost from '../GoalPost';
 
 const GoalList = ({ goals, title }) => {
 
-    // Handle add goal click event
-    const addGoal = event => {
-        event.preventDefault();
-    };
-
     return (
         <div className="content-wrapper">
             <div>
                 <h4 className="inline-heading">{title}</h4>
-                <button 
+                <Link 
+                    to="/goal/test"
                     className="btn btn-add float-right"
-                    onClick={addGoal}
-                >+ Add Goal</button>
+                >+ Add Goal</Link>
             </div>
 
             {goals.map(goal => (

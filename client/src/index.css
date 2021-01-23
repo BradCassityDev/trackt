@@ -207,7 +207,23 @@ footer {
   color: lightgray;
   text-decoration: line-through;
 }
-
+.milestone-title {
+  margin-left: 20px;
+}
+.milestone-form {
+  display: inline-block;
+}
+.primary-heading-bar {
+  background-color: var(--primary-color);
+  padding: 5px 10px;
+  color: #FFFFFF;
+}
+.delete-milestone-btn {
+  display: inline-block !important;
+  margin-left: auto;
+  float: right;
+  margin: 0;
+}
 .floating-right {
   margin-left: auto;
 }
