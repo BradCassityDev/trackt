@@ -12,7 +12,7 @@ export const LOGIN_USER = gql`
   }
 `;
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $displayName: String!, $email: String!, $firstName: String! $lastName: String!, $password: String!, profilePhoto: String) {
+  mutation addUser($username: String!, $displayName: String!, $email: String!, $firstName: String! $lastName: String!, $password: String!, $profilePhoto: String) {
     addUser(username: $username, displayName: $displayName, email: $email, firstName: $firstName, lastName: $lastName, password: $password, profilePhoto: $profilePhoto) {
       token
       user {
@@ -29,7 +29,7 @@ export const ADD_USER = gql`
   }
 `;
 export const UPDATE_USER = gql`
-  mutation updateUser($username: String!, $displayName: String!, $email: String!, $firstName: String! $lastName: String!, $password: String!, profilePhoto: String) {
+  mutation updateUser($username: String!, $displayName: String!, $email: String!, $firstName: String! $lastName: String!, $password: String!, $profilePhoto: String) {
     updateUser(username: $username, displayName: $displayName, email: $email, firstName: $firstName, lastName: $lastName, password: $password, profilePhoto: $profilePhoto) {
     _id
     username
@@ -43,8 +43,8 @@ export const UPDATE_USER = gql`
   }
 `;
 export const ADD_GOAL = gql`
-  mutation addGoal($goalTitle: String!, $goalDescription: String!, $goalStatus: String!, $goalCategory: String, $startDate: Date!, $dueDate: Date) {
-    addGoal(goalTitle: String!, goalDescription: String!, goalStatus: String!, goalCategory: String, startDate: $startDate!, dueDate: $dueDate) {
+  mutation addGoal($goalTitle: String!, $goalDescription: String!, $goalStatus: String!, $goalCategory: String, $startDate: Date, $dueDate: Date) {
+    addGoal(goalTitle: $goalTitle, goalDescription: $goalDescription, goalStatus: $goalStatus, goalCategory: $goalCategory, startDate: $startDate, dueDate: $dueDate) {
       _id
       goalTitle
       goalDescription
@@ -64,7 +64,7 @@ export const ADD_GOAL = gql`
 `;
 export const UPDATE_GOAL = gql`
   mutation updateGoal($goalTitle: String!, $goalDescription: String!, $goalStatus: String!, $goalCategory: String, $startDate: Date!, $dueDate: Date) {
-    updateGoal(goalTitle: String!, goalDescription: String!, goalStatus: String!, goalCategory: String, startDate: $startDate!, dueDate: $dueDate) {
+    updateGoal(goalTitle: $goalTitle, goalDescription: $goalDescription, goalStatus: $goalStatus, goalCategory: $goalCategory, startDate: $startDate, dueDate: $dueDate) {
       _id
       goalTitle
       goalDescription
