@@ -56,8 +56,8 @@ const typeDefs = gql`
   }
   type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, displayName: String!, firstName: String!, lastName: String!, password: String!, profilePhoto: String): Auth
-    updateUser(username: String!, email: String!, displayName: String!, firstName: String!, lastName: String!, password: String!, profilePhoto: String): User
+    addUser(username: String!, email: String!, displayName: String, firstName: String, lastName: String, password: String!, profilePhoto: String): Auth
+    updateUser(username: String!, email: String!, displayName: String, firstName: String, lastName: String, password: String!, profilePhoto: String): User
     addGoal(goalTitle: String!, goalDescription: String!, goalStatus: String!, goalCategory: String, startDate: Date!, dueDate: Date): Goal
     updateGoal(goalTitle: String!, goalDescription: String!, goalStatus: String!, goalCategory: String, startDate: Date!, dueDate: Date): Goal
     addMilestone(goalId: ID!, milestoneTitle: String!): Goal
