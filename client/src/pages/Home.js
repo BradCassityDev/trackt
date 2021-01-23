@@ -16,6 +16,11 @@ import fakePeopleList from '../fakePeopleList';
 
 const Home = () => {
 
+  // Check if user is logged in
+  if (!Auth.loggedIn()) {
+    window.location.assign('/login');
+  }
+
   // Home menu state
   const [menuState, setMenuState] = useState("Everyone's Goals");
 
