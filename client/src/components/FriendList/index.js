@@ -20,11 +20,11 @@ const FriendList = ({userInfo}) => {
                     <hr></hr>
                     <div className="row">
                         {friends.map(friend => (
-                            <div key={friend._id} className="col-4">
+                            <div key={friend._id} className="col-6 col-sm-4">
                                 <div className="card friend-card">
                                     <div className="row">
                                         <div className="col-12">
-                                        <img src={friend.profilePhoto} alt="profile pic" className="rounded-circle profile-image-sm"/>
+                                            <img src={friend.profilePhoto} alt="profile pic" className="rounded-circle profile-image-sm"/>
                                         </div>
                                     </div>
                                     <div className="row">
