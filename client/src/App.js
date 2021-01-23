@@ -36,10 +36,10 @@ function App() {
           <Header />
           <div className="main-container">
             <Switch>
-              <Route exact path="/" component={Home} />
               <Route exact path="/Login" component={Login} />
               <Route exact path="/Signup" component={Signup} />
-              <Route exact path="/Goal" component={Goal} />
+              <Route exact path="/:usersame?" component={Home} />
+              <Route exact path="/Goal/:id" component={Goal} />
               <Route component={NoMatch} />
             </Switch>
           </div>
