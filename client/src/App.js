@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Goal from './pages/Goal';
 import NoMatch from './pages/NoMatch';
 
 // setup ApolloClient
@@ -38,6 +39,7 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/Login" component={Login} />
               <Route exact path="/Signup" component={Signup} />
+              <Route exact path="/Goal" component={Goal} />
               <Route component={NoMatch} />
             </Switch>
           </div>

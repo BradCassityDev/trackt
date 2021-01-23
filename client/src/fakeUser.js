@@ -11,6 +11,7 @@ import image from './images/placeholder-profile-pic.png';
     interests: [],
     goals: [
       {
+        _id: "asdfsadfkljlkjoi",
         goalTitle: "My first Goal",
         goalDescription: "This is the description",
         goalStatus: "In Progress",
@@ -18,6 +19,21 @@ import image from './images/placeholder-profile-pic.png';
         startDate: "1/21/2021",
         dueDate: "1/31/2021",
         createdAt: "January 1/14/2021 at 3:15 PM",
+        profilePhoto: image,
+        comments: [
+            {
+                _id: "asdfdasfsdfdsf",
+                commentBody: "I think this will be a hard goal to hit, but I know you can do it! Good luck!",
+                username: "SupportivePerson",
+                createdAt: "January 23rd at 9:20 AM"
+            },
+            {
+                _id: "asdfdasfsdfdsf",
+                commentBody: "I'll see you on the shameboard!",
+                username: "NotSupportivePerson",
+                createdAt: "January 23rd at 10:19 AM"
+            }
+        ],
         milestones: [
             {
                 milestoneTitle: "Milestone 1",
@@ -29,35 +45,31 @@ import image from './images/placeholder-profile-pic.png';
                 milestoneStatus: "Incomplete"
             }
         ]
-      },
-      {
-          goalTitle: "My second Goal",
-          goalDescription: "This is the description",
-          goalStatus: "In Progress",
-          goalCategory: "Fitness",
-          startDate: "1/21/2021",
-          dueDate: "1/31/2021",
-          createdAt: "January 1/14/2021 at 3:15 PM",
-          milestones: [
-              {
-                  milestoneTitle: "Milestone 1",
-                  milestoneStatus: "Completed",
-                  createdAt: "January 1/21/2021 at 9:23 PM"
-              },
-              {
-                  milestoneTitle: "Milestone 2",
-                  milestoneStatus: "Incomplete"
-              }
-          ]
-      },
-      {
-        goalTitle: "My third Goal",
+    },
+    {
+        _id: "lkjoiasnfddsa",
+        goalTitle: "My second Goal",
         goalDescription: "This is the description",
         goalStatus: "In Progress",
         goalCategory: "Fitness",
         startDate: "1/21/2021",
         dueDate: "1/31/2021",
         createdAt: "January 1/14/2021 at 3:15 PM",
+        profilePhoto: image,
+        comments: [
+            {
+                _id: "asdfdasfsdfdsf",
+                commentBody: "I think this will be a hard goal to hit, but I know you can do it! Good luck!",
+                username: "SupportivePerson",
+                createdAt: "January 23rd at 9:20 AM"
+            },
+            {
+                _id: "asdfdasfsdfdsf",
+                commentBody: "I'll see you on the shameboard!",
+                username: "NotSupportivePerson",
+                createdAt: "January 23rd at 10:19 AM"
+            }
+        ],
         milestones: [
             {
                 milestoneTitle: "Milestone 1",
@@ -69,7 +81,43 @@ import image from './images/placeholder-profile-pic.png';
                 milestoneStatus: "Incomplete"
             }
         ]
-      }
+    },
+    {
+      _id: "dasfjoineafo",
+      goalTitle: "My third Goal",
+      goalDescription: "This is the description",
+      goalStatus: "In Progress",
+      goalCategory: "Fitness",
+      startDate: "1/21/2021",
+      dueDate: "1/31/2021",
+      createdAt: "January 1/14/2021 at 3:15 PM",
+      profilePhoto: image,
+      comments: [
+          {
+              _id: "asdfdasfsdfdsf",
+              commentBody: "I think this will be a hard goal to hit, but I know you can do it! Good luck!",
+              username: "SupportivePerson",
+              createdAt: "January 23rd at 9:20 AM"
+          },
+          {
+              _id: "asdfdasfsdfdsf",
+              commentBody: "I'll see you on the shameboard!",
+              username: "NotSupportivePerson",
+              createdAt: "January 23rd at 10:19 AM"
+          }
+      ],
+      milestones: [
+          {
+              milestoneTitle: "Milestone 1",
+              milestoneStatus: "Completed",
+              createdAt: "January 1/21/2021 at 9:23 PM"
+          },
+          {
+              milestoneTitle: "Milestone 2",
+              milestoneStatus: "Incomplete"
+          }
+      ]
+  }
     ],
     friendRequests: [],
     friends: [
