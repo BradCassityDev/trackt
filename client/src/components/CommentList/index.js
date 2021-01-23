@@ -8,6 +8,7 @@ const CommentList = ({ comments }) => {
 
     return (
         <div className="content-wrapper">
+            <hr></hr>
             <h4>Comments</h4>
             <CommentForm />
             {comments.map(comment => (

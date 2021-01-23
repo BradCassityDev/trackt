@@ -12,7 +12,7 @@ const CommentPost = ({ comment }) => {
                     <p>{comment.commentBody}</p> 
                 </div>
             </div>
-            <hr></hr>
+            <hr className="small-hr"></hr>
         </div>
         
     );

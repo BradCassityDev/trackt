@@ -173,5 +173,15 @@ footer {
   margin-bottom: 5px;
 }
 .comment-container {
-  margin-bottom: 20px;
+  max-width: 550px;
+  margin: 0 auto;
+  margin: 25px auto 25px auto;
+}
+.small-hr {
+  width: 75%;
+}
+
+.profile-img-left {
+  float:left;
+  margin-right: 20px;
 }

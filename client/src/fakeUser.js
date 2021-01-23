@@ -12,6 +12,7 @@ import image from './images/placeholder-profile-pic.png';
     goals: [
       {
         _id: "asdfsadfkljlkjoi",
+        username: "Username",
         goalTitle: "My first Goal",
         goalDescription: "This is the description",
         goalStatus: "In Progress",
@@ -48,6 +49,7 @@ import image from './images/placeholder-profile-pic.png';
     },
     {
         _id: "lkjoiasnfddsa",
+        username: "Username",
         goalTitle: "My second Goal",
         goalDescription: "This is the description",
         goalStatus: "In Progress",
@@ -84,6 +86,7 @@ import image from './images/placeholder-profile-pic.png';
     },
     {
       _id: "dasfjoineafo",
+      username: "Username",
       goalTitle: "My third Goal",
       goalDescription: "This is the description",
       goalStatus: "In Progress",
