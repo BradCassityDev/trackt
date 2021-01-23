@@ -6,9 +6,21 @@ import GoalPost from '../GoalPost';
 
 const GoalList = ({ goals, title }) => {
 
+    // Handle add goal click event
+    const addGoal = event => {
+        event.preventDefault();
+    };
+
     return (
         <div className="content-wrapper">
-            <h4>{title}</h4>
+            <div>
+                <h4 className="inline-heading">{title}</h4>
+                <button 
+                    className="btn btn-add float-right"
+                    onClick={addGoal}
+                >+ Add Goal</button>
+            </div>
+
             {goals.map(goal => (
                 <GoalPost goal={goal} key="goal._id" />
             ))}

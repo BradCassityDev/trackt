@@ -185,3 +185,29 @@ footer {
   float:left;
   margin-right: 20px;
 }
+
+.goal-details-container {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.inline-heading {
+  display: inline-block;
+}
+
+.btn-add {
+  background-color: var(--primary-color) !important;
+  color: #FFFFFF !important;
+}
+
+.milestone-row {
+  margin: 15px 0; 
+}
+.completed {
+  color: lightgray;
+  text-decoration: line-through;
+}
+
+.floating-right {
+  margin-left: auto;
+}

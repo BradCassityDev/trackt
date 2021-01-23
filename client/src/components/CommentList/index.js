@@ -6,14 +6,20 @@ import CommentForm from '../CommentForm';
 
 const CommentList = ({ comments }) => {
 
+
     return (
         <div className="content-wrapper">
             <hr></hr>
             <h4>Comments</h4>
             <CommentForm />
-            {comments.map(comment => (
-                <CommentPost comment={comment} />
-            ))}
+            {comments.length ? 
+                comments.map(comment => (
+                    <CommentPost comment={comment} key={comment._id} />
+                ))
+             : (
+                <p>Be the first to leave a comment.</p>
+            )}
+            
         </div>
     );
 };

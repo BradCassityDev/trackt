@@ -3,18 +3,13 @@ import Auth from '../../utils/auth';
 import image from '../../images/placeholder-profile-pic.png';
 
 import CommentList from '../CommentList';
+import PostHeader from '../PostHeader';
 
 const GoalPost = ({ goal }) => {
     return (
         <div className="card goal-post-card shadow-sm">
             <div className="card-header">
-                    <div className="post-header">
-                        <div className="profile-img-left">
-                            <img src={goal.profilePhoto} alt="profile pic" className="rounded-circle profile-image-sm"/>
-                        </div>
-                        <span className="username">{goal.username}</span> <br />
-                        <span className="item-timestamp">{goal.createdAt}</span>
-                    </div>
+                    <PostHeader goal={goal} />
             </div>
             <div className="card-body">
                 <h4>{goal.goalTitle}</h4>
