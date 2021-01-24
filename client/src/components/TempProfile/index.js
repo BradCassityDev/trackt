@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { QUERY_USER, QUERY_ME, QUERY_GOALS_TEMP } from '../utils/queries';
-import Auth from '../utils/auth';
-import ProfileCard from '../components/ProfileCard';
-import FriendList from '../components/FriendList';
-import ProfileMenu from '../components/ProfileMenu';
-import GoalList from '../components/GoalList';
-import PeopleList from '../components/PeopleList';
+import { QUERY_USER, QUERY_ME, QUERY_GOALS_TEMP } from '../../utils/queries';
+import Auth from '../../utils/auth';
+import ProfileCard from '../ProfileCard';
+import FriendList from '../FriendList';
+import ProfileMenu from '../ProfileMenu';
+import GoalList from '../GoalList';
+import PeopleList from '../PeopleList';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
-import MyGoalList from '../components/MyGoalList';
+import MyGoalList from '../MyGoalList';
 
 // Temp fake data
-import fakeGoalList from '../fakeGoalList';
-import fakeUser from '../fakeUser';
-import fakePeopleList from '../fakePeopleList';
+
 
 const Home = () => {
 
@@ -88,17 +86,10 @@ const Home = () => {
   }
 
   return (
-    <div className="row">
-      <div className="col-12 col-md-4">
+      <>
         <ProfileCard user={user} />
         <FriendList userInfo={user} />
-        
-      </div>
-      <div className="col-12 col-md-8">
-        {Auth.getProfile().data.username === activeProfile && <ProfileMenu setMenuState={setMenuState}/>}
-        {componentState}
-      </div>
-    </div>
+        </>
   );
 };
 

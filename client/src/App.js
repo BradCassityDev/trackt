@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Goal from './pages/Goal';
+import TempPage from './pages/TempPage';
 import NoMatch from './pages/NoMatch';
 
 // setup ApolloClient
@@ -38,6 +39,7 @@ function App() {
             <Switch>
               <Route exact path="/Login" component={Login} />
               <Route exact path="/Signup" component={Signup} />
+              <Route exact path="/TempPage/:username?" component={TempPage} />
               <Route exact path="/:username?" component={Home} />
               <Route exact path="/Goal/:id" component={Goal} />
               <Route component={NoMatch} />

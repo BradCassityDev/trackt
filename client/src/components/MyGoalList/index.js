@@ -8,10 +8,13 @@ import GoalPost from '../GoalPost';
 
 const MyGoalList = ({ user }) => {
     const { goals, username, profilePhoto } = user;
+
+
+    console.log("My Goals: ", goals);
     return (
         <div className="content-wrapper">
             <div>
-                <h4 className="inline-heading">My Goals</h4>
+                <h4 className="inline-heading">{user.username} Goals</h4>
                 {Auth.getProfile().data.username === user.username && 
                 <Link 
                     to="/goal/new"

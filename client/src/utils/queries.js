@@ -93,10 +93,10 @@ export const QUERY_GOALS = gql`
         }
         commentCount
         comments {
-        _id
-        createdAt
-        commentBody
-        username
+          _id
+          createdAt
+          commentBody
+          username
         }
     }
   }
