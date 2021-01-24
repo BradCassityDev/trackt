@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import image from '../../images/placeholder-profile-pic.png';
 
 const PeopleCard = ({ person }) => {
     return (
@@ -8,7 +9,7 @@ const PeopleCard = ({ person }) => {
                 <Link to={"/" + person.username} className="post-header-text">
                 <div className="row">
                     <div className="col-12">
-                        <img src={person.profilePhoto} alt="profile pic" className="rounded-circle profile-image-md"/>
+                        <img src={person.profilePhoto ? person.profilePhoto : image} alt="profile pic" className="rounded-circle profile-image-md"/>
                     </div>
                 </div> 
                 

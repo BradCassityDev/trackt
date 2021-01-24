@@ -16,11 +16,11 @@ const ProfileCard = ({ user }) => {
 
 
     const renderCardDetails = () => {
-        if (false) {
+        if (Auth.getProfile().data.username !== user.username) {
             return (
                 <div>
                     Name: {user.firstName} {user.lastName}
-                    <button type="button" className="btn btn-default">Save Changes</button>
+                    <button type="button" className="btn btn-default">Add Friend</button>
                 </div>
             );
         } else {
