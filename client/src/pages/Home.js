@@ -68,7 +68,7 @@ const Home = () => {
           setComponentState(<GoalList goals={goalListState} title={menuState} setGoalListState={setGoalListState} menuState={menuState} />)
           break;
         case "My Goals":
-          setComponentState(<MyGoalList user={user} goals={user.goals} title={menuState} username={Auth.getProfile().data.username} setGoalListState={setGoalListState} menuState={menuState} />);
+          setComponentState(<MyGoalList user={user} goals={user.goals} title={menuState} username={activeProfile} setGoalListState={setGoalListState} menuState={menuState} />);
           break;
         case "People":
           setComponentState(<PeopleList />);

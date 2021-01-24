@@ -12,10 +12,11 @@ const MyGoalList = ({ user }) => {
         <div className="content-wrapper">
             <div>
                 <h4 className="inline-heading">My Goals</h4>
+                {Auth.getProfile().data.username === user.username && 
                 <Link 
                     to="/goal/new"
                     className="btn btn-add float-right"
-                >+ Add Goal</Link>
+                >+ Add Goal</Link>}
             </div>
 
             {goals && goals.map(goal => (
