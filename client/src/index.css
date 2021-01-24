@@ -243,3 +243,9 @@ footer {
   background-color: none !important;
   border: none !important;
 }
+
+.empty-message {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 30px;
+}

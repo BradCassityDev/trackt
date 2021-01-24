@@ -15,7 +15,7 @@ const GoalPost = ({ goal, username, profilePhoto }) => {
     return (
         <div className="card goal-post-card shadow-sm">
             <div className="card-header">
-                    <PostHeader username={username} profilePhoto={profilePhoto ? profilePhoto : image} />
+                    <PostHeader username={username} createdAt={goal.createdAt} profilePhoto={profilePhoto ? profilePhoto : image} />
             </div>
             <div className="card-body">
                 <h4>{goal.goalTitle}</h4>

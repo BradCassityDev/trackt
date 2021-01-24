@@ -9,8 +9,6 @@ import GoalPost from '../GoalPost';
 const MyGoalList = ({ user }) => {
     const { goals, username, profilePhoto } = user;
 
-
-    console.log("My Goals: ", goals);
     return (
         <div className="content-wrapper">
             <div>
@@ -22,9 +20,15 @@ const MyGoalList = ({ user }) => {
                 >+ Add Goal</Link>}
             </div>
 
-            {goals && goals.map(goal => (
-                <GoalPost goal={goal} username={username} profilePhoto={profilePhoto}  key={goal._id}/>
-            ))}
+            {goals.length ? 
+                goals.map(goal => (
+                    <GoalPost goal={goal} username={username} profilePhoto={profilePhoto}  key={goal._id}/>
+                )) 
+            : 
+                <div className="empty-message">
+                    <p>There are no posted goals for this user.</p>
+                </div>
+            }
         </div>
     );
 };
