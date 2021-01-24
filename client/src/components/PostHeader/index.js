@@ -10,7 +10,7 @@ const PostHeader = ({ username, profilePhoto, createdAt }) => {
                 </div>
                 
                 <span className="username">{username}</span> <br />
-                <span className="item-timestamp"></span>
+                <span className="item-timestamp">{createdAt}</span>
             </Link>
         </div>
     );

@@ -46,7 +46,11 @@ const CommentForm = () => {
                     value={commentText}
                     onChange={handleFormChange}
                 ></textarea>
-                <button className="btn btn-default">Post Comment</button>
+                {commentCharCount ? 
+                    <button className="btn btn-default">Post Comment</button>
+                : 
+                    <button className="btn btn-default disabled">Post Comment</button>
+                }
             </form>
         </div>
     );

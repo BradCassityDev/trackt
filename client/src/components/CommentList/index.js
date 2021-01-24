@@ -16,9 +16,11 @@ const CommentList = ({ comments, username, profilePhoto }) => {
                 comments.map(comment => (
                     <CommentPost comment={comment} key={comment._id} />
                 ))
-             : (
-                <p>Be the first to leave a comment.</p>
-            )}
+            : 
+                 <div className="empty-message">
+                     <p>No comments posted. Be the first to leave a comment.</p>
+                </div>
+            }
             
         </div>
     );

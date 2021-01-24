@@ -55,6 +55,7 @@ export const QUERY_USER = gql`
       _id
       username
       email
+      profilePhoto
       friendCount
       friends {
         _id
@@ -62,10 +63,12 @@ export const QUERY_USER = gql`
       }
       goals {
         _id
+        username
         goalTitle
         goalCategory
         goalStatus
         goalDescription
+        createdAt
         comments {
           _id
           commentBody
@@ -79,6 +82,7 @@ export const QUERY_GOALS = gql`
   query goals($username: String) {
     goals(username: $username) {
         _id
+        username
         goalTitle
         goalDescription
         goalCategory
@@ -105,10 +109,12 @@ export const QUERY_GOALS_TEMP = gql`
 query goals($username: String) {
   goals(username: $username) {
       _id
+      username
       goalTitle
       goalDescription
       goalCategory
       goalStatus
+      createdAt
       milestones{
           _id
       }

@@ -36,9 +36,19 @@ const GoalList = ({ goals, setGoalListState, menuState }) => {
                 >+ Add Goal</Link>
             </div>
 
-            {newData.goals && newData.goals.map(goal => (
-                <GoalPost goal={goal} key={goal._id} />
-            ))}
+            {newData.goals.length ? 
+                newData.goals.map(goal => (
+                    <GoalPost goal={goal} username={goal.username} key={goal._id} />
+                ))
+            : 
+                <div className="empty-message">
+                    {menuState === "Shame Board" ? 
+                        <p>There are no shamed goals.</p>
+                    : 
+                        <p>There are no posted goals.</p>
+                    }
+                </div>
+            }
         </div>
     );
 };
