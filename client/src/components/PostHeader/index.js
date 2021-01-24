@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const PostHeader = ({ goal }) => {
+const PostHeader = ({ username, profilePhoto, createdAt }) => {
     return (
         <div className="post-header">
-            <Link to={"/" + goal.username} className="post-header-text">
+            <Link to={"/" + username} className="post-header-text">
                 <div className="profile-img-left">
-                    <img src={goal.profilePhoto} alt="profile pic" className="rounded-circle profile-image-sm"/>
+                    <img src={profilePhoto} alt="profile pic" className="rounded-circle profile-image-sm"/>
                 </div>
                 
-                <span className="username">{goal.username}</span> <br />
-                <span className="item-timestamp">{goal.createdAt}</span>
+                <span className="username">{username}</span> <br />
+                <span className="item-timestamp"></span>
             </Link>
         </div>
     );

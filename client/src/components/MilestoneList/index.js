@@ -7,7 +7,7 @@ const MilestoneList = ({ milestones }) => {
 
     return (
         <div className="content-wrapper">
-            <div class="primary-heading-bar">
+            <div className="primary-heading-bar">
                 <h4 className="inline-heading">Milestones</h4>
                 <button 
                     className="btn btn-add float-right"

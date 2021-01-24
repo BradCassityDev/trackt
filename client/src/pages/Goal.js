@@ -10,7 +10,7 @@ import MilestoneList from '../components/MilestoneList';
 // Temp fake data
 import image from '../images/placeholder-profile-pic.png';
 
-const Goal = ({ newGoal }) => {
+const Goal = () => {
 
     const goal =  {
         _id: "afionsadofnoi",

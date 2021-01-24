@@ -4,7 +4,7 @@ import Auth from '../../utils/auth';
 import CommentPost from '../CommentPost';
 import CommentForm from '../CommentForm';
 
-const CommentList = ({ comments }) => {
+const CommentList = ({ comments, username, profilePhoto }) => {
 
 
     return (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_USER, QUERY_ME, QUERY_GOALS_TEMP } from '../utils/queries';
 import Auth from '../utils/auth';
 import ProfileCard from '../components/ProfileCard';
 import FriendList from '../components/FriendList';
@@ -8,6 +8,7 @@ import GoalList from '../components/GoalList';
 import PeopleList from '../components/PeopleList';
 import { Redirect, useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/react-hooks';
+import MyGoalList from '../components/MyGoalList';
 
 // Temp fake data
 import fakeGoalList from '../fakeGoalList';
@@ -22,55 +23,66 @@ const Home = () => {
   }
 
   // Home menu state
-  const [menuState, setMenuState] = useState("Everyone's Goals");
+  const [menuState, setMenuState] = useState();
 
   // Rendered menu component state
   const [componentState, setComponentState] = useState();
+  const [goalListState, setGoalListState] = useState();
+  const [myGoals, setMyGoals] = useState();
+  const [activeProfile, setActiveProfile] = useState();
 
+  // Grab username parameter
   let { username: userParam } = useParams();
 
   if(userParam == undefined) {
-    console.log('No userParam');
-    userParam = Auth.getProfile().data.username;
+    userParam = Auth.getProfile().data.username;    
   }
-
-  console.log(userParam);
-  console.log(Auth.getProfile().data.username);
-
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam }
   });
 
-
+  
   const user = data?.me || data?.user || {};
-  console.log(user);
+  
 
   //redirect to home if returned user is logged in user
   // if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
   //   return <Redirect to="/" />;
   // }
+  console.log(goalListState);
 
   useEffect(() => {
+
+    setMyGoals(user.goals);
+    setActiveProfile(user.username)
+
+    if(!menuState || Auth.getProfile().data.username !== activeProfile) {
+      setMenuState('My Goals');
+    }
+    
+    if (data) {
       // Update rendered component
       switch(menuState) {
         case "Everyone's Goals":
-          setComponentState(<GoalList goals={fakeGoalList} title={menuState} />)
+          setComponentState(<GoalList goals={goalListState} title={menuState} setGoalListState={setGoalListState} menuState={menuState} />)
           break;
         case "My Goals":
-          setComponentState(<GoalList goals={fakeUser.goals} title={menuState} />);
+          setComponentState(<MyGoalList user={user} goals={user.goals} title={menuState} username={Auth.getProfile().data.username} setGoalListState={setGoalListState} menuState={menuState} />);
           break;
         case "People":
-          setComponentState(<PeopleList people={fakePeopleList} />);
+          setComponentState(<PeopleList />);
           break;
         case "Shame Board":
-          setComponentState(<GoalList goals={fakeGoalList} title={menuState} />);
+          setComponentState(<GoalList goals={goalListState} title={menuState} setGoalListState={setGoalListState} />);
           break;
         default:
           setComponentState(<p>nada</p>);
           return
       }
-  }, [menuState, data] );
+    }
+
+  }, [menuState, data, user, userParam, user.username, myGoals] );
 
   if (loading) {
     return <div>Loading...</div>;
@@ -84,7 +96,7 @@ const Home = () => {
         
       </div>
       <div className="col-12 col-md-8">
-        <ProfileMenu setMenuState={setMenuState}/>
+        {Auth.getProfile().data.username === activeProfile && <ProfileMenu setMenuState={setMenuState}/>}
         {componentState}
       </div>
     </div>

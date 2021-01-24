@@ -63,6 +63,14 @@ export const QUERY_USER = gql`
       goals {
         _id
         goalTitle
+        goalCategory
+        goalStatus
+        goalDescription
+        comments {
+          _id
+          commentBody
+          username
+        }
       }
     }
   }
@@ -93,6 +101,26 @@ export const QUERY_GOALS = gql`
     }
   }
 `;
+export const QUERY_GOALS_TEMP = gql`
+query goals($username: String) {
+  goals(username: $username) {
+      _id
+      goalTitle
+      goalDescription
+      goalCategory
+      goalStatus
+      milestones{
+          _id
+      }
+      comments {
+      _id
+      createdAt
+      commentBody
+      username
+      }
+  }
+}
+`;
 export const QUERY_GOAL = gql`
   query goal($id: ID!) {
     goal(_id: $id) {
@@ -120,6 +148,18 @@ export const QUERY_GOAL = gql`
   }
 `;
 
-
+export const QUERY_USERS = gql`
+query users {
+  users {
+  	_id
+    username
+  	email
+    firstName
+    lastName
+    profilePhoto
+    friendCount
+  }
+}
+`;
 
 
