@@ -29,7 +29,7 @@ export const ADD_USER = gql`
   }
 `;
 export const UPDATE_USER = gql`
-  mutation updateUser($username: String!, $displayName: String, $email: String!, $firstName: String $lastName: String, $password: String!, $profilePhoto: String) {
+  mutation updateUser($username: String, $displayName: String, $email: String, $firstName: String $lastName: String, $password: String, $profilePhoto: String) {
     updateUser(username: $username, displayName: $displayName, email: $email, firstName: $firstName, lastName: $lastName, password: $password, profilePhoto: $profilePhoto) {
     _id
     username
