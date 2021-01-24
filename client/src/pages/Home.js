@@ -51,42 +51,36 @@ const Home = () => {
   //   return <Redirect to="/" />;
   // }
 
+  useEffect(() => {
+      // Update rendered component
+      switch(menuState) {
+        case "Everyone's Goals":
+          setComponentState(<GoalList goals={fakeGoalList} title={menuState} />)
+          break;
+        case "My Goals":
+          setComponentState(<GoalList goals={fakeUser.goals} title={menuState} />);
+          break;
+        case "People":
+          setComponentState(<PeopleList people={fakePeopleList} />);
+          break;
+        case "Shame Board":
+          setComponentState(<GoalList goals={fakeGoalList} title={menuState} />);
+          break;
+        default:
+          setComponentState(<p>nada</p>);
+          return
+      }
+  }, [menuState, data] );
+
   if (loading) {
     return <div>Loading...</div>;
   }
-
-  
-  
-
-
-  // useEffect(() => {
-  //     // Update rendered component
-  //     switch(menuState) {
-  //       case "Everyone's Goals":
-  //         setComponentState(<GoalList goals={fakeGoalList} title={menuState} />)
-  //         break;
-  //       case "My Goals":
-  //         setComponentState(<GoalList goals={fakeUser.goals} title={menuState} />);
-  //         break;
-  //       case "People":
-  //         setComponentState(<PeopleList people={fakePeopleList} />);
-  //         break;
-  //       case "Shame Board":
-  //         setComponentState(<GoalList goals={fakeGoalList} title={menuState} />);
-  //         break;
-  //       default:
-  //         setComponentState(<p>nada</p>);
-  //         return
-  //     }
-
-  // }, [menuState] );
-
 
   return (
     <div className="row">
       <div className="col-12 col-md-4">
         <ProfileCard user={user} />
-        {true && <FriendList userInfo={user} />}
+        <FriendList userInfo={user} />
         
       </div>
       <div className="col-12 col-md-8">
