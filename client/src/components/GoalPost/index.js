@@ -31,7 +31,7 @@ const GoalPost = ({ goal, username, profilePhoto }) => {
                     aria-expanded={open}
                     variant="outline-primary"
                 >
-                    View {goal.comments.length} Comments
+                    {!open ? "View " : "Hide "} {goal.comments.length} Comments
                 </Button>
                 <Collapse in={open}>
                     <div id="comment-list">
