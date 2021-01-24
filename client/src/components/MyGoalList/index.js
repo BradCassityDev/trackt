@@ -12,7 +12,7 @@ const MyGoalList = ({ user }) => {
     return (
         <div className="content-wrapper">
             <div>
-                <h4 className="inline-heading">{user.username} Goals</h4>
+                <h4 className="inline-heading">{Auth.getProfile().data.username === user.username ? "My" : user.username} Goals</h4>
                 {Auth.getProfile().data.username === user.username && 
                 <Link 
                     to="/goal/new"
