@@ -55,6 +55,7 @@ export const QUERY_USER = gql`
       _id
       username
       email
+      profilePhoto
       friendCount
       friends {
         _id
