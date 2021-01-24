@@ -54,11 +54,11 @@ export const ADD_GOAL = gql`
       dueDate
       createdAt
       username
-      commentCount
-      comments {
-        _id
-        commentBody
-      }
+      # commentCount
+      # comments {
+      #   _id
+      #   commentBody
+      # }
     }
   }
 `;

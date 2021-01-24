@@ -3,6 +3,17 @@ const { User, Goal } = require('../models');
 const { signToken } = require('../utils/auth');
 const { GraphQLDate } = require('graphql-iso-date');
 
+const mongoDate = date => {
+  const year = date.getFullYear()
+  let month = date.getMonth()+1
+  let day = date.getDate()
+ 
+  if (month < 10) month = "0"+ month
+  if (day < 10) day = "0"+ day
+ 
+  return year + "-" + month + "-" + day
+ }
+ 
 const resolvers = {
     Date: GraphQLDate,
     Query: {
@@ -71,6 +82,14 @@ const resolvers = {
         throw new AuthenticationError('Not logged in');
       },
       addGoal: async (parent, args, context) => {
+          // // let sDate = args.startDate.toString()
+          // // sDate = sDate.slice(0,sDate.indexOf("T"))
+          // console.log(sDate)
+          console.log(args.dueDate)
+          args.startDate = mongoDate(args.startDate)
+          args.dueDate = mongoDate(args.dueDate)
+          console.log(args.dueDate)
+
           if (context.user) {
             const goal = await Goal.create({ ...args, username: context.user.username });
         
