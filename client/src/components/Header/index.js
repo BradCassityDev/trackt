@@ -13,14 +13,18 @@ const Header = () => {
     return (
         <header>
             <h5>
-                <Link className="site-logo" to="/">TRACKT</Link>
+                {Auth.loggedIn() ? 
+                    <Link className="site-logo" to="/">TRACKT</Link>
+                :
+                    <Link className="site-logo" to="/login">TRACKT</Link>
+                }
             </h5>
 
            <nav>
-               {true && 
+               {Auth.loggedIn() && 
                 <>
                     <span className="header-nav-link">
-                        <Link to="/">Username</Link>
+                        <Link to="/">{Auth.getProfile().data.username}</Link>
                     </span>
                     <span className="header-nav-link">
                         <a href="/login" onClick={logout}>

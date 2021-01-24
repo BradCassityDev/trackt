@@ -130,6 +130,8 @@ footer {
 
 .profile-menu-item {
   margin-right: 25px;
+  color: var(--primary-color);
+  cursor: pointer;
 }
 
 .goal-post-card {
@@ -160,4 +162,79 @@ footer {
 .people-card {
   margin-bottom: 35px;
   text-align: center;
+}
+
+.username {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.item-timestamp {
+  font-size: 0.8rem;
+}
+.post-header {
+  margin-bottom: 5px;
+}
+.comment-container {
+  max-width: 550px;
+  margin: 0 auto;
+  margin: 25px auto 25px auto;
+}
+.small-hr {
+  width: 75%;
+}
+
+.profile-img-left {
+  float:left;
+  margin-right: 20px;
+}
+
+.goal-details-container {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.inline-heading {
+  display: inline-block;
+}
+
+.btn-add {
+  background-color: var(--primary-color) !important;
+  color: #FFFFFF !important;
+}
+
+.milestone-row {
+  margin: 15px 0; 
+}
+.completed {
+  color: lightgray;
+  text-decoration: line-through;
+}
+.milestone-title {
+  margin-left: 20px;
+}
+.milestone-form {
+  display: inline-block;
+}
+.primary-heading-bar {
+  background-color: var(--primary-color);
+  padding: 5px 10px;
+  color: #FFFFFF;
+}
+.delete-milestone-btn {
+  display: inline-block !important;
+  margin-left: auto;
+  float: right;
+  margin: 0;
+}
+.floating-right {
+  margin-left: auto;
+}
+
+.post-header-text {
+  color: black;
+}
+
+.menu-item-selected {
+  color: #000;
+  font-weight: bold;
 }

@@ -3,31 +3,7 @@ import Auth from '../../utils/auth';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import image from '../../images/placeholder-profile-pic.png';
 
-const ProfileCard = () => {
-
-    // Temp fake user object
-    const fakeUser = {
-        firstName: 'John',
-        lastName: 'Smith',
-        username: 'JohnSmith',
-        email: 'john@email.com',
-        friendCount: 5,
-        displayName: 'John Smith',
-        profilePhoto: image,
-        interests: [],
-        goals: [],
-        friendRequests: [],
-        friends: [
-            {
-                username: "JaneDoe",
-                profilePhoto: image,
-            },
-            {
-                username: "BradCassity",
-                profilePhoto: image,
-            },
-        ]
-    };
+const ProfileCard = ({ user }) => {
 
     // Handle user edit form submit
     const handleEditUserSubmit = async event => {
@@ -36,11 +12,11 @@ const ProfileCard = () => {
 
 
     const renderCardDetails = () => {
-        if (false) {
+        if (Auth.getProfile().data.username !== user.username) {
             return (
                 <div>
-                    Name: {fakeUser.firstName} {fakeUser.lastName}
-                    <button type="button" className="btn btn-default">Save Changes</button>
+                    Name: {user.firstName} {user.lastName}
+                    <button type="button" className="btn btn-default">Add Friend</button>
                 </div>
             );
         } else {
@@ -73,8 +49,8 @@ const ProfileCard = () => {
         <div className="content-wrapper">
             <div className="card text-center profile-card">
                 <div className="card-body">
-                    <img src={fakeUser.profilePhoto} alt="profile pic" className="rounded-circle profile-image"/>
-                    <h5 className="card-title">John Smith</h5>
+                    <img src={user.profilePhoto ? user.profilePhoto : image} alt="profile pic" className="rounded-circle profile-image"/>
+                    <h5 className="card-title">{user.username}</h5>
                     <hr></hr>
                     {renderCardDetails()}
                 </div>

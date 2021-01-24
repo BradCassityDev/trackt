@@ -12,6 +12,8 @@ const typeDefs = gql`
     email: String
     firstName: String
     lastName: String
+    password: String
+    profilePhoto: String
     friendCount: Int
     goals: [Goal]
     friends: [User]
@@ -54,16 +56,16 @@ const typeDefs = gql`
   }
   type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, displayName: String!, firstName: String!, lastName: String!, password: String!, profilePhoto: String, interests: String): User
-    editUser(username: String!, email: String!, displayName: String!, firstName: String!, lastName: String!, password: String!, profilePhoto: String): Auth
+    addUser(username: String!, email: String!, displayName: String, firstName: String, lastName: String, password: String!, profilePhoto: String): Auth
+    updateUser(username: String!, email: String!, displayName: String, firstName: String, lastName: String, password: String!, profilePhoto: String): User
     addGoal(goalTitle: String!, goalDescription: String!, goalStatus: String!, goalCategory: String, startDate: Date!, dueDate: Date): Goal
-    editGoal(goalTitle: String!, goalDescription: String!, goalStatus: String!, goalCategory: String, startDate: Date!, dueDate: Date): Goal
+    updateGoal(goalTitle: String!, goalDescription: String!, goalStatus: String!, goalCategory: String, startDate: Date!, dueDate: Date): Goal
     addMilestone(goalId: ID!, milestoneTitle: String!): Goal
     deleteMilestone(goalId: ID!, milestoneId: ID!): Goal
     addComment(goalId: ID!, commentBody: String!): Goal
-    requestFriend(friendId: ID!): User
+    addFriend(friendId: ID!): User
     acceptFriend(friendId: ID!): User
-    deleteFriend(friendId: ID!): User
+    removeFriend(friendId: ID!): User
   }
 `;
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-// import { ADD_USER } from '../utils/mutations';
+import { useMutation } from '@apollo/react-hooks';
+import { ADD_USER } from '../utils/mutations';
 import { Link } from 'react-router-dom';
 
 import Auth from '../utils/auth';
@@ -10,7 +11,7 @@ const Signup = () => {
     const [formState, setFormState] = useState({ email: '', password: '' });
 
     // Add user mutation
-    // const [addUser, { error }] = useMutation(ADD_USER);
+    const [addUser, { error }] = useMutation(ADD_USER);
 
     // Handle form state if change is detected
     const formChange = event => {
@@ -28,16 +29,16 @@ const Signup = () => {
     const handleFormSubmit = async event => {
         event.preventDefault();
 
-        // try {
-        //     const { data } = await addUser({
-        //         variables: { ...formState }
-        //     });
+        try {
+            const { data } = await addUser({
+                variables: { ...formState }
+            });
 
-        //     // Save token to local storage and redirect user profile home page
-        //     Auth.login(data.addUser.token);
-        // } catch (err) {
-        //     console.log(err);
-        // }
+            // Save token to local storage and redirect user profile home page
+            Auth.login(data.addUser.token);
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     return (
@@ -45,7 +46,7 @@ const Signup = () => {
             <div className="card-body">
                 <h4>Create Account</h4>
                 <hr></hr>
-                {true && <div className="alert alert-danger">Something went wrong while signing up.</div>}
+                {error && <div className="alert alert-danger">Something went wrong while signing up.</div>}
                 <form onSubmit={handleFormSubmit} className="login-form">
                     <div className="row">
                         <div className="col-12 mb-3">

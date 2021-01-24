@@ -17,17 +17,14 @@ const userSchema = new Schema(
     },
     displayName: {
       type: String,
-      required: true,
       trim: true
     },
     firstName: {
       type: String,
-      required: true,
       trim: true
     },
     lastName: {
       type: String,
-      required: true,
       trim: true
     },
     password: {
@@ -36,10 +33,8 @@ const userSchema = new Schema(
       minlength: 5
     },
     profilePhoto: {
-      type: String,
-      required: false
+      type: String
     },
-    interests: [],
     goals: [
       {
         type: Schema.Types.ObjectId,

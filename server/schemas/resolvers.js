@@ -41,62 +41,88 @@ const resolvers = {
       }          
     },
     Mutation: {
-        addUser: async (parent, args) => {
-            const user = await User.create(args);
-            const token = signToken(user);
-          
-            return { token, user };
-        },
-        login: async (parent, { email, password }) => {
-            const user = await User.findOne({ email });
-          
-            if (!user) {
-              throw new AuthenticationError('Incorrect credentials');
-            }
-          
-            const correctPw = await user.isCorrectPassword(password);
-          
-            if (!correctPw) {
-              throw new AuthenticationError('Incorrect credentials');
-            }
-          
-            const token = signToken(user);
-            return { token, user };
-        },
-        editUser: async (parent, args, context) => {
+      login: async (parent, { email, password }) => {
+          const user = await User.findOne({ email });
+        
+          if (!user) {
+            throw new AuthenticationError('Incorrect credentials');
+          }
+        
+          const correctPw = await user.isCorrectPassword(password);
+        
+          if (!correctPw) {
+            throw new AuthenticationError('Incorrect credentials');
+          }
+        
+          const token = signToken(user);
+          return { token, user };
+      },
+      addUser: async (parent, args) => {
+          const user = await User.create(args);
+          const token = signToken(user);
+        
+          return { token, user };
+      },
+      updateUser: async (parent, args, context) => {
+        if (context.user) {
+          return await User.findByIdAndUpdate(context.user._id, args, { new: true });
+        }
+  
+        throw new AuthenticationError('Not logged in');
+      },
+      addGoal: async (parent, args, context) => {
           if (context.user) {
-            return await User.findByIdAndUpdate(context.user._id, args, { new: true });
+            const goal = await Goal.create({ ...args, username: context.user.username });
+        
+            await User.findByIdAndUpdate(
+              { _id: context.user._id },
+              { $push: { goals: goal._id } },
+              { new: true }
+            );
+        
+            return goal;
           }
-    
-          throw new AuthenticationError('Not logged in');
-        },
-        addGoal: async (parent, args, context) => {
-            if (context.user) {
-              const goal = await Goal.create({ ...args, username: context.user.username });
-          
-              await User.findByIdAndUpdate(
-                { _id: context.user._id },
-                { $push: { goals: goal._id } },
-                { new: true }
-              );
-          
-              return goal;
-            }
-          
-            throw new AuthenticationError('You need to be logged in!');
-        },
-        editGoal: async (parent, args, context) => {
-          if (context.goal) {
-            return await Goal.findByIdAndUpdate(context.goal._id, args, { new: true });
-          }
-    
-          throw new AuthenticationError('Not logged in');
-        },
-        addMilestone: async (parent, { goalId, milestoneTitle }, context) => {
+        
+          throw new AuthenticationError('You need to be logged in!');
+      },
+      updateGoal: async (parent, args, context) => {
+        if (context.goal) {
+          return await Goal.findByIdAndUpdate(context.goal._id, args, { new: true });
+        }
+  
+        throw new AuthenticationError('Not logged in');
+      },
+      addMilestone: async (parent, { goalId, milestoneTitle }, context) => {
+        if (context.user) {
+          const updatedGoal = await Goal.findOneAndUpdate(
+            { _id: goalId },
+            { $push: { milestones: { milestoneTitle, username: context.user.username } } },
+            { new: true, runValidators: true }
+          );
+      
+          return updatedGoal;
+        }
+      
+        throw new AuthenticationError('You need to be logged in!');
+      },
+      deleteMilestone: async (parent, { goalId, milestoneId }, context) => {
+        if (context.user) {
+          const updatedGoal = await Goal.findOneAndUpdate(
+            { _id: goalId },
+            { $pull: { milestones: { milestoneId, username: context.user.username } } },
+            { new: true, runValidators: true }
+          );
+      
+          return updatedGoal;
+        }
+      
+        throw new AuthenticationError('You need to be logged in!');
+      },
+      addComment: async (parent, { goalId, commentBody }, context) => {
           if (context.user) {
             const updatedGoal = await Goal.findOneAndUpdate(
               { _id: goalId },
-              { $push: { milestones: { milestoneTitle, username: context.user.username } } },
+              { $push: { comments: { commentBody, username: context.user.username } } },
               { new: true, runValidators: true }
             );
         
@@ -104,72 +130,46 @@ const resolvers = {
           }
         
           throw new AuthenticationError('You need to be logged in!');
-        },
-        deleteMilestone: async (parent, { goalId, milestoneId }, context) => {
-          if (context.user) {
-            const updatedGoal = await Goal.findOneAndUpdate(
-              { _id: goalId },
-              { $pull: { milestones: { milestoneId, username: context.user.username } } },
-              { new: true, runValidators: true }
-            );
-        
-            return updatedGoal;
-          }
-        
-          throw new AuthenticationError('You need to be logged in!');
-        },
-        addComment: async (parent, { goalId, commentBody }, context) => {
-            if (context.user) {
-              const updatedGoal = await Goal.findOneAndUpdate(
-                { _id: goalId },
-                { $push: { comments: { commentBody, username: context.user.username } } },
-                { new: true, runValidators: true }
-              );
-          
-              return updatedGoal;
-            }
-          
-            throw new AuthenticationError('You need to be logged in!');
-        },
-        requestFriend: async (parent, { friendId }, context) => {
-            if (context.user) {
-              const updatedUser = await User.findOneAndUpdate(
-                { _id: context.user._id },
-                { $addToSet: { friendRequests: friendId } },
-                { new: true }
-              ).populate('friendRequests');
-          
-              return updatedUser;
-            }
-          
-            throw new AuthenticationError('You need to be logged in!');
-        },
-        acceptFriend: async (parent, { friendId }, context) => {
+      },
+      addFriend: async (parent, { friendId }, context) => {
           if (context.user) {
             const updatedUser = await User.findOneAndUpdate(
               { _id: context.user._id },
-              { $addToSet: { friends: friendId } },
+              { $addToSet: { friendRequests: friendId } },
               { new: true }
-            ).populate('friends');
+            ).populate('friendRequests');
         
             return updatedUser;
           }
         
           throw new AuthenticationError('You need to be logged in!');
-        }, 
-        deleteFriend:  async (parent, { friendId }, context) => {
-          if (context.user) {
-            const updatedUser = await User.findOneAndUpdate(
-              { _id: context.user._id },
-              { $pull: { friends: friendId } },
-              { new: true }
-            ).remove('friends');
-        
-            return updatedUser;
-          }
-        
-          throw new AuthenticationError('You need to be logged in!');
-        },     
+      },
+      acceptFriend: async (parent, { friendId }, context) => {
+        if (context.user) {
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $addToSet: { friends: friendId } },
+            { new: true }
+          ).populate('friends');
+      
+          return updatedUser;
+        }
+      
+        throw new AuthenticationError('You need to be logged in!');
+      }, 
+      removeFriend:  async (parent, { friendId }, context) => {
+        if (context.user) {
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $pull: { friends: friendId } },
+            { new: true }
+          ).remove('friends');
+      
+          return updatedUser;
+        }
+      
+        throw new AuthenticationError('You need to be logged in!');
+      },     
     }
 };
   
