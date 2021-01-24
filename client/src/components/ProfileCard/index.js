@@ -5,10 +5,6 @@ import image from '../../images/placeholder-profile-pic.png';
 
 const ProfileCard = ({ user }) => {
 
-    if (!user.profilePhoto) {
-        user.profilePhoto = image;
-    }
-
     // Handle user edit form submit
     const handleEditUserSubmit = async event => {
         event.preventDefault();
@@ -53,7 +49,7 @@ const ProfileCard = ({ user }) => {
         <div className="content-wrapper">
             <div className="card text-center profile-card">
                 <div className="card-body">
-                    <img src={user.profilePhoto} alt="profile pic" className="rounded-circle profile-image"/>
+                    <img src={user.profilePhoto ? user.profilePhoto : image} alt="profile pic" className="rounded-circle profile-image"/>
                     <h5 className="card-title">{user.username}</h5>
                     <hr></hr>
                     {renderCardDetails()}

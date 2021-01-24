@@ -5,15 +5,12 @@ import image from '../../images/placeholder-profile-pic.png';
 import CommentList from '../CommentList';
 import PostHeader from '../PostHeader';
 
-const GoalPost = ({ goal, newId, username, profilePhoto }) => {
-
-    let id = String(goal._id);
-    console.log("goal: ", id)
+const GoalPost = ({ goal, username, profilePhoto }) => {
 
     return (
         <div className="card goal-post-card shadow-sm">
             <div className="card-header">
-                    <PostHeader username={username} profilePhoto={profilePhoto} />
+                    <PostHeader username={username} profilePhoto={profilePhoto ? profilePhoto : image} />
             </div>
             <div className="card-body">
                 <h4>{goal.goalTitle}</h4>
@@ -23,10 +20,10 @@ const GoalPost = ({ goal, newId, username, profilePhoto }) => {
                 Description: 
                 <p>{goal.goalDescription}</p>
 
-                <button className="btn btn-link" type="button" data-toggle="collapse" data-target={"#" + id + "_comments"} aria-expanded="false">
+                <button className="btn btn-link" type="button" data-toggle="collapse" data-target={"#" + goal._id + "_comments"} aria-expanded="false">
                     View {goal.comments.length} Comments
                 </button>
-                <div className="collapse" id={id + "_comments"}>
+                <div className="collapse" id={goal._id + "_comments"}>
                     <CommentList comments={goal.comments} username={username} profilePhoto={profilePhoto} />
                 </div>
             </div>

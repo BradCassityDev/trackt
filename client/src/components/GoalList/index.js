@@ -11,14 +11,20 @@ const GoalList = ({ goals, setGoalListState, menuState }) => {
     // Query Goals
     const { loading, data } = useQuery(QUERY_GOALS_TEMP);
     
+    // useEffect to watch for changes in data
     useEffect(() => {
-        
     }, [data] );
 
+    // Loading text while data is returned
     if (loading) {
         return <div>Loading...</div>;
     }
 
+    let newData = data.goals || {goals: []};
+
+    // Filter shameboard
+    newData.goals = menuState === "Shame Board" ? newData.goals = data.goals.filter(goal => goal.goalStatus == "Failed") : newData.goals = data.goals;
+    
 
     return (
         <div className="content-wrapper">
@@ -30,7 +36,7 @@ const GoalList = ({ goals, setGoalListState, menuState }) => {
                 >+ Add Goal</Link>
             </div>
 
-            {data.goals && data.goals.map(goal => (
+            {newData.goals && newData.goals.map(goal => (
                 <GoalPost goal={goal} key={goal._id} />
             ))}
         </div>
