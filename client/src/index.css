@@ -130,6 +130,8 @@ footer {
 
 .profile-menu-item {
   margin-right: 25px;
+  color: var(--primary-color);
+  cursor: pointer;
 }
 
 .goal-post-card {
@@ -230,4 +232,9 @@ footer {
 
 .post-header-text {
   color: black;
+}
+
+.menu-item-selected {
+  color: #000;
+  font-weight: bold;
 }
