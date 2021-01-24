@@ -238,3 +238,8 @@ footer {
   color: #000;
   font-weight: bold;
 }
+
+.view-comments-link {
+  background-color: none !important;
+  border: none !important;
+}

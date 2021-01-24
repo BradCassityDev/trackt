@@ -1,11 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Auth from '../../utils/auth';
 import image from '../../images/placeholder-profile-pic.png';
 
 import CommentList from '../CommentList';
 import PostHeader from '../PostHeader';
 
+import Collapse from "react-bootstrap/Collapse";
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+
 const GoalPost = ({ goal, username, profilePhoto }) => {
+    const [open, setOpen] = useState(false);
 
     return (
         <div className="card goal-post-card shadow-sm">
@@ -19,13 +24,21 @@ const GoalPost = ({ goal, username, profilePhoto }) => {
                 <p>start Date: {goal.startDate} End Date: {goal.dueDate}</p>
                 Description: 
                 <p>{goal.goalDescription}</p>
-
-                <button className="btn btn-link" type="button" data-toggle="collapse" data-target={"#" + goal._id + "_comments"} aria-expanded="false">
+               
+                <Button
+                    onClick={() => setOpen(!open)}
+                    aria-controls="comment-list"
+                    aria-expanded={open}
+                    variant="outline-primary"
+                >
                     View {goal.comments.length} Comments
-                </button>
-                <div className="collapse" id={goal._id + "_comments"}>
+                </Button>
+                <Collapse in={open}>
+                    <div id="comment-list">
                     <CommentList comments={goal.comments} username={username} profilePhoto={profilePhoto} />
-                </div>
+                    </div>
+                </Collapse>
+                
             </div>
         </div>
     );
