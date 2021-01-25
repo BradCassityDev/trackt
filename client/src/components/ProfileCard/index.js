@@ -4,6 +4,8 @@ import { useQuery, useMutation } from "@apollo/react-hooks";
 import image from "../../images/placeholder-profile-pic.png";
 import { UPDATE_USER } from "../../utils/mutations";
 
+import ProfileDetails from '../ProfileDetails';
+
 const ProfileCard = ({ user }) => {
     
   const [updateUser, { error }] = useMutation(UPDATE_USER);
@@ -42,10 +44,11 @@ const ProfileCard = ({ user }) => {
     if (Auth.getProfile().data.username !== user.username) {
       return (
         <div>
-          Name: {user.firstName} {user.lastName}
-          <button type="button" className="btn btn-default">
-            Add Friend
-          </button>
+            <ProfileDetails user={user} />
+            <hr />
+            <button type="button" className="btn btn-default green">
+                Add Friend
+            </button>
         </div>
       );
     } else {

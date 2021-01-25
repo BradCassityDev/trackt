@@ -265,3 +265,20 @@ footer {
   width: 100%;
   position: absolute;
 }
+
+.text-left {
+  text-align: left;
+  margin: 5px;
+}
+
+.label-text {
+  font-weight: bold;
+}
+
+.green {
+  background-color: #28a745 !important;
+}
+
+.green:hover {
+  background-color: #218838 !important;
+}
