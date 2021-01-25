@@ -28,9 +28,9 @@ const GoalFilterMenu = ({ statusFilterState, setStatusFilterState, categoryFilte
                     </ul>
                 </nav>
                 <hr />
-                <div class="form-group">
-                    <label for="category-filter-dropdown">Category Filter:</label>
-                    <select class="form-control" id="category-filter-dropdown" onChange={handleCategoryFilterChange}>
+                <div className="form-group">
+                    <label htmlFor="category-filter-dropdown">Category Filter:</label>
+                    <select className="form-control" id="category-filter-dropdown" onChange={handleCategoryFilterChange}>
                         <option>All Categories</option>
                         <option>Financial</option>
                         <option>Nutritional</option>
