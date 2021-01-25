@@ -20,7 +20,7 @@ const MyGoalList = ({ user }) => {
                 >+ Add Goal</Link>}
             </div>
 
-            {goals.length ? 
+            {goals && goals.length ? 
                 goals.map(goal => (
                     <GoalPost goal={goal} username={username} profilePhoto={profilePhoto}  key={goal._id}/>
                 )) 
