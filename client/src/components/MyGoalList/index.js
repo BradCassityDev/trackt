@@ -7,64 +7,17 @@ import { QUERY_GOALS_TEMP } from '../../utils/queries';
 import GoalPost from '../GoalPost';
 import GoalFilterMenu from '../GoalFilterMenu';
 
+import filterGoals from '../../utils/filterGoals';
+
 
 const MyGoalList = ({ user }) => {
     const { goals, username, profilePhoto } = user;
-
-    const [ goalStatusFilter, setGoalStatusFilter ] = useState();
+    
     const [ statusFilterState, setStatusFilterState ] = useState('All Goals');
     const [ categoryFilterState, setCategoryFilterState] = useState('All Categories');
-    
 
-    useEffect(() => {}, [categoryFilterState, statusFilterState]);
-
-
-    let filteredGoals = [];
-    // Filter by status
-    switch(statusFilterState) {
-        case "All Goals":
-            filteredGoals = goals;
-            break;
-        case "Planned":
-            filteredGoals = goals.filter(goal => goal.goalStatus === statusFilterState);
-            break;
-        case "In Progress":
-            filteredGoals = goals.filter(goal => goal.goalStatus === statusFilterState);
-            break;
-        case "Completed":
-            filteredGoals = goals.filter(goal => goal.goalStatus === statusFilterState);
-            break;
-        case "Failed":
-            filteredGoals = goals.filter(goal => goal.goalStatus === statusFilterState);
-            break;
-        default:
-            filteredGoals = goals;
-    }
-
-    // Filter by category
-    switch(categoryFilterState) {
-        case "All Categories":
-            filteredGoals = filteredGoals;
-            break;
-        case "Financial":
-        case "Nutritional":
-        case "Physical":
-        case "Social":
-        case "Emotional":
-        case "Career":
-        case "Travel":
-        case "Parenting": 
-        case "Intellectual":
-            filteredGoals = filteredGoals.filter(goal => goal.goalCategory === categoryFilterState);
-            console.log('here');
-            break;
-        default:
-            filteredGoals = filteredGoals;
-    }
-
-
-
-    
+    // Get filtered goals array
+    let filteredGoals = filterGoals(goals, statusFilterState, categoryFilterState);
 
     return (
         <div className="content-wrapper">

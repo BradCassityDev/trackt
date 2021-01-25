@@ -7,8 +7,12 @@ import { QUERY_GOALS_TEMP } from '../../utils/queries';
 import GoalPost from '../GoalPost';
 import GoalFilterMenu from '../GoalFilterMenu';
 
-const GoalList = ({ goals, setGoalListState, menuState }) => {
+import filterGoals from '../../utils/filterGoals';
 
+const GoalList = ({ goals, setGoalListState, menuState }) => {
+    const [ statusFilterState, setStatusFilterState ] = useState('All Goals');
+    const [ categoryFilterState, setCategoryFilterState] = useState('All Categories');
+    
     // Query Goals
     const { loading, data } = useQuery(QUERY_GOALS_TEMP);
     
@@ -23,12 +27,16 @@ const GoalList = ({ goals, setGoalListState, menuState }) => {
 
     let newData = data.goals || {goals: []};
 
-    // Filter shameboard
-    newData.goals = menuState === "Shame Board" ? newData.goals = data.goals.filter(goal => goal.goalStatus == "Failed") : newData.goals = data.goals;
     
-
-
-
+    // Only display filtered goals if not on Shame Board
+    let filteredGoals = [];
+    if (menuState === "Shame Board") {
+        // Filter shameboard
+        filteredGoals = data.goals.filter(goal => goal.goalStatus == "Failed");
+    } else {
+        // Get filtered goals array
+        filteredGoals = filterGoals(data.goals, statusFilterState, categoryFilterState);
+    }
     
 
     return (
@@ -41,8 +49,19 @@ const GoalList = ({ goals, setGoalListState, menuState }) => {
                 >+ Add Goal</Link>
             </div>
 
-            {newData.goals.length ? 
-                newData.goals.map(goal => (
+            {menuState !== "Shame Board" && 
+                <div>
+                    <GoalFilterMenu 
+                        statusFilterState={statusFilterState} 
+                        setStatusFilterState={setStatusFilterState} 
+                        categoryFilterState={categoryFilterState} 
+                        setCategoryFilterState={setCategoryFilterState}
+                    />
+                </div>
+            }
+
+            {filteredGoals && filteredGoals.length ? 
+                filteredGoals.map(goal => (
                     <GoalPost goal={goal} username={goal.username} profilePhoto={goal.profilePhoto} key={goal._id} />
                 ))
             : 
