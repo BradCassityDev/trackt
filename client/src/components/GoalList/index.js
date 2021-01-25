@@ -5,6 +5,7 @@ import image from '../../images/placeholder-profile-pic.png';
 import { Link } from 'react-router-dom';
 import { QUERY_GOALS_TEMP } from '../../utils/queries';
 import GoalPost from '../GoalPost';
+import GoalFilterMenu from '../GoalFilterMenu';
 
 const GoalList = ({ goals, setGoalListState, menuState }) => {
 
@@ -26,6 +27,10 @@ const GoalList = ({ goals, setGoalListState, menuState }) => {
     newData.goals = menuState === "Shame Board" ? newData.goals = data.goals.filter(goal => goal.goalStatus == "Failed") : newData.goals = data.goals;
     
 
+
+
+    
+
     return (
         <div className="content-wrapper">
             <div>
@@ -38,7 +43,7 @@ const GoalList = ({ goals, setGoalListState, menuState }) => {
 
             {newData.goals.length ? 
                 newData.goals.map(goal => (
-                    <GoalPost goal={goal} username={goal.username} key={goal._id} />
+                    <GoalPost goal={goal} username={goal.username} profilePhoto={goal.profilePhoto} key={goal._id} />
                 ))
             : 
                 <div className="empty-message">

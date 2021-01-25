@@ -11,10 +11,7 @@ const ProfileDetails = ({ user }) => {
                 <span className="label-text">Email:</span> {user.email}
             </div>
             <div className="col-12 text-left">
-                <span className="label-text">Active Goals:</span> 6
-            </div>
-            <div className="col-12 text-left">
-                <span className="label-text">Failed Goals:</span> 1
+                <span className="label-text">Active Goals:</span> {user.goals.length ? user.goals.length : 0}
             </div>
         </div>
     );
