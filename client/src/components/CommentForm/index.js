@@ -1,9 +1,9 @@
 import { useMutation } from '@apollo/react-hooks';
 import React, { useState } from 'react';
-// import { ADD_COMMENT } from '../../utils/mutations';
+import { ADD_COMMENT } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
-const CommentForm = () => {
+const CommentForm = ({ goalId }) => {
 
     // Comment text state
     const [commentText, setCommentText] = useState();
@@ -11,7 +11,7 @@ const CommentForm = () => {
     // Character count state
     const [commentCharCount, setCommentCharCount] = useState(0);
 
-    //const [addComment, { error }] = useMutation(ADD_COMMENT);
+    const [addComment, { error }] = useMutation(ADD_COMMENT);
 
     // Update character count
     const handleFormChange = (event) => {
@@ -24,16 +24,20 @@ const CommentForm = () => {
     const handleAddComment = async event => {
         event.preventDefault();
 
-        // try {
-        //     await addComment({
-        //         variables: { commentText }
-        //     });
+        try {
+            await addComment({
+                variables: { 
+                    goalId: goalId,
+                    username: Auth.getProfile().data.username,
+                    commentBody: commentText 
+                }
+            });
 
-        //     setCommentText('');
-        //     setCommentCharCount(0);
-        // } catch (err) {
-        //     console.log(err);
-        // }
+            setCommentText('');
+            setCommentCharCount(0);
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     return (

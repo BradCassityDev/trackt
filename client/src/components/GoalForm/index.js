@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { ADD_GOAL } from '../../utils/mutations';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Redirect } from 'react-router-dom';
 
 const mongoDate = date => {
   const year = date.getFullYear()
