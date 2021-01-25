@@ -35,7 +35,7 @@ const GoalPost = ({ goal, username, profilePhoto }) => {
                 </Button>
                 <Collapse in={open}>
                     <div id="comment-list">
-                    <CommentList comments={goal.comments} username={username} profilePhoto={profilePhoto} />
+                    <CommentList comments={goal.comments} goalId={goal._id} username={username} profilePhoto={profilePhoto} />
                     </div>
                 </Collapse>
                 

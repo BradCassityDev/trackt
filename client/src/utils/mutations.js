@@ -110,7 +110,6 @@ export const ADD_COMMENT = gql`
   mutation addComment($goalId: ID!, $commentBody: String!) {
     addComment(goalId: $goalId, commentBody: $commentBody) {
       _id
-      commentCount
       comments {
         _id
         commentBody
