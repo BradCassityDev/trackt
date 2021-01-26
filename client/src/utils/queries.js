@@ -68,6 +68,8 @@ export const QUERY_USER = gql`
         goalCategory
         goalStatus
         goalDescription
+        startDate
+        dueDate
         createdAt
         comments {
           _id
@@ -114,6 +116,8 @@ query goals($username: String) {
       goalDescription
       goalCategory
       goalStatus
+      startDate
+      dueDate
       createdAt
       milestones{
           _id

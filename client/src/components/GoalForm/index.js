@@ -6,16 +6,16 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Redirect } from 'react-router-dom';
 
-// const mongoDate = date => {
-//   const year = date.getFullYear()
-//   let month = date.getMonth()+1
-//   let day = date.getDate()
+const mongoDate = date => {
+  const year = date.getFullYear()
+  let month = date.getMonth()+1
+  let day = date.getDate()
  
-//   if (month < 10) month = "0"+ month
-//   if (day < 10) day = "0"+ day
+  if (month < 10) month = "0"+ month
+  if (day < 10) day = "0"+ day
  
-//   return year + "-" + month + "-" + day
-//  }
+  return year + "-" + month + "-" + day
+ }
  
 const GoalForm = ({ goal }) => {
     const [formState, setFormState] = useState({ goalTitle: '', goalDescription: '', goalCategory: '', goalStatus: '', startDate: new Date(), dueDate: new Date()});
@@ -34,24 +34,25 @@ const GoalForm = ({ goal }) => {
     // submit form
     const handleFormSubmit = async event => {
       event.preventDefault();
-      return <Redirect to="/" />
-
+  
       try {
-        // formState.startDate= mongoDate(formState.startDate)
-        // formState.dueDate= mongoDate(formState.dueDate)
+        formState.startDate= mongoDate(formState.startDate)
+        formState.dueDate= mongoDate(formState.dueDate)
 
         const { data } = await addGoal({
           variables: { ...formState }
         });
-  
+        window.location.replace ("/")
       } catch (e) {
         console.error(e);
       }
+
     };
+    
 
     return (
         <div className="content-wrapper">
-            <form onSubmit={handleFormSubmit}>
+            <form onSubmit={handleFormSubmit} >
                 
                 <label>Title:</label>
                 <input

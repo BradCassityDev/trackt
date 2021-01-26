@@ -282,3 +282,7 @@ footer {
 .green:hover {
   background-color: #218838 !important;
 }
+
+.filter-box {
+  padding: 10px;
+}

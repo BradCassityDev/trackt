@@ -1,13 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Auth from '../../utils/auth';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import image from '../../images/placeholder-profile-pic.png';
 import { Link } from 'react-router-dom';
 import { QUERY_GOALS_TEMP } from '../../utils/queries';
 import GoalPost from '../GoalPost';
+import GoalFilterMenu from '../GoalFilterMenu';
+
+import filterGoals from '../../utils/filterGoals';
+
 
 const MyGoalList = ({ user }) => {
     const { goals, username, profilePhoto } = user;
+    
+    const [ statusFilterState, setStatusFilterState ] = useState('All Goals');
+    const [ categoryFilterState, setCategoryFilterState] = useState('All Categories');
+
+    // Get filtered goals array
+    let filteredGoals = filterGoals(goals, statusFilterState, categoryFilterState);
 
     return (
         <div className="content-wrapper">
@@ -20,8 +30,17 @@ const MyGoalList = ({ user }) => {
                 >+ Add Goal</Link>}
             </div>
 
-            {goals && goals.length ? 
-                goals.map(goal => (
+            <div>
+                <GoalFilterMenu 
+                    statusFilterState={statusFilterState} 
+                    setStatusFilterState={setStatusFilterState} 
+                    categoryFilterState={categoryFilterState} 
+                    setCategoryFilterState={setCategoryFilterState}
+                />
+            </div>
+
+            {filteredGoals && filteredGoals.length ? 
+                filteredGoals.map(goal => (
                     <GoalPost goal={goal} username={username} profilePhoto={profilePhoto}  key={goal._id}/>
                 )) 
             : 
