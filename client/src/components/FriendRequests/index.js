@@ -16,18 +16,34 @@ const FriendRequests = ({ friendRequests }) => {
                     <i onClick ={ ()=>{setIsOpen(true); console.log('hit me')} } className="fa fa-user-plus" aria-hidden="true"></i>
                 </span>
             </Button>
-            <Modal show={isOpen} onHide={()=>setIsOpen(false)}>
-            {friendRequests && friendRequests.length ? 
-                friendRequests.map(friend => (
-                    <div key={friend._id}>
-                        {friend._id + " " + friend.username}
-                    </div>
-                ))
-            :
-                <div>
-                    <p>You have no friend requests.</p>
-                </div>
-            }
+            <Modal 
+                show={isOpen} 
+                onHide={()=>setIsOpen(false)}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Friend Requests</Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                    {friendRequests && friendRequests.length ?
+                        <ul className="list-group"> 
+                            {friendRequests.map(friend => (
+                                <li className="list-group-item" key={friend._id}>
+                                    <span><span className="label-text">{friend.username}</span> has sent you a friend request.</span>
+                                    <Button variant="success">Accept</Button>
+                                    <Button variant="danger">Reject</Button>
+                                </li>
+                            ))}
+                        </ul>
+                    :
+                        <div>
+                            <p>You have no friend requests.</p>
+                        </div>
+                    }
+                </Modal.Body>
             </Modal>
        </>
     );

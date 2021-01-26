@@ -41,6 +41,7 @@ const resolvers = {
         return User.findOne({ username })
         .select('-__v -password')
         .populate('friends')
+        .populate('friendRequests')
         .populate('goals');
       },
       goals: async (parent, { username }) => {
@@ -152,31 +153,19 @@ const resolvers = {
       },
       addFriend: async (parent, { friendId }, context) => {
           if (context.user) {
+
             const updatedUser = await User.findOneAndUpdate(
               { _id: friendId },
-              //{ _id: context.user._id },
-              { $push: { friendRequests: context.user._id } },
+              { $addToSet: { friendRequests: context.user._id } },
               { new: true }
             ).populate('friendRequests');
+
+            console.log(updatedUser.friendRequests)
         
             return updatedUser;
           }
         
           throw new AuthenticationError('You need to be logged in!');
-      },
-      sendFriendRequest: async (parent, {friendId}, context) => {
-        if (context.user) {
-          const updatedUser = await User.findOneAndUpdate(
-            { _id: friendId },
-            //{ _id: context.user._id },
-            { $addToSet: { friendRequests: context.user._id } },
-            { new: true }
-          ).populate('friendRequests');
-      
-          return updatedUser;
-        }
-      
-        throw new AuthenticationError('You need to be logged in!');
       },
       acceptFriend: async (parent, { friendId }, context) => {
         if (context.user) {

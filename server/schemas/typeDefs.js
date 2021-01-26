@@ -16,10 +16,10 @@ const typeDefs = gql`
     profilePhoto: String
     friendCount: Int
     goals: [Goal]
-    friends: [User]
     friendRequests: [User]
+    friends: [User]
   }
-  
+
   type Milestone {
     _id: ID
     title: String
@@ -67,7 +67,6 @@ const typeDefs = gql`
     addFriend(friendId: ID!): User
     acceptFriend(friendId: ID!): User
     removeFriend(friendId: ID!): User
-    sendFriendRequest(friendId: ID!): User
   }
 `;
 
