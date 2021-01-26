@@ -66,6 +66,7 @@ const typeDefs = gql`
     addComment(goalId: ID!, commentBody: String!): Goal
     addFriend(friendId: ID!): User
     acceptFriend(friendId: ID!): User
+    rejectFriend(friendId: ID!): User
     removeFriend(friendId: ID!): User
   }
 `;

@@ -145,6 +145,19 @@ export const ACCEPT_FRIEND = gql`
     }
   }
 `;
+export const REJECT_FRIEND = gql`
+  mutation rejectFriend($id: ID!) {
+    rejectFriend(friendId: $id) {
+      _id
+      username
+      friendCount
+      friends {
+        _id
+        username
+      }
+    }
+  }
+`;
 export const REMOVE_FRIEND = gql`
   mutation removeFriend($id: ID!) {
     removeFriend(id: $id) {
