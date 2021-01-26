@@ -14,13 +14,13 @@ const  fakeGoalList = [
         profilePhoto: image,
         comments: [
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdsn",
                 commentBody: "I think this will be a hard goal to hit, but I know you can do it! Good luck!",
                 username: "SupportivePerson",
                 createdAt: "January 23rd at 9:20 AM"
             },
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdso",
                 commentBody: "I'll see you on the shameboard!",
                 username: "NotSupportivePerson",
                 createdAt: "January 23rd at 10:19 AM"
@@ -50,13 +50,13 @@ const  fakeGoalList = [
         profilePhoto: image,
         comments: [
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdsp",
                 commentBody: "I think this will be a hard goal to hit, but I know you can do it! Good luck!",
                 username: "SupportivePerson",
                 createdAt: "January 23rd at 9:20 AM"
             },
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdsq",
                 commentBody: "I'll see you on the shameboard!",
                 username: "NotSupportivePerson",
                 createdAt: "January 23rd at 10:19 AM"
@@ -87,13 +87,13 @@ const  fakeGoalList = [
         profilePhoto: image,
         comments: [
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdsr",
                 commentBody: "I think this will be a hard goal to hit, but I know you can do it! Good luck!",
                 username: "SupportivePerson",
                 createdAt: "January 23rd at 9:20 AM"
             },
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdss",
                 commentBody: "I'll see you on the shameboard!",
                 username: "NotSupportivePerson",
                 createdAt: "January 23rd at 10:19 AM"
@@ -124,13 +124,13 @@ const  fakeGoalList = [
         profilePhoto: image,
         comments: [
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdst",
                 commentBody: "I think this will be a hard goal to hit, but I know you can do it! Good luck!",
                 username: "SupportivePerson",
                 createdAt: "January 23rd at 9:20 AM"
             },
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdsu",
                 commentBody: "I'll see you on the shameboard!",
                 username: "NotSupportivePerson",
                 createdAt: "January 23rd at 10:19 AM"
@@ -161,13 +161,13 @@ const  fakeGoalList = [
         profilePhoto: image,
         comments: [
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdsv",
                 commentBody: "I think this will be a hard goal to hit, but I know you can do it! Good luck!",
                 username: "SupportivePerson",
                 createdAt: "January 23rd at 9:20 AM"
             },
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdsw",
                 commentBody: "I'll see you on the shameboard!",
                 username: "NotSupportivePerson",
                 createdAt: "January 23rd at 10:19 AM"
@@ -198,13 +198,13 @@ const  fakeGoalList = [
         profilePhoto: image,
         comments: [
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdsx",
                 commentBody: "I think this will be a hard goal to hit, but I know you can do it! Good luck!",
                 username: "SupportivePerson",
                 createdAt: "January 23rd at 9:20 AM"
             },
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdsy",
                 commentBody: "I'll see you on the shameboard!",
                 username: "NotSupportivePerson",
                 createdAt: "January 23rd at 10:19 AM"
@@ -235,13 +235,13 @@ const  fakeGoalList = [
         profilePhoto: image,
         comments: [
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdsz",
                 commentBody: "I think this will be a hard goal to hit, but I know you can do it! Good luck!",
                 username: "SupportivePerson",
                 createdAt: "January 23rd at 9:20 AM"
             },
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdsa",
                 commentBody: "I'll see you on the shameboard!",
                 username: "NotSupportivePerson",
                 createdAt: "January 23rd at 10:19 AM"
@@ -272,13 +272,13 @@ const  fakeGoalList = [
         profilePhoto: image,
         comments: [
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdsb",
                 commentBody: "I think this will be a hard goal to hit, but I know you can do it! Good luck!",
                 username: "SupportivePerson",
                 createdAt: "January 23rd at 9:20 AM"
             },
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdsc",
                 commentBody: "I'll see you on the shameboard!",
                 username: "NotSupportivePerson",
                 createdAt: "January 23rd at 10:19 AM"
@@ -309,13 +309,13 @@ const  fakeGoalList = [
         profilePhoto: image,
         comments: [
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdsd",
                 commentBody: "I think this will be a hard goal to hit, but I know you can do it! Good luck!",
                 username: "SupportivePerson",
                 createdAt: "January 23rd at 9:20 AM"
             },
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdse",
                 commentBody: "I'll see you on the shameboard!",
                 username: "NotSupportivePerson",
                 createdAt: "January 23rd at 10:19 AM"
@@ -346,13 +346,13 @@ const  fakeGoalList = [
         profilePhoto: image,
         comments: [
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdaf",
                 commentBody: "I think this will be a hard goal to hit, but I know you can do it! Good luck!",
                 username: "SupportivePerson",
                 createdAt: "January 23rd at 9:20 AM"
             },
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdbf",
                 commentBody: "I'll see you on the shameboard!",
                 username: "NotSupportivePerson",
                 createdAt: "January 23rd at 10:19 AM"
@@ -383,13 +383,13 @@ const  fakeGoalList = [
         profilePhoto: image,
         comments: [
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdcf",
                 commentBody: "I think this will be a hard goal to hit, but I know you can do it! Good luck!",
                 username: "SupportivePerson",
                 createdAt: "January 23rd at 9:20 AM"
             },
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfddf",
                 commentBody: "I'll see you on the shameboard!",
                 username: "NotSupportivePerson",
                 createdAt: "January 23rd at 10:19 AM"
@@ -420,13 +420,13 @@ const  fakeGoalList = [
         profilePhoto: image,
         comments: [
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdef",
                 commentBody: "I think this will be a hard goal to hit, but I know you can do it! Good luck!",
                 username: "SupportivePerson",
                 createdAt: "January 23rd at 9:20 AM"
             },
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdff",
                 commentBody: "I'll see you on the shameboard!",
                 username: "NotSupportivePerson",
                 createdAt: "January 23rd at 10:19 AM"
@@ -457,13 +457,13 @@ const  fakeGoalList = [
         profilePhoto: image,
         comments: [
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdgf",
                 commentBody: "I think this will be a hard goal to hit, but I know you can do it! Good luck!",
                 username: "SupportivePerson",
                 createdAt: "January 23rd at 9:20 AM"
             },
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdhf",
                 commentBody: "I'll see you on the shameboard!",
                 username: "NotSupportivePerson",
                 createdAt: "January 23rd at 10:19 AM"

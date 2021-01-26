@@ -23,13 +23,13 @@ import image from './images/placeholder-profile-pic.png';
         profilePhoto: image,
         comments: [
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdsh",
                 commentBody: "I think this will be a hard goal to hit, but I know you can do it! Good luck!",
                 username: "SupportivePerson",
                 createdAt: "January 23rd at 9:20 AM"
             },
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdsi",
                 commentBody: "I'll see you on the shameboard!",
                 username: "NotSupportivePerson",
                 createdAt: "January 23rd at 10:19 AM"
@@ -60,13 +60,13 @@ import image from './images/placeholder-profile-pic.png';
         profilePhoto: image,
         comments: [
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdsj",
                 commentBody: "I think this will be a hard goal to hit, but I know you can do it! Good luck!",
                 username: "SupportivePerson",
                 createdAt: "January 23rd at 9:20 AM"
             },
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdsk",
                 commentBody: "I'll see you on the shameboard!",
                 username: "NotSupportivePerson",
                 createdAt: "January 23rd at 10:19 AM"
@@ -97,13 +97,13 @@ import image from './images/placeholder-profile-pic.png';
       profilePhoto: image,
       comments: [
           {
-              _id: "asdfdasfsdfdsf",
+              _id: "asdfdasfsdfdsl",
               commentBody: "I think this will be a hard goal to hit, but I know you can do it! Good luck!",
               username: "SupportivePerson",
               createdAt: "January 23rd at 9:20 AM"
           },
           {
-              _id: "asdfdasfsdfdsf",
+              _id: "asdfdasfsdfdsm",
               commentBody: "I'll see you on the shameboard!",
               username: "NotSupportivePerson",
               createdAt: "January 23rd at 10:19 AM"

@@ -42,15 +42,17 @@ const GoalForm = ({ goal }) => {
         const { data } = await addGoal({
           variables: { ...formState }
         });
-  
+        window.location.replace ("/")
       } catch (e) {
         console.error(e);
       }
+
     };
-  
+    
+
     return (
         <div className="content-wrapper">
-            <form onSubmit={handleFormSubmit}>
+            <form onSubmit={handleFormSubmit} >
                 
                 <label>Title:</label>
                 <input
@@ -71,6 +73,7 @@ const GoalForm = ({ goal }) => {
                     onChange={handleChange}
                     className="form-control"
                 >
+                    <option>Select One</option>
                     <option>Financial</option>
                     <option>Nutritional</option>
                     <option>Physical</option>
@@ -92,6 +95,7 @@ const GoalForm = ({ goal }) => {
                     onChange={handleChange}
     
                 >
+                    <option>Select One</option>
                     <option>Planned</option>
                     <option>In Progress</option>
                     <option>Completed</option>

@@ -85,10 +85,10 @@ const resolvers = {
           // // let sDate = args.startDate.toString()
           // // sDate = sDate.slice(0,sDate.indexOf("T"))
           // console.log(sDate)
-          console.log(args.dueDate)
+          // console.log(args.dueDate)
           args.startDate = mongoDate(args.startDate)
           args.dueDate = mongoDate(args.dueDate)
-          console.log(args.dueDate)
+          // console.log(args.dueDate)
 
           if (context.user) {
             const goal = await Goal.create({ ...args, username: context.user.username });

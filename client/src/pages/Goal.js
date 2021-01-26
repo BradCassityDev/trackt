@@ -5,7 +5,7 @@ import Auth from '../utils/auth';
 import PostHeader from '../components/PostHeader';
 import GoalForm from '../components/GoalForm';
 import CommentList from '../components/CommentList';
-import MilestoneList from '../components/MilestoneList';
+// import MilestoneList from '../components/MilestoneList';
 
 // Temp fake data
 import image from '../images/placeholder-profile-pic.png';
@@ -25,13 +25,13 @@ const Goal = () => {
         profilePhoto: image,
         comments: [
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdif",
                 commentBody: "I think this will be a hard goal to hit, but I know you can do it! Good luck!",
                 username: "SupportivePerson",
                 createdAt: "January 23rd at 9:20 AM"
             },
             {
-                _id: "asdfdasfsdfdsf",
+                _id: "asdfdasfsdfdjg",
                 commentBody: "I'll see you on the shameboard!",
                 username: "NotSupportivePerson",
                 createdAt: "January 23rd at 10:19 AM"
@@ -57,7 +57,7 @@ const Goal = () => {
                 </div>
                 <div className="card-body">
                     <GoalForm goal={goal} />
-                    <MilestoneList milestones={goal.milestones} />
+                    {/* <MilestoneList milestones={goal.milestones} /> */}
                     <CommentList comments={goal.comments}/>
                 </div>
             </div>
