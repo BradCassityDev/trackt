@@ -96,16 +96,19 @@ footer {
   width: 150px;
   height: 150px;
   margin-bottom: 20px;
+  object-fit: cover;
 }
 .profile-image-md {
   width: 75px;
   height: 75px;
   margin-bottom: 15px;
+  object-fit: cover;
 }
 .profile-image-sm {
   width: 50px;
   height: 50px;
   margin-bottom: 10px;
+  object-fit: cover;
 }
 
 .btn-default {

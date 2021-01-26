@@ -61,6 +61,10 @@ export const QUERY_USER = gql`
         _id
         username
       }
+      friendRequests {
+        _id
+        firstName
+      }
       goals {
         _id
         username

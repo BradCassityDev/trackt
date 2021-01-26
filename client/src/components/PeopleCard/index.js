@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import image from '../../images/placeholder-profile-pic.png';
+import FriendButton from '../FriendButton';
+
 
 const PeopleCard = ({ person }) => {
+
     return (
         <div className="card shadow-sm people-card">
             <div className="card-header">
@@ -20,7 +23,7 @@ const PeopleCard = ({ person }) => {
                 {person.friend ? (
                     <button className="btn btn-danger">Remove Friend</button>
                 ) : (
-                    <button className="btn btn-success">Add Friend</button>
+                    <FriendButton friendid={person._id} />
                 )}
             </div>
         </div>
