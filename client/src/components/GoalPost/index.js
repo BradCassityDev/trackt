@@ -12,6 +12,10 @@ const GoalPost = ({ goal, username, profilePhoto }) => {
     const [open, setOpen] = useState(false);
 
     console.log(goal.goalStatus);
+    const newStartDate = new Date(goal.startDate).toDateString()
+    const newDueDate = new Date(goal.dueDate).toDateString()
+    // console.log(newStartDate)
+    // console.log(newDueDate)
 
     return (
         <div className="card goal-post-card shadow-sm">
@@ -27,7 +31,8 @@ const GoalPost = ({ goal, username, profilePhoto }) => {
                 <h4>{goal.goalTitle}</h4>
                 <p>Category: {goal.goalCategory}</p>
                 <p>Status: {goal.goalStatus}</p>
-                <p>start Date: {goal.startDate} End Date: {goal.dueDate}</p>
+                <p>Start Date: {newStartDate}</p>
+                <p>End Date: {newDueDate}</p>
                 Description: 
                 <p>{goal.goalDescription}</p>
                
