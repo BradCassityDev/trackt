@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 const commentSchema = require('./Comment');
 const milestoneSchema = require('./Milestone');
+
 const dateFormat = require('../utils/dateFormat');
 
 const goalSchema = new Schema(
@@ -45,6 +46,12 @@ const goalSchema = new Schema(
       type: String,
       required: true
     },
+    user: 
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      }
+    ,
     milestones: [milestoneSchema],
     comments: [commentSchema]
   },

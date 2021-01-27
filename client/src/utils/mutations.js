@@ -54,6 +54,11 @@ export const ADD_GOAL = gql`
       dueDate
       createdAt
       username
+      user {
+        _id
+        username
+        profilePhoto
+      }
       # commentCount
       # comments {
       #   _id

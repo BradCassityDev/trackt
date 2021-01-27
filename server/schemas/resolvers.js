@@ -45,10 +45,14 @@ const resolvers = {
       },
       goals: async (parent, { username }) => {
         const params = username ? { username } : {};
-        return Goal.find(params).sort({ createdAt: -1 });
+        return Goal.find(params).sort({ createdAt: -1 })
+        .populate('user');
+
       },  
       goal: async (parent, { _id }) => {
-        return Goal.findOne({ _id });
+        return Goal.findOne({ _id })
+        .populate('user');
+
       }          
     },
     Mutation: {

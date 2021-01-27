@@ -104,6 +104,11 @@ export const QUERY_GOALS = gql`
           commentBody
           username
         }
+        user {
+          _id
+          username
+          profilePhoto
+        }
     }
   }
 `;

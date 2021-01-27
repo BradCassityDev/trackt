@@ -32,6 +32,7 @@ const typeDefs = gql`
     createdAt: Date!
     startDate: Date
     dueDate: Date
+    user: User
     milestones: [Milestone]
     username: String
     commentCount: Int
