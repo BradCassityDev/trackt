@@ -7,9 +7,16 @@ import PostHeader from '../PostHeader';
 import Collapse from "react-bootstrap/Collapse";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import { UPDATE_GOAL } from '../../utils/mutations';
+
 
 const GoalPost = ({ goal, username, profilePhoto }) => {
     const [open, setOpen] = useState(false);
+    
+    const updateGoal = event => {
+        // UPDATE GOAL MUTATION GOES HERE
+        window.location.replace (`/goal/${goal._id}`)
+    }
 
     console.log(goal.goalStatus);
     const newStartDate = new Date(goal.startDate).toDateString()
@@ -28,7 +35,7 @@ const GoalPost = ({ goal, username, profilePhoto }) => {
                         <img src={failStamp} alt="Fail Stamp" className="fail-stamp" />
                     </div>
                 }
-                <h4>{goal.goalTitle}</h4>
+                <h4 onClick={updateGoal}>{goal.goalTitle}</h4>
                 <p>Category: {goal.goalCategory}</p>
                 <p>Status: {goal.goalStatus}</p>
                 <p>Start Date: {newStartDate}</p>
