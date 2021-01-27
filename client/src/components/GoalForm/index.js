@@ -7,16 +7,16 @@ import { QUERY_GOAL } from '../../utils/queries';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const mongoDate = date => {
-  const year = date.getFullYear()
-  let month = date.getMonth()+1
-  let day = date.getDate()+2
+// const mongoDate = date => {
+//   const year = date.getFullYear()
+//   let month = date.getMonth()+1
+//   let day = date.getDate()+2
  
-  if (month < 10) month = "0"+ month
-  if (day < 10) day = "0"+ day
+//   if (month < 10) month = "0"+ month
+//   if (day < 10) day = "0"+ day
  
-  return year + "-" + month + "-" + day
- }
+//   return year + "-" + month + "-" + day
+//  }
  
 const GoalForm = () => {
     let { id: userParam } = useParams();
@@ -37,8 +37,11 @@ const GoalForm = () => {
             goalTitle: data.goal.goalTitle,
             goalCategory: data.goal.goalCategory,
             goalStatus: data.goal.goalStatus,
-            //startDate: data.goal.startDate
-            //endDate: data.goal.endDate
+            startDate: data.goal.startDate,
+            endDate: data.goal.endDate,
+            // startDate: mongoDate(data.goal.startDate),
+            // dueDate: mongoDate(data.goal.dueDate),
+    
             goalDescription: data.goal.goalDescription
         });
       }
@@ -66,8 +69,8 @@ const GoalForm = () => {
       event.preventDefault();
   
       try {
-        formState.startDate= mongoDate(formState.startDate)
-        formState.dueDate= mongoDate(formState.dueDate)
+        // formState.startDate= mongoDate(formState.startDate)
+        // formState.dueDate= mongoDate(formState.dueDate)
 
         const { data } = await addGoal({
           variables: { ...formState }

@@ -4,32 +4,62 @@ import { ADD_MILESTONE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 const MilestoneForm = ({ goalId }) => {
+// Comment text state
+const [title, setTitle] = useState();
 
-    const [formState, setFormState] = useState({ title: '' });
-    const [addMilestone, { error }] = useMutation(ADD_MILESTONE);
-  
-    // Update character count
-    const handleFormChange = event => {
-        const { name, value } = event.target;
-    
-        setFormState({
-          ...formState,
-          [name]: value
+// Character count state
+
+const [addMilestone, { error }] = useMutation(ADD_MILESTONE);
+
+// Update character count
+const handleFormChange = (event) => {
+    if(event.target.value.length <= 250) {
+        setTitle(event.target.value);
+    }
+};
+
+const handleAddMilestone = async event => {
+    event.preventDefault();
+
+    try {
+        await addMilestone({
+            variables: { 
+                goalId: goalId,
+                username: Auth.getProfile().data.username,
+                title: title 
+            }
         });
-      };
-  
-    const handleAddMilestone = async event => {
-        event.preventDefault();
 
-        try {
-            const { data } = await addMilestone({
-                variables: { ...formState }
-            });
+        setTitle('');
+    } catch (err) {
+        console.log(err);
+    }
+};
+    // const [formState, setFormState] = useState({ title: '' });
+    // const [addMilestone, { error }] = useMutation(ADD_MILESTONE);
+  
+    // // Update character count
+    // const handleFormChange = event => {
+    //     const { name, value } = event.target;
+    
+    //     setFormState({
+    //       ...formState,
+    //       [name]: value
+    //     });
+    //   };
+  
+    // const handleAddMilestone = async event => {
+    //     event.preventDefault();
+
+    //     try {
+    //         const { data } = await addMilestone({
+    //             variables: { ...formState }
+    //         });
       
-        } catch (err) {
-            console.log(err);
-        }
-    };
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // };
 
     return (
         <div className="form-container">
@@ -38,9 +68,9 @@ const MilestoneForm = ({ goalId }) => {
                 <input
                     placeholder="Enter your Milestone..."
                     className="form-control"
-                    value={formState.title}
+                    value={title}
                     onChange={handleFormChange}
-                    name="title"
+                    // name="title"
                 ></input>
      
                 <button className="btn btn-default">Add Milestone</button>

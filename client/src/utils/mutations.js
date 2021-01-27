@@ -95,7 +95,6 @@ export const ADD_MILESTONE = gql`
       milestones {
         _id
         title
-        createdAt
       }
     }
   }
