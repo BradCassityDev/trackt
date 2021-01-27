@@ -17,7 +17,7 @@ export const QUERY_ME = gql`
         createdAt
         milestones{
             _id
-            milestoneTitle
+            title
             createdAt
         }
         commentCount
@@ -98,7 +98,7 @@ export const QUERY_GOALS = gql`
         createdAt
         milestones{
             _id
-            milestoneTitle
+            title
             createdAt
         }
         commentCount
@@ -147,6 +147,10 @@ export const QUERY_GOAL = gql`
         startDate
         dueDate
         createdAt
+        milestones {
+          _id
+          title
+        }
         comments {
           _id
           createdAt

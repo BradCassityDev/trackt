@@ -72,7 +72,9 @@ const GoalForm = () => {
         const { data } = await addGoal({
           variables: { ...formState }
         });
-        window.location.replace ("/data.goal._id")
+        // window.location.replace ("/data.goal._id")
+        window.location.replace ("/")
+
       } catch (e) {
         console.error(e);
       }
@@ -134,7 +136,7 @@ const GoalForm = () => {
                 
                 <label>Start Date:</label>
                 <br></br>
-                <DatePicker dateFormat="yyyy-MM-dd" selected={formState.startDate} onChange={date => setFormState({...formState, startDate: date})}/>
+                <DatePicker dateFormat="MM/dd/yyyy" selected={formState.startDate} onChange={date => setFormState({...formState, startDate: date})}/>
                 {/* <input
                     type="text"
                     placeholder="Start Date..."
@@ -146,7 +148,7 @@ const GoalForm = () => {
 
                 <label>End Date:</label>
                 <br></br>
-                <DatePicker dateFormat="yyyy/MM/dd" selected={formState.dueDate} onChange={date => setFormState({...formState, dueDate: date})} />
+                <DatePicker dateFormat="MM/dd/yyyy" selected={formState.dueDate} onChange={date => setFormState({...formState, dueDate: date})} />
                 <br></br>
                 {/* <input
                     type="text"

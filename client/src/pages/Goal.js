@@ -34,7 +34,7 @@ const Goal = ({ profilePhoto }) => {
                     <GoalForm />
                     {userParam !== "new" && data.goal ? 
                             <>
-                                {/*<MilestoneList milestones={data.goal.milestones} />*/}
+                                <MilestoneList milestones={data.goal.milestones} />
                                 <CommentList comments={data.goal.comments}/>
                             </>
                         :

@@ -76,7 +76,8 @@ export const UPDATE_GOAL = gql`
       username
       milestones {
         _id
-        milestoneTitle
+        title
+        status
         createdAt
       }
       commentCount
@@ -88,24 +89,24 @@ export const UPDATE_GOAL = gql`
   }
 `;
 export const ADD_MILESTONE = gql`
-  mutation addMilestone($goalId: ID!, $milestoneTitle: String!) {
-    addMilestone(goalId: $goalId, milestoneTitle: $milestoneTitle) {
+  mutation addMilestone($goalId: ID!, $title: String!) {
+    addMilestone(goalId: $goalId, title: $title) {
       _id
       milestones {
         _id
-        milestoneTitle
+        title
         createdAt
       }
     }
   }
 `;
 export const DELETE_MILESTONE = gql`
-  mutation deleteMilestone($goalId: ID!, $milestoneTitle: String!) {
-    deleteMilestone(goalId: $goalId, milestoneTitle: $milestoneTitle) {
+  mutation deleteMilestone($goalId: ID!, $title: String!) {
+    deleteMilestone(goalId: $goalId, title: $title) {
       _id
       milestones {
         _id
-        milestoneTitle
+        title
         createdAt
       }
     }

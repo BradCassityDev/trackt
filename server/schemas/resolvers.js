@@ -112,11 +112,11 @@ const resolvers = {
   
         throw new AuthenticationError('Not logged in');
       },
-      addMilestone: async (parent, { goalId, milestoneTitle }, context) => {
+      addMilestone: async (parent, { goalId, title }, context) => {
         if (context.user) {
           const updatedGoal = await Goal.findOneAndUpdate(
             { _id: goalId },
-            { $push: { milestones: { milestoneTitle, username: context.user.username } } },
+            { $push: { milestones: { title, username: context.user.username } } },
             { new: true, runValidators: true }
           );
       

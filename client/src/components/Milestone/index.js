@@ -26,7 +26,7 @@ const Milestone = ({ milestone }) => {
                 <div className="milestone-form-fields">
                     <input className="form-check-input" type="checkbox" id="markcomplete" value="option1"></input>
                     <label className="form-check-label" for="markcomplete">Mark Complete</label>
-                    <span className="milestone-title">{milestone.milestoneTitle}</span>
+                    <span className="milestone-title">{milestone.title}</span>
                 </div>
             </form>
             <button 

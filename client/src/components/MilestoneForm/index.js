@@ -5,7 +5,7 @@ import Auth from '../../utils/auth';
 
 const MilestoneForm = ({ goalId }) => {
 
-    const [formState, setFormState] = useState({ milestoneTitle: '' });
+    const [formState, setFormState] = useState({ title: '' });
     const [addMilestone, { error }] = useMutation(ADD_MILESTONE);
   
     // Update character count
@@ -38,9 +38,9 @@ const MilestoneForm = ({ goalId }) => {
                 <input
                     placeholder="Enter your Milestone..."
                     className="form-control"
-                    value={formState.milestoneTitle}
+                    value={formState.title}
                     onChange={handleFormChange}
-                    name="milestoneTitle"
+                    name="title"
                 ></input>
      
                 <button className="btn btn-default">Add Milestone</button>

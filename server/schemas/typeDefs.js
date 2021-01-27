@@ -23,6 +23,7 @@ const typeDefs = gql`
   type Milestone {
     _id: ID
     title: String
+    status: String
   }
   type Goal {
     _id: ID
@@ -30,7 +31,7 @@ const typeDefs = gql`
     goalDescription: String
     goalStatus: String
     goalCategory: String
-    createdAt: Date!
+    createdAt: Date 
     startDate: Date
     dueDate: Date
     milestones: [Milestone]
@@ -61,7 +62,7 @@ const typeDefs = gql`
     addGoal(goalTitle: String!, goalDescription: String!, goalStatus: String!, goalCategory: String, startDate: Date, dueDate: Date): Goal
     updateUser(_id: ID, username: String, email: String, displayName: String, firstName: String, lastName: String, password: String, profilePhoto: String): User
     updateGoal(_id: ID, goalTitle: String, goalDescription: String, goalStatus: String, goalCategory: String, startDate: Date, dueDate: Date): Goal
-    addMilestone(goalId: ID!, milestoneTitle: String!): Goal
+    addMilestone(goalId: ID!, title: String!): Goal
     deleteMilestone(goalId: ID!, milestoneId: ID!): Goal
     addComment(goalId: ID!, commentBody: String!): Goal
     addFriend(friendId: ID!): User
