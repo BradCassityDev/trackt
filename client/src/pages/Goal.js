@@ -14,48 +14,11 @@ import image from '../images/placeholder-profile-pic.png';
 const Goal = ({ profilePhoto }) => {
     let { id: userParam } = useParams();
 
-    // const goal =  {
-    //     _id: "afionsadofnoi",
-    //     username: "Username",
-    //     goalTitle: "Goal 1",
-    //     goalDescription: "This is the description",
-    //     goalStatus: "In Progress",
-    //     goalCategory: "Fitness",
-    //     startDate: "1/21/2021",
-    //     dueDate: "1/31/2021",
-    //     createdAt: "January 1/21/2021 at 9:23 PM",
-    //     profilePhoto: image,
-    //     comments: [
-    //         {
-    //             _id: "asdfdasfsdfdif",
-    //             commentBody: "I think this will be a hard goal to hit, but I know you can do it! Good luck!",
-    //             username: "SupportivePerson",
-    //             createdAt: "January 23rd at 9:20 AM"
-    //         },
-    //         {
-    //             _id: "asdfdasfsdfdjg",
-    //             commentBody: "I'll see you on the shameboard!",
-    //             username: "NotSupportivePerson",
-    //             createdAt: "January 23rd at 10:19 AM"
-    //         }
-    //     ],
-    //     milestones: [
-    //         {
-    //             milestoneTitle: "Milestone 1",
-    //             milestoneStatus: "Completed"
-    //         },
-    //         {
-    //             milestoneTitle: "Milestone 2",
-    //             milestoneStatus: ""
-    //         }
-    //     ]
-    // };
-
     const { loading, data } = useQuery(QUERY_GOAL, {
         variables: { id: userParam }
     });
 
-    if (loading && userParam === "new") {
+    if (loading) {
         return <div>Loading...</div>;
     }
 
