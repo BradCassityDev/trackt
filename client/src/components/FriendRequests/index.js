@@ -47,9 +47,10 @@ const FriendRequests = ({ friendRequests }) => {
 
     return (
        <>
-            <Button variant="primary" onClick={()=>setIsOpen(true)}>
+            <Button variant="primary" onClick={()=>setIsOpen(true)} className="btn-default">
                 <span>
                     <i onClick ={ ()=>{setIsOpen(true); console.log('hit me')} } className="fa fa-user-plus" aria-hidden="true"></i>
+                    {" " + friendRequests.length + " "}Friend Requests
                 </span>
             </Button>
             <Modal 

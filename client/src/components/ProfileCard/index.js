@@ -81,11 +81,7 @@ const ProfileCard = ({ user }) => {
               className="form-control"
             ></input>
           </div>
-          <div>
-            <button className="btn btn-default" onClick={showUploadWidget}>
-              Change Profile Picture
-            </button>
-          </div>
+          
           <div>
             <button type="submit" className="btn btn-default">
               Save Changes
@@ -105,10 +101,16 @@ const ProfileCard = ({ user }) => {
             alt="profile pic"
             className="rounded-circle profile-image"
           />
-          <h5 className="card-title">{user.username}</h5>
+          {Auth.getProfile().data.username === user.username && 
+            <div>
+              <button className="btn btn-link" onClick={showUploadWidget}>
+                Change Profile Picture
+              </button>
+            </div>
+          }
+          <h5 className="card-title mt-3">{user.username}</h5>
           <hr></hr>
           {renderCardDetails()}
-          <FriendRequests friendRequests={user.friendRequests} />
         </div>
       </div>
     </div>
