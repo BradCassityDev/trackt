@@ -226,7 +226,7 @@ const resolvers = {
             { _id: context.user._id },
             { $pull: { friends: friendId } },
             { new: true }
-          ).remove('friends');
+          );
 
           // Remove friend from other users friends list
           const updatedOldFriend = await User.findOneAndUpdate(
