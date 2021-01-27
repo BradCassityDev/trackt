@@ -82,13 +82,9 @@ const resolvers = {
         throw new AuthenticationError('Not logged in');
       },
       addGoal: async (parent, args, context) => {
-          // // let sDate = args.startDate.toString()
-          // // sDate = sDate.slice(0,sDate.indexOf("T"))
-          // console.log(sDate)
-          // console.log(args.dueDate)
+ 
           args.startDate = mongoDate(args.startDate)
           args.dueDate = mongoDate(args.dueDate)
-          // console.log(args.dueDate)
 
           if (context.user) {
             const goal = await Goal.create({ ...args, username: context.user.username });
@@ -105,8 +101,9 @@ const resolvers = {
           throw new AuthenticationError('You need to be logged in!');
       },
       updateGoal: async (parent, args, context) => {
-        if (context.goal) {
-          return await Goal.findByIdAndUpdate(context.goal._id, args, { new: true });
+        if (context.user) {
+          console.log(args)
+          return await Goal.findOneAndUpdate(args._id, args, { new: true });
         }
   
         throw new AuthenticationError('Not logged in');

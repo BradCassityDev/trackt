@@ -59,7 +59,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, displayName: String, firstName: String, lastName: String, password: String!, profilePhoto: String): Auth
     addGoal(goalTitle: String!, goalDescription: String!, goalStatus: String!, goalCategory: String, startDate: Date, dueDate: Date): Goal
     updateUser(_id: ID, username: String, email: String, displayName: String, firstName: String, lastName: String, password: String, profilePhoto: String): User
-    updateGoal(_id: ID, goalTitle: String, goalDescription: String, goalStatus: String, goalCategory: String, startDate: Date, dueDate: Date): Goal
+    updateGoal(id: ID, goalTitle: String, goalDescription: String, goalStatus: String, goalCategory: String, startDate: Date, dueDate: Date): Goal
     addMilestone(goalId: ID!, milestoneTitle: String!): Goal
     deleteMilestone(goalId: ID!, milestoneId: ID!): Goal
     addComment(goalId: ID!, commentBody: String!): Goal

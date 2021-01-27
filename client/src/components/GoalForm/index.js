@@ -25,7 +25,7 @@ const GoalForm = ({ goal }) => {
        setFormState ({ goalTitle: '', goalDescription: '', goalCategory: '', goalStatus: '', startDate: new Date(), dueDate: new Date()});
     }
     else {
-      setFormState ({ goalTitle: goal.goalTitle});
+      setFormState({ goalTitle: goal.goalTitle});
     }
     
 
