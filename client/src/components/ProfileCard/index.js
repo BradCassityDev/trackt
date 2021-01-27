@@ -3,8 +3,9 @@ import Auth from "../../utils/auth";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import image from "../../images/placeholder-profile-pic.png";
 import { UPDATE_USER } from "../../utils/mutations";
-
+import FriendButton from "../FriendButton";
 import ProfileDetails from '../ProfileDetails';
+import FriendRequests from '../FriendRequests';
 
 const ProfileCard = ({ user }) => {
     
@@ -32,7 +33,8 @@ const ProfileCard = ({ user }) => {
       }
     );
   }
-  console.log(user.profilePhoto);
+  
+  console.log(user.friendRequests);
 
 
   // Handle user edit form submit
@@ -46,9 +48,7 @@ const ProfileCard = ({ user }) => {
         <div>
             <ProfileDetails user={user} />
             <hr />
-            <button type="button" className="btn btn-default green">
-                Add Friend
-            </button>
+            
         </div>
       );
     } else {
@@ -81,11 +81,7 @@ const ProfileCard = ({ user }) => {
               className="form-control"
             ></input>
           </div>
-          <div>
-            <button className="btn btn-default" onClick={showUploadWidget}>
-              Change Profile Picture
-            </button>
-          </div>
+          
           <div>
             <button type="submit" className="btn btn-default">
               Save Changes
@@ -105,7 +101,14 @@ const ProfileCard = ({ user }) => {
             alt="profile pic"
             className="rounded-circle profile-image"
           />
-          <h5 className="card-title">{user.username}</h5>
+          {Auth.getProfile().data.username === user.username && 
+            <div>
+              <button className="btn btn-link" onClick={showUploadWidget}>
+                Change Profile Picture
+              </button>
+            </div>
+          }
+          <h5 className="card-title mt-3">{user.username}</h5>
           <hr></hr>
           {renderCardDetails()}
         </div>

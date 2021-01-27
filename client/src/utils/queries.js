@@ -77,6 +77,10 @@ export const QUERY_USER = gql`
           username
         }
       }
+      friendRequests {
+        _id
+        username
+      }
     }
   }
 `;

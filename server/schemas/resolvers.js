@@ -41,6 +41,7 @@ const resolvers = {
         return User.findOne({ username })
         .select('-__v -password')
         .populate('friends')
+        .populate('friendRequests')
         .populate('goals');
       },
       goals: async (parent, { username }) => {
@@ -152,11 +153,14 @@ const resolvers = {
       },
       addFriend: async (parent, { friendId }, context) => {
           if (context.user) {
+
             const updatedUser = await User.findOneAndUpdate(
-              { _id: context.user._id },
-              { $addToSet: { friendRequests: friendId } },
+              { _id: friendId },
+              { $addToSet: { friendRequests: context.user._id } },
               { new: true }
             ).populate('friendRequests');
+
+            console.log(updatedUser.friendRequests)
         
             return updatedUser;
           }
@@ -165,24 +169,71 @@ const resolvers = {
       },
       acceptFriend: async (parent, { friendId }, context) => {
         if (context.user) {
+          // Add Friend
           const updatedUser = await User.findOneAndUpdate(
             { _id: context.user._id },
             { $addToSet: { friends: friendId } },
             { new: true }
           ).populate('friends');
+
+          // remove from friend requests
+          const updatedFriendRequests = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $pull: { friendRequests: friendId } },
+            { new: true }
+          ).populate('friendRequests');
+
+          /////////////////////////////////
+          // Go to other user and add friend / remove pending friend request
+          /////////////////////////////////
+
+          // remove from friend requests
+          const otherUserFriendRequests = await User.findOneAndUpdate(
+            { _id: friendId },
+            { $pull: { friendRequests: context.user._id } },
+            { new: true }
+          ).populate('friendRequests');
+
+          const otherUserFriends = await User.findOneAndUpdate(
+            { _id: friendId },
+            { $addToSet: { friends: context.user._id } },
+            { new: true }
+          ).populate('friends');
+      
+          return updatedFriendRequests;
+        }
+      
+        throw new AuthenticationError('You need to be logged in!');
+      }, 
+      rejectFriend: async (parent, {friendId}, context) => {
+        if (context.user) {
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $pull: { friendRequests: friendId } },
+            { new: true }
+          ).populate('friendRequests');
       
           return updatedUser;
         }
       
         throw new AuthenticationError('You need to be logged in!');
-      }, 
+      },
       removeFriend:  async (parent, { friendId }, context) => {
         if (context.user) {
+          
+          // Remove friend from friends list
           const updatedUser = await User.findOneAndUpdate(
             { _id: context.user._id },
             { $pull: { friends: friendId } },
             { new: true }
           ).remove('friends');
+
+          // Remove friend from other users friends list
+          const updatedOldFriend = await User.findOneAndUpdate(
+            { _id: friendId },
+            { $pull: { friends: context.user._id } },
+            { new: true }
+          );
       
           return updatedUser;
         }
