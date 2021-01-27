@@ -288,3 +288,11 @@ footer {
 .filter-box {
   padding: 10px;
 }
+
+.pointer {
+  cursor: pointer;
+}
+
+.pointer:hover {
+  color: var(--primary-color);
+}

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Auth from '../../utils/auth';
 import { useParams } from 'react-router-dom';
-import { useMutation } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import { ADD_GOAL, UPDATE_GOAL } from '../../utils/mutations';
+import { QUERY_GOAL } from '../../utils/queries';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -17,20 +18,38 @@ const mongoDate = date => {
   return year + "-" + month + "-" + day
  }
  
-const GoalForm = ({ goal }) => {
+const GoalForm = () => {
     let { id: userParam } = useParams();
-    const [formState, setFormState] = useState({});
+    const [formState, setFormState] = useState({ goalTitle: '', goalDescription: '', goalCategory: '', goalStatus: '', startDate: new Date(), dueDate: new Date()});
 
-    if (userParam === "new"){
-       setFormState ({ goalTitle: '', goalDescription: '', goalCategory: '', goalStatus: '', startDate: new Date(), dueDate: new Date()});
-    }
-    else {
-      setFormState ({ goalTitle: goal.goalTitle});
-    }
-    
 
+    const { loading, data } = useQuery(QUERY_GOAL, {
+      variables: { id: userParam }
+    });
   
     const [addGoal, { error }] = useMutation(ADD_GOAL);
+
+    useEffect(() => {
+      if(!loading) {
+        console.log('Goal Data: ', data);
+        setFormState ({ 
+            ...formState, 
+            goalTitle: data.goal.goalTitle,
+            goalCategory: data.goal.goalCategory,
+            goalStatus: data.goal.goalStatus,
+            //startDate: data.goal.startDate
+            //endDate: data.goal.endDate
+            goalDescription: data.goal.goalDescription
+        });
+      }
+      
+      
+    }, [data]);
+
+
+    if (loading) {
+      return <div>Loading...</div>;
+    }
   
     // update state based on form input changes
     const handleChange = event => {
@@ -53,7 +72,7 @@ const GoalForm = ({ goal }) => {
         const { data } = await addGoal({
           variables: { ...formState }
         });
-        window.location.replace ("/")
+        window.location.replace ("/data.goal._id")
       } catch (e) {
         console.error(e);
       }

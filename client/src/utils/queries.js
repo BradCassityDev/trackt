@@ -139,6 +139,7 @@ export const QUERY_GOAL = gql`
   query goal($id: ID!) {
     goal(_id: $id) {
         _id
+        username
         goalTitle
         goalDescription
         goalCategory
@@ -146,12 +147,6 @@ export const QUERY_GOAL = gql`
         startDate
         dueDate
         createdAt
-        milestones{
-            _id
-            milestoneTitle
-            createdAt
-        }
-        commentCount
         comments {
           _id
           createdAt

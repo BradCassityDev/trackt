@@ -35,7 +35,12 @@ const GoalPost = ({ goal, username, profilePhoto }) => {
                         <img src={failStamp} alt="Fail Stamp" className="fail-stamp" />
                     </div>
                 }
-                <h4 onClick={updateGoal}>{goal.goalTitle}</h4>
+                {Auth.getProfile().data.username === username ? 
+                    <h4 onClick={updateGoal} className="pointer">{goal.goalTitle}</h4>
+                :
+                    <h4>{goal.goalTitle}</h4>
+                }
+                
                 <p>Category: {goal.goalCategory}</p>
                 <p>Status: {goal.goalStatus}</p>
                 <p>Start Date: {newStartDate}</p>
