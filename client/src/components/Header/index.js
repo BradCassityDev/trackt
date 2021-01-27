@@ -31,17 +31,7 @@ const Header = () => {
                         <Link to="/">{Auth.getProfile().data.username}</Link>
                     </span>
                     <span className="header-nav-link">
-                        <Button variant="primary" onClick={()=>setIsOpen(true)}>
-                            <span>
-                                <i onClick ={ ()=>{setIsOpen(true); console.log('hit me')} } className="fa fa-user-plus" aria-hidden="true"></i>
-                            </span>
-                        </Button>
-                        <Modal show={isOpen} onHide={()=>setIsOpen(false)}>
-                            <div className="modal-content">
-                                <span className="close">&times;</span>
-                                <p> username has sent you a friend request <button>Accept</button> <button>Reject</button></p>
-                            </div>
-                        </Modal>
+                        <span className="devider">|</span>
                     </span>
                     <span className="header-nav-link">
                         <a href="/login" onClick={logout}>

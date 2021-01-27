@@ -5,7 +5,7 @@ import FriendButton from '../FriendButton';
 import RemoveFriendButton from'../RemoveFriendButton';
 
 
-const PeopleCard = ({ person }) => {
+const PeopleCard = ({ person, isFriend }) => {
 
     return (
         <div className="card shadow-sm people-card">
@@ -21,7 +21,7 @@ const PeopleCard = ({ person }) => {
                 </Link>
             </div>
             <div className="card-body">
-                {true ? (
+                {isFriend ? (
                      <RemoveFriendButton friendid={person._id}/>
                 ) : (
                     <FriendButton friendid={person._id} />
