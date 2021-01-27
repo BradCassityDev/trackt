@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Auth from '../../utils/auth';
+import { useParams } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
-import { ADD_GOAL } from '../../utils/mutations';
+import { ADD_GOAL, UPDATE_GOAL } from '../../utils/mutations';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Redirect } from 'react-router-dom';
 
 const mongoDate = date => {
   const year = date.getFullYear()
@@ -18,7 +18,18 @@ const mongoDate = date => {
  }
  
 const GoalForm = ({ goal }) => {
-    const [formState, setFormState] = useState({ goalTitle: '', goalDescription: '', goalCategory: '', goalStatus: '', startDate: new Date(), dueDate: new Date()});
+    let { id: userParam } = useParams();
+    const [formState, setFormState] = useState({});
+
+    if (userParam === "new"){
+       setFormState ({ goalTitle: '', goalDescription: '', goalCategory: '', goalStatus: '', startDate: new Date(), dueDate: new Date()});
+    }
+    else {
+      setFormState ({ goalTitle: goal.goalTitle});
+    }
+    
+
+  
     const [addGoal, { error }] = useMutation(ADD_GOAL);
   
     // update state based on form input changes

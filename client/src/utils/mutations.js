@@ -29,8 +29,8 @@ export const ADD_USER = gql`
   }
 `;
 export const UPDATE_USER = gql`
-  mutation updateUser($username: String, $displayName: String, $email: String, $firstName: String $lastName: String, $password: String, $profilePhoto: String) {
-    updateUser(username: $username, displayName: $displayName, email: $email, firstName: $firstName, lastName: $lastName, password: $password, profilePhoto: $profilePhoto) {
+  mutation updateUser($_id: id$username: String, $displayName: String, $email: String, $firstName: String $lastName: String, $password: String, $profilePhoto: String) {
+    updateUser(_id: $_id, username: $username, displayName: $displayName, email: $email, firstName: $firstName, lastName: $lastName, password: $password, profilePhoto: $profilePhoto) {
     _id
     username
     displayName
@@ -63,8 +63,8 @@ export const ADD_GOAL = gql`
   }
 `;
 export const UPDATE_GOAL = gql`
-  mutation updateGoal($goalTitle: String!, $goalDescription: String!, $goalStatus: String!, $goalCategory: String, $startDate: Date!, $dueDate: Date) {
-    updateGoal(goalTitle: $goalTitle, goalDescription: $goalDescription, goalStatus: $goalStatus, goalCategory: $goalCategory, startDate: $startDate, dueDate: $dueDate) {
+  mutation updateGoal($_id: ID, $goalTitle: String!, $goalDescription: String!, $goalStatus: String!, $goalCategory: String, $startDate: Date!, $dueDate: Date) {
+    updateGoal(_id: $_id, goalTitle: $goalTitle, goalDescription: $goalDescription, goalStatus: $goalStatus, goalCategory: $goalCategory, startDate: $startDate, dueDate: $dueDate) {
       _id
       goalTitle
       goalDescription
@@ -74,6 +74,11 @@ export const UPDATE_GOAL = gql`
       dueDate
       createdAt
       username
+      milestones {
+        _id
+        milestoneTitle
+        createdAt
+      }
       commentCount
       comments {
         _id
