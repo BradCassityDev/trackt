@@ -12,13 +12,12 @@ db.once('open', async () => {
 
   for (let i = 0; i < 50; i += 1) {
     const username = faker.internet.userName();
-    const displayName = faker.internet.displayName();
     const email = faker.internet.email(username);
-    const firstName = faker.internet.firstName();
-    const lastName = faker.internet.lastName();
+    const firstName = faker.name.firstName();
+    const lastName = faker.name.lastName();
     const password = faker.internet.password();
 
-    userData.push({ username, displayName, email, firstName, lastName, password });
+    userData.push({ username, email, firstName, lastName, password });
   }
 
   const createdUsers = await User.collection.insertMany(userData);
@@ -42,11 +41,12 @@ db.once('open', async () => {
   let createdGoals = [];
   for (let i = 0; i < 100; i += 1) {
     const goalTitle = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+    const goalDescription = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
     const { username, _id: userId } = createdUsers.ops[randomUserIndex];
 
-    const createdGoal = await Goal.create({ goalTitle, username });
+    const createdGoal = await Goal.create({ goalTitle, username, goalDescription });
 
     const updatedUser = await User.updateOne(
       { _id: userId },
@@ -74,7 +74,7 @@ db.once('open', async () => {
   }
 // create milestones
 for (let i = 0; i < 100; i += 1) {
-    const  = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+    const title = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
     const randomGoalIndex = Math.floor(Math.random() * createdGoals.length);
     const { _id: goalId } = createdGoals[randomGoalIndex];
