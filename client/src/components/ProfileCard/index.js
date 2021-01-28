@@ -12,6 +12,13 @@ const ProfileCard = ({ user }) => {
     
   const [updateUser, { error }] = useMutation(UPDATE_USER);
 
+  // form state
+  const [formState, setFormState] = useState({
+    firstName: user.firstName,
+    lastName: user.lastName,
+    email: user.email
+  });
+
   async function showUploadWidget() {
     if (user.profilePhoto) {
       await deletePhoto(user.username);
@@ -42,10 +49,16 @@ const ProfileCard = ({ user }) => {
   
   console.log(user.friendRequests);
 
+  // Form change handler
+  const handleFormChange = (event) => {
+    event.preventDefault();
+  };
+
 
   // Handle user edit form submit
   const handleEditUserSubmit = async (event) => {
-    event.preventDefault();
+    const { name, value } = event.target;
+    setFormState({...formState, [name]: value});
   };
 
   const renderCardDetails = () => {
@@ -67,6 +80,8 @@ const ProfileCard = ({ user }) => {
               name="firstname"
               id="firstname"
               className="form-control"
+              value={formState.firstName}
+              onChange={handleFormChange}
             ></input>
           </div>
           <div>
@@ -76,6 +91,8 @@ const ProfileCard = ({ user }) => {
               name="lastname"
               id="lastname"
               className="form-control"
+              value={formState.lastName}
+              onChange={handleFormChange}
             ></input>
           </div>
           <div>
@@ -85,6 +102,8 @@ const ProfileCard = ({ user }) => {
               name="email"
               id="email"
               className="form-control"
+              value={formState.email}
+              onChange={handleFormChange}
             ></input>
           </div>
           

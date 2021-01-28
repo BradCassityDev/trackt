@@ -220,21 +220,20 @@ const resolvers = {
       },
       removeFriend:  async (parent, { friendId }, context) => {
         if (context.user) {
-          
           // Remove friend from friends list
           const updatedUser = await User.findOneAndUpdate(
             { _id: context.user._id },
             { $pull: { friends: friendId } },
             { new: true }
-          ).remove('friends');
-
+          );
+          
           // Remove friend from other users friends list
           const updatedOldFriend = await User.findOneAndUpdate(
             { _id: friendId },
             { $pull: { friends: context.user._id } },
             { new: true }
           );
-      
+          
           return updatedUser;
         }
       

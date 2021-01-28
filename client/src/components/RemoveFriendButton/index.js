@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { REMOVE_FRIEND } from '../../utils/mutations';
 import { useMutation } from '@apollo/react-hooks';
 import Button from 'react-bootstrap/Button';
@@ -12,7 +12,7 @@ const RemoveFriendButton = ({ friendid, setButtonState }) => {
     const removeFriendHandler = async event => {
         const userId = Auth.getProfile().data._id;
         console.log(friendid, userId);
-
+        
         try {
             await removeFriend({
                 variables: {
