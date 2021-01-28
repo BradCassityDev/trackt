@@ -296,3 +296,8 @@ footer {
 .pointer:hover {
   color: var(--primary-color);
 }
+
+.completed-text {
+  color:  #28a745;
+  font-weight: bold;
+}

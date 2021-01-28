@@ -42,7 +42,7 @@ const GoalPost = ({ goal, username, profilePhoto }) => {
                 }
                 
                 <p>Category: {goal.goalCategory}</p>
-                <p>Status: {goal.goalStatus}</p>
+                <p>Status: {goal.goalStatus === "Completed" ? <span className="completed-text">Completed! ✔️</span> : goal.goalStatus}</p>
                 {/* <p>Start Date: {newStartDate}</p>
                 <p>End Date: {newDueDate}</p> */}
                 Description: 

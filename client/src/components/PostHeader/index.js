@@ -12,7 +12,7 @@ function PostHeader ({ username, profilePhoto, createdAt }) {
         <Image
               className="rounded-circle profile-image-sm"
               cloudName="trackt"
-              public_id={`trackt-user-pfp/${username}`}
+              public_id={`trackt-user-pfp/${username}.jpg`}
               onError={() => {console.log(this)}}
               ></Image>
           {/* {true ? (

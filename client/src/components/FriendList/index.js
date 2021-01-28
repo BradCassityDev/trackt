@@ -38,7 +38,7 @@ const FriendList = ({userInfo}) => {
                                                 <Image
                                                 className="rounded-circle profile-image-sm"
                                                 cloudName="trackt"
-                                                public_id={`trackt-user-pfp/${friend.username}`}
+                                                public_id={`trackt-user-pfp/${friend.username}.jpg`}
                                                 onError={() => {console.log(this)}}
                                                 ></Image>
                                             </div>
