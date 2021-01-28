@@ -23,6 +23,7 @@ const FriendRequests = ({ friendRequests }) => {
                     id: friendId
                 }
             });
+            window.location.replace("/");
         } catch (err) {
             console.log(err);
         }
@@ -39,6 +40,7 @@ const FriendRequests = ({ friendRequests }) => {
                     id: friendId
                 }
             });
+            window.location.replace("/");
         } catch (err) {
             console.log(err);
         }
