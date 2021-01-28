@@ -6,17 +6,14 @@ import RemoveFriendButton from'../RemoveFriendButton';
 import Auth from '../../utils/auth';
 
 
-const PeopleCard = ({ person, isFriend, peopleState, setPeopleState }) => {
-
-    const [friendState, setFriendState] = useState(isFriend);
-    const [pendingFriendRequest, setPendingFriendRequest] = useState(false);
-
+const PeopleCard = ({ person, isFriend }) => {
+    // Button state for friends
     const [buttonState, setButtonState] = useState(isFriend ? 1 : 2);
 
     useEffect(() => {
         //setPendingFriendRequest(checkPendingFriendRequest(person.friendRequests));
         checkPendingFriendRequest(person.friendRequests);
-    }, [friendState, pendingFriendRequest, buttonState]);
+    }, [buttonState]);
 
     // Check if pending friend request
     const checkPendingFriendRequest = (friendRequests) => {
@@ -36,21 +33,13 @@ const PeopleCard = ({ person, isFriend, peopleState, setPeopleState }) => {
 
     const renderButton = () => {
         if (buttonState === 1) {
-            // Friends
-            // Display remove friend button
-            return (<RemoveFriendButton friendid={person._id} setButtonState={setButtonState} peopleState={peopleState} setPeopleState={setPeopleState} setFriendState={setFriendState} />);
+            return (<RemoveFriendButton friendid={person._id} setButtonState={setButtonState}  />);
         } else if (buttonState === 2) {
-            return (<FriendButton friendid={person._id} setButtonState={setButtonState} peopleState={peopleState} setPeopleState={setPeopleState} setFriendState={setFriendState} setPendingFriendRequest={setPendingFriendRequest} />);
+            return (<FriendButton friendid={person._id} setButtonState={setButtonState} />);
         } else {
             return (<p>Friend request sent.</p>);
         }
     }
-    // {friendState ? (
-    //     /* checkPendingFriendRequest(person.friendRequests) ? <p>Friend request sent.</p> : */<RemoveFriendButton friendid={person._id} peopleState={peopleState} setPeopleState={setPeopleState} setFriendState={setFriendState} />
-    //  ) : 
-    //      /*checkPendingFriendRequest(person.friendRequests) ? <p>Friend request sent.</p> : (<FriendButton friendid={person._id} peopleState={peopleState} setPeopleState={setPeopleState} setFriendState={setFriendState} setPendingFriendRequest={setPendingFriendRequest} />)*/
-         
-    //  }
     
     return (
         <div className="card shadow-sm people-card">

@@ -20,8 +20,8 @@ const FriendButton = ({ friendid, peopleState, setButtonState, setPeopleState, s
                 }
             });
 
-            setPendingFriendRequest(true);
-            setFriendState(true);
+            // setPendingFriendRequest(true);
+            // setFriendState(true);
             setButtonState(3);
         } catch (err) {
             console.log(err);

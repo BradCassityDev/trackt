@@ -20,7 +20,7 @@ const RemoveFriendButton = ({ friendid, setButtonState }) => {
                 }
             });
 
-            setButtonState(1);
+            setButtonState(2);
         } catch (err) {
             console.log(err);
         }
