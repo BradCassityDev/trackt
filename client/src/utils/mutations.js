@@ -85,13 +85,12 @@ export const ADD_MILESTONE = gql`
   }
 `;
 export const DELETE_MILESTONE = gql`
-  mutation deleteMilestone($goalId: ID!, $title: String!) {
-    deleteMilestone(goalId: $goalId, title: $title) {
-      _id
-      milestones {
+  mutation deleteMilestone($goalId: ID, $_id: ID!) {
+    deleteMilestone(goalId: $goalId, _id: $_id) {
+        goalTitle
+      milestones{
         _id
         title
-        createdAt
       }
     }
   }

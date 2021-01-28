@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Auth from '../../utils/auth';
 
 import Milestone from '../Milestone';
@@ -15,10 +15,11 @@ const MilestoneList = ({ milestones, goalId }) => {
                 >+ Add Milestone</button> */}
             </div>
             <MilestoneForm goalId={goalId} />
-            {milestones.length ? 
+            {milestones && milestones.length ? 
                 milestones.map(milestone => (
-                    <Milestone milestone={milestone} key={milestone._id} />
+                    <Milestone goalId={goalId} milestone={milestone} key={milestone._id} />
                 ))
+                
             : 
             (
                 <div className="empty-message">

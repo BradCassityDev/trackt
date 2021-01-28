@@ -10,6 +10,7 @@ import { QUERY_GOAL } from '../utils/queries';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 // Temp fake data
 import image from '../images/placeholder-profile-pic.png';
+import Milestone from '../components/Milestone';
 
 const Goal = ({ profilePhoto }) => {
     let { id: userParam } = useParams();
@@ -21,7 +22,6 @@ const Goal = ({ profilePhoto }) => {
     if (loading) {
         return <div>Loading...</div>;
     }
-
     console.log(data);
 
     return (
@@ -34,7 +34,7 @@ const Goal = ({ profilePhoto }) => {
                     <GoalForm />
                     {userParam !== "new" && data.goal ? 
                             <>
-                                <MilestoneList goalId={data.goal._id} milestones={data.goal.milestones} />
+                                <MilestoneList  milestones={data.goal.milestones} goalId={data.goal._id} />
                                 <CommentList goalId={data.goal._id} comments={data.goal.comments}/>
                             </>
                         :

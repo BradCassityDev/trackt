@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Goal } = require('../models');
+const { User, Goal, Milestone } = require('../models');
 const { signToken } = require('../utils/auth');
 const { GraphQLDate } = require('graphql-iso-date');
 
@@ -53,6 +53,7 @@ const resolvers = {
       }          
     },
     Mutation: {
+      
       login: async (parent, { email, password }) => {
           const user = await User.findOne({ email });
         
@@ -125,19 +126,22 @@ const resolvers = {
       
         throw new AuthenticationError('You need to be logged in!');
       },
-      deleteMilestone: async (parent, { goalId, milestoneId }, context) => {
-        if (context.user) {
-          const updatedGoal = await Goal.findOneAndUpdate(
-            { _id: goalId },
-            { $pull: { milestones: { milestoneId, username: context.user.username } } },
-            { new: true, runValidators: true }
-          );
+
       
-          return updatedGoal;
-        }
+    deleteMilestone: async (parent, { goalId, _id }, context) => {
+      if (context.user) {
+        const updatedGoal = await Goal.findOneAndUpdate(
+          { _id: goalId },
+          { $pull: { milestones: { _id } } },
+          { new: true }
+        );
+    
+        return updatedGoal;
+      }
+    
+      throw new AuthenticationError('You need to be logged in!');
+  },
       
-        throw new AuthenticationError('You need to be logged in!');
-      },
       addComment: async (parent, { goalId, commentBody }, context) => {
           if (context.user) {
             const updatedGoal = await Goal.findOneAndUpdate(
