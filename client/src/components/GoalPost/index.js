@@ -19,8 +19,8 @@ const GoalPost = ({ goal, username, profilePhoto }) => {
     }
 
     console.log(goal.goalStatus);
-    const newStartDate = new Date(goal.startDate).toDateString()
-    const newDueDate = new Date(goal.dueDate).toDateString()
+    // const newStartDate = new Date(goal.startDate).toDateString()
+    // const newDueDate = new Date(goal.dueDate).toDateString()
     // console.log(newStartDate)
     // console.log(newDueDate)
 
@@ -43,8 +43,8 @@ const GoalPost = ({ goal, username, profilePhoto }) => {
                 
                 <p>Category: {goal.goalCategory}</p>
                 <p>Status: {goal.goalStatus}</p>
-                <p>Start Date: {newStartDate}</p>
-                <p>End Date: {newDueDate}</p>
+                {/* <p>Start Date: {newStartDate}</p>
+                <p>End Date: {newDueDate}</p> */}
                 Description: 
                 <p>{goal.goalDescription}</p>
                

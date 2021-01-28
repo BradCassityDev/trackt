@@ -61,28 +61,15 @@ export const ADD_GOAL = gql`
   }
 `;
 export const UPDATE_GOAL = gql`
-  mutation updateGoal($_id: ID, $goalTitle: String!, $goalDescription: String!, $goalStatus: String!, $goalCategory: String, $startDate: Date!, $dueDate: Date) {
-    updateGoal(_id: $_id, goalTitle: $goalTitle, goalDescription: $goalDescription, goalStatus: $goalStatus, goalCategory: $goalCategory, startDate: $startDate, dueDate: $dueDate) {
-      _id
+    mutation updateGoal($_id: ID, $goalTitle: String, $goalDescription: String, $goalStatus: String, $goalCategory: String ) {
+    updateGoal(_id: $_id, goalTitle: $goalTitle, goalDescription: $goalDescription, goalStatus: $goalStatus, goalCategory: $goalCategory) {
+      
       goalTitle
       goalDescription
       goalCategory
       goalStatus
-      startDate
-      dueDate
       createdAt
       username
-      milestones {
-        _id
-        title
-        status
-        createdAt
-      }
-      commentCount
-      comments {
-        _id
-        commentBody
-      }
     }
   }
 `;

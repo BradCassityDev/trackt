@@ -21,7 +21,7 @@ import "react-datepicker/dist/react-datepicker.css";
  
 const GoalForm = () => {
     let { id: userParam } = useParams();
-    const [formState, setFormState] = useState({ goalTitle: '', goalDescription: '', goalCategory: '', goalStatus: '', startDate: new Date(), dueDate: new Date()});
+    const [formState, setFormState] = useState({ goalTitle: '', goalDescription: '', goalCategory: '', goalStatus: ''});
 
 
     const { loading, data } = useQuery(QUERY_GOAL, {
@@ -29,6 +29,7 @@ const GoalForm = () => {
     });
   
     const [addGoal, { error }] = useMutation(ADD_GOAL);
+    const [updateGoal] = useMutation(UPDATE_GOAL);
 
 
     useEffect(() => {
@@ -42,8 +43,6 @@ const GoalForm = () => {
             goalStatus: data.goal.goalStatus,
             // startDate: data.goal.startDate,
             // endDate: data.goal.endDate,
-            // startDate: data.goal.startDate,
-            // dueDate: data.goal.dueDate, 
             goalDescription: data.goal.goalDescription
         });
       }
@@ -74,7 +73,7 @@ const GoalForm = () => {
         // formState.startDate= mongoDate(formState.startDate)
         // formState.dueDate= mongoDate(formState.dueDate)
 
-        const { data } = await addGoal({
+        await addGoal({
           variables: { ...formState }
         });
         // window.location.replace ("/data.goal._id")
@@ -86,10 +85,29 @@ const GoalForm = () => {
 
     };
     
+    // submit form
+    const handleFormUpdate = async event => {
+      event.preventDefault();
+  
+      try {
+        // formState.startDate= mongoDate(formState.startDate)
+        // formState.dueDate= mongoDate(formState.dueDate)
+
+       await updateGoal({
+          variables: { ...formState, _id: data.goal._id }
+        });
+        // window.location.replace ("/data.goal._id")
+        window.location.replace ("/")
+
+      } catch (e) {
+        console.error(e);
+      }
+
+    };
 
     return (
         <div className="content-wrapper">
-            <form onSubmit={handleFormSubmit} >
+            <form >
                 
                 <label>Title:</label>
                 <input
@@ -172,8 +190,17 @@ const GoalForm = () => {
                     onChange={handleChange}
                     className="form-control"
                 ></textarea>
-                <button className="btn btn-default" type='submit'>Save Changes</button>
-            
+                <div>
+                  {userParam !== "new" ? 
+                    <>
+                    <button className="btn btn-default" type='submit' onClick={handleFormUpdate} >Save Changes</button>
+                    </>
+                  :
+                    <>
+                      <button className="btn btn-default" type='submit' onClick={handleFormSubmit}>Create Goal</button>
+                    </>
+                  }
+                </div>
             </form>
         </div>
     );

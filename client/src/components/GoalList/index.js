@@ -44,7 +44,7 @@ const GoalList = ({ goals, setGoalListState, menuState }) => {
             <div>
                 <h4 className="inline-heading">{menuState}</h4>
                 <Link 
-                    to="/goal/test"
+                    to="/goal/new"
                     className="btn btn-add float-right"
                 >+ Add Goal</Link>
             </div>
