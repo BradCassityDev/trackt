@@ -2,6 +2,7 @@ const express = require('express');
 const { authMiddleware } = require('./utils/auth');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
+const { cloudinary } = require('./utils/cloudinary');
 
 // import our typeDefs and resolvers
 const { typeDefs, resolvers } = require('./schemas');
@@ -19,12 +20,23 @@ const server = new ApolloServer({
 // integrate our Apollo server with the Express application as middleware
 server.applyMiddleware({ app });
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app.use(express.urlencoded({ limit: '50mb', extended: false }));
+app.use(express.json({ limit: '50mb' }));
 // Serve up static assets
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
+
+app.post('/api/signature', async (req, res) => {
+
+  try {
+    res.send("hello world")
+
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ err: 'Something went wrong'})
+  }
+});
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));

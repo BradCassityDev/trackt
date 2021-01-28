@@ -68,6 +68,7 @@ const typeDefs = gql`
     acceptFriend(friendId: ID!): User
     rejectFriend(friendId: ID!): User
     removeFriend(friendId: ID!): User
+    uploadPhoto(photo: String): String
   }
 `;
 
