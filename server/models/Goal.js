@@ -28,14 +28,14 @@ const goalSchema = new Schema(
       minlength: 1,
       maxlength: 280
     },
-    startDate: {
-      type: Date,
-      // default: Date.now,
-    },
-    dueDate: {
-      type: Date,
-      // default: () => new Date(+new Date() + 7*24*60*60*1000)
-    },
+    // startDate: {
+    //   type: Date,
+    //   // default: Date.now,
+    // },
+    // dueDate: {
+    //   type: Date,
+    //   // default: () => new Date(+new Date() + 7*24*60*60*1000)
+    // },
     createdAt: {
       type: Date,
       default: Date.now,

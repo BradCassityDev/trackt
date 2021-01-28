@@ -100,16 +100,18 @@ const resolvers = {
         
           throw new AuthenticationError('You need to be logged in!');
       },
+
       updateGoal: async (parent, args, context) => {
         // args.startDate = mongoDate(args.startDate)
         // args.dueDate = mongoDate(args.dueDate)
 
-        if (context.goal) {
-          return await Goal.findByIdAndUpdate(context.goal._id, args, { new: true });
+        if (context.user) {
+          return await Goal.findByIdAndUpdate(args._id, args, { new: true });
         }
   
         throw new AuthenticationError('Not logged in');
       },
+
       addMilestone: async (parent, { goalId, title }, context) => {
         if (context.user) {
           const updatedGoal = await Goal.findOneAndUpdate(
@@ -224,7 +226,7 @@ const resolvers = {
             { _id: context.user._id },
             { $pull: { friends: friendId } },
             { new: true }
-          );
+          ).remove('friends');
 
           // Remove friend from other users friends list
           const updatedOldFriend = await User.findOneAndUpdate(
