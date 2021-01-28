@@ -27,7 +27,7 @@ const GoalPost = ({ goal, username, profilePhoto }) => {
     return (
         <div className="card goal-post-card shadow-sm">
             <div className="card-header">
-                    <PostHeader username={username} createdAt={goal.createdAt} profilePhoto={profilePhoto ? profilePhoto : image} />
+                    <PostHeader username={username} createdAt={goal.createdAt} profilePhoto={profilePhoto} />
             </div>
             <div className="card-body goal-post-card-body">
                 {goal.goalStatus === "Failed" && 

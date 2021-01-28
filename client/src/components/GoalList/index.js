@@ -62,7 +62,7 @@ const GoalList = ({ goals, setGoalListState, menuState }) => {
 
             {filteredGoals && filteredGoals.length ? 
                 filteredGoals.map(goal => (
-                    <GoalPost goal={goal} username={goal.username} profilePhoto={goal.profilePhoto} key={goal._id} />
+                    <GoalPost goal={goal} username={goal.username} key={goal._id} />
                 ))
             : 
                 <div className="empty-message">
