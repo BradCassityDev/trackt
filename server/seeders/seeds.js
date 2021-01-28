@@ -74,14 +74,14 @@ db.once('open', async () => {
   }
 // create milestones
 for (let i = 0; i < 100; i += 1) {
-    const milestoneTitle = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+    const  = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
     const randomGoalIndex = Math.floor(Math.random() * createdGoals.length);
     const { _id: goalId } = createdGoals[randomGoalIndex];
 
     await Goal.updateOne(
       { _id: goalId },
-      { $push: { milestones: { milestoneTitle } } },
+      { $push: { milestones: { title } } },
       { runValidators: true }
     );
   }

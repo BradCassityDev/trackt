@@ -14,16 +14,16 @@ const MilestoneList = ({ milestones, goalId }) => {
                     className="btn btn-add float-right"
                 >+ Add Milestone</button> */}
             </div>
-            <div>
             <MilestoneForm goalId={goalId} />
-            </div>
             {milestones.length ? 
                 milestones.map(milestone => (
-                    <Milestone milestone={milestone} />
+                    <Milestone milestone={milestone} key={milestone._id} />
                 ))
             : 
             (
-                <p>No milestones have been set.</p>
+                <div className="empty-message">
+                    <p>No milestones have been set.</p>
+                </div>
             )}
         </div>
     );

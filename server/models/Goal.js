@@ -30,11 +30,11 @@ const goalSchema = new Schema(
     },
     startDate: {
       type: Date,
-      default: Date.now,
+      // default: Date.now,
     },
     dueDate: {
       type: Date,
-      default: () => new Date(+new Date() + 7*24*60*60*1000)
+      // default: () => new Date(+new Date() + 7*24*60*60*1000)
     },
     createdAt: {
       type: Date,

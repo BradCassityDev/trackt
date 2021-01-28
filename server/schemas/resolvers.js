@@ -3,16 +3,16 @@ const { User, Goal } = require('../models');
 const { signToken } = require('../utils/auth');
 const { GraphQLDate } = require('graphql-iso-date');
 
-const mongoDate = date => {
-  const year = date.getFullYear()
-  let month = date.getMonth()+1
-  let day = date.getDate()
+// const mongoDate = date => {
+//   const year = date.getFullYear()
+//   let month = date.getMonth()+1
+//   let day = date.getDate()+2
  
-  if (month < 10) month = "0"+ month
-  if (day < 10) day = "0"+ day
+//   if (month < 10) month = "0"+ month
+//   if (day < 10) day = "0"+ day
  
-  return year + "-" + month + "-" + day
- }
+//   return year + "-" + month + "-" + day
+//  }
  
 const resolvers = {
     Date: GraphQLDate,
@@ -83,13 +83,8 @@ const resolvers = {
         throw new AuthenticationError('Not logged in');
       },
       addGoal: async (parent, args, context) => {
-          // // let sDate = args.startDate.toString()
-          // // sDate = sDate.slice(0,sDate.indexOf("T"))
-          // console.log(sDate)
-          // console.log(args.dueDate)
-          args.startDate = mongoDate(args.startDate)
-          args.dueDate = mongoDate(args.dueDate)
-          // console.log(args.dueDate)
+          // args.startDate = mongoDate(args.startDate)
+          // args.dueDate = mongoDate(args.dueDate)
 
           if (context.user) {
             const goal = await Goal.create({ ...args, username: context.user.username });
@@ -106,17 +101,20 @@ const resolvers = {
           throw new AuthenticationError('You need to be logged in!');
       },
       updateGoal: async (parent, args, context) => {
+        // args.startDate = mongoDate(args.startDate)
+        // args.dueDate = mongoDate(args.dueDate)
+
         if (context.goal) {
           return await Goal.findByIdAndUpdate(context.goal._id, args, { new: true });
         }
   
         throw new AuthenticationError('Not logged in');
       },
-      addMilestone: async (parent, { goalId, milestoneTitle }, context) => {
+      addMilestone: async (parent, { goalId, title }, context) => {
         if (context.user) {
           const updatedGoal = await Goal.findOneAndUpdate(
             { _id: goalId },
-            { $push: { milestones: { milestoneTitle, username: context.user.username } } },
+            { $push: { milestones: { title, username: context.user.username } } },
             { new: true, runValidators: true }
           );
       

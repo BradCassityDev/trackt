@@ -3,14 +3,13 @@ const dateFormat = require('../utils/dateFormat');
 
 const milestoneSchema = new Schema(
   {
-    milestoneTitle: {
+    title: {
       type: String,
       required: true,
       maxlength: 280
     },
-    milestoneStatus: {
+    status: {
       type: String,
-      required: true
     },
     createdAt: {
       type: Date,
