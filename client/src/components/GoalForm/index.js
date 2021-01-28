@@ -18,6 +18,7 @@ import "react-datepicker/dist/react-datepicker.css";
 //   return year + "-" + month + "-" + day
 //  }
  
+ 
 const GoalForm = () => {
     let { id: userParam } = useParams();
     const [formState, setFormState] = useState({ goalTitle: '', goalDescription: '', goalCategory: '', goalStatus: '', startDate: new Date(), dueDate: new Date()});
@@ -29,19 +30,20 @@ const GoalForm = () => {
   
     const [addGoal, { error }] = useMutation(ADD_GOAL);
 
+
     useEffect(() => {
       if(!loading) {
-        console.log('Goal Data: ', data);
+        console.log('Goal Data: ', data.goal.dueDate);
+
         setFormState ({ 
             ...formState, 
             goalTitle: data.goal.goalTitle,
             goalCategory: data.goal.goalCategory,
             goalStatus: data.goal.goalStatus,
-            startDate: data.goal.startDate,
-            endDate: data.goal.endDate,
-            // startDate: mongoDate(data.goal.startDate),
-            // dueDate: mongoDate(data.goal.dueDate),
-    
+            // startDate: data.goal.startDate,
+            // endDate: data.goal.endDate,
+            // startDate: data.goal.startDate,
+            // dueDate: data.goal.dueDate, 
             goalDescription: data.goal.goalDescription
         });
       }
@@ -137,9 +139,9 @@ const GoalForm = () => {
                     <option>Failed</option>
                 </select>
                 
-                <label>Start Date:</label>
+                {/* <label>Start Date:</label>
                 <br></br>
-                <DatePicker dateFormat="MM/dd/yyyy" selected={formState.startDate} onChange={date => setFormState({...formState, startDate: date})}/>
+                <DatePicker dateFormat="MM/dd/yyyy" selected={formState.startDate} onChange={date => setFormState({...formState, startDate: date})}/> */}
                 {/* <input
                     type="text"
                     placeholder="Start Date..."
@@ -149,10 +151,10 @@ const GoalForm = () => {
                 ></input> */}
                 <br></br>
 
-                <label>End Date:</label>
+                {/* <label>End Date:</label>
                 <br></br>
                 <DatePicker dateFormat="MM/dd/yyyy" selected={formState.dueDate} onChange={date => setFormState({...formState, dueDate: date})} />
-                <br></br>
+                <br></br> */}
                 {/* <input
                     type="text"
                     placeholder="End Date..."

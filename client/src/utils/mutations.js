@@ -43,15 +43,13 @@ export const UPDATE_USER = gql`
   }
 `;
 export const ADD_GOAL = gql`
-  mutation addGoal($goalTitle: String!, $goalDescription: String!, $goalStatus: String!, $goalCategory: String, $startDate: Date, $dueDate: Date) {
-    addGoal(goalTitle: $goalTitle, goalDescription: $goalDescription, goalStatus: $goalStatus, goalCategory: $goalCategory, startDate: $startDate, dueDate: $dueDate) {
+  mutation addGoal($goalTitle: String!, $goalDescription: String!, $goalStatus: String!, $goalCategory: String) {
+    addGoal(goalTitle: $goalTitle, goalDescription: $goalDescription, goalStatus: $goalStatus, goalCategory: $goalCategory) {
       _id
       goalTitle
       goalDescription
       goalCategory
       goalStatus
-      startDate
-      dueDate
       createdAt
       username
       # commentCount
