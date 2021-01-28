@@ -19,17 +19,6 @@ const Goal = ({ profilePhoto }) => {
         variables: { id: userParam }
     });
 
-    const [milestonesList, setMilestonesList] = useState();
-    const [listComponentState, setListComponentState] = useState();
-    
-    useEffect(() => {
-        if(data.goal) {
-            console.log(data);
-            setMilestonesList(data.goal.milestones);
-        }
-        
-    }, [data]);
-
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -45,7 +34,7 @@ const Goal = ({ profilePhoto }) => {
                     <GoalForm />
                     {userParam !== "new" && data.goal ? 
                             <>
-                                <MilestoneList listComponentState={listComponentState} milestonesList={milestonesList} setMilestonesList={setMilestonesList} setListComponentState={setListComponentState} goalId={data.goal._id} milestones={data.goal.milestones} />
+                                <MilestoneList  milestones={data.goal.milestones} goalId={data.goal._id} />
                                 <CommentList goalId={data.goal._id} comments={data.goal.comments}/>
                             </>
                         :

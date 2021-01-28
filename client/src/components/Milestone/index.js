@@ -3,7 +3,7 @@ import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/react-hooks';
 import { DELETE_MILESTONE } from '../../utils/mutations';
 
-const Milestone = ({ goalId, milestone, setMilestonesList }) => {
+const Milestone = ({ goalId, milestone }) => {
 
     // Set complete state
     const [completeState, setCompleteState] = useState();
@@ -24,11 +24,11 @@ const Milestone = ({ goalId, milestone, setMilestonesList }) => {
             //const confirmDelete = confirm("Are you sure you'd like to delete this milestone?");
             console.log(data.deleteMilestone.milestones);
             setCompleteState("deleted");
-            setMilestonesList(data.deleteMilestone.milestones);
             let confirmDelete = true;
             if(confirmDelete) {
                 console.log('deleted');
             }
+            window.location.replace(`/goal/${goalId}`)
         } catch (err) {
             console.log(err);
         }

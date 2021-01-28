@@ -4,15 +4,7 @@ import Auth from '../../utils/auth';
 import Milestone from '../Milestone';
 import MilestoneForm from '../MilestoneForm';
 
-const MilestoneList = ({ listComponentState, setListComponentState, milestonesList, goalId, setMilestonesList}) => {
-
-    // const [milestonesList, setMilestonesList] = useState(milestones);
-    // const [listComponentState, setListComponentState] = useState();
-    useEffect(() => {
-        setListComponentState(milestonesList.map(milestone => (
-            <Milestone goalId={goalId} milestone={milestone} setMilestonesList={setMilestonesList} key={milestone._id} />
-        )));
-    }, [milestonesList]);
+const MilestoneList = ({ milestones, goalId }) => {
 
     return (
         <div className="content-wrapper">
@@ -23,11 +15,11 @@ const MilestoneList = ({ listComponentState, setListComponentState, milestonesLi
                 >+ Add Milestone</button> */}
             </div>
             <MilestoneForm goalId={goalId} />
-            {milestonesList && milestonesList.length ? 
-                // milestones.map(milestone => (
-                //     <Milestone goalId={goalId} milestone={milestone} setMilestonesList={setMilestonesList} key={milestone._id} />
-                // ))
-                listComponentState
+            {milestones && milestones.length ? 
+                milestones.map(milestone => (
+                    <Milestone goalId={goalId} milestone={milestone} key={milestone._id} />
+                ))
+                
             : 
             (
                 <div className="empty-message">
