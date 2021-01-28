@@ -62,7 +62,7 @@ const ProfileCard = ({ user }) => {
   };
 
   const renderCardDetails = () => {
-    if (Auth.getProfile().data.username !== user.username) {
+    if (/*Auth.getProfile().data.username !== user.username*/ true) {
       return (
         <div>
             <ProfileDetails user={user} />

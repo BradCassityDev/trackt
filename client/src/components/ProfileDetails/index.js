@@ -4,9 +4,9 @@ const ProfileDetails = ({ user }) => {
 
     return (
         <div className="row">
-            <div className="col-12 text-left">
+            {/* <div className="col-12 text-left">
                 <span className="label-text">Name:</span>{ user.firstName} {user.lastName}
-            </div>
+            </div> */}
             <div className="col-12 text-left">
                 <span className="label-text">Email:</span> {user.email}
             </div>
