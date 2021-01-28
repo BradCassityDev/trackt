@@ -30,19 +30,31 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
-app.delete(('/deletephoto', (req,res) => {
+app.delete(('/deletephoto'), (req,res) => {
+  console.log(req.body);
+
+  let publicId = `tract-user-pfp/${req.body.photo}`;
+
+  console.log(publicId);
+
   cloudinary.config({
     cloud_name: "trackt",
     api_key: "464351718111111",
     api_secret: "96ghx_SKtHqWxFmItRvfLOT4tD8",
   });
   
-  cloudinary.uploader.destroy("", function (error, result) {
+  cloudinary.uploader.destroy(publicId, function (error, result) {
     console.log(error, result);
+    if(error) {
+      res.status(401).send({message: 'Could not delete photo.'});
+    } else {
+      res.status(200).send({message: 'Photo deleted!'});
+    }
+    
   });
   
-  res.status(200).send({message: 'Deleted'});
-}));
+  
+});
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
