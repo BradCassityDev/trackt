@@ -2,6 +2,10 @@ const express = require('express');
 const { authMiddleware } = require('./utils/auth');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
+const routes = require('./routes');
+const cloudinary = require("cloudinary").v2;
+require("dotenv").config();
+
 
 // import our typeDefs and resolvers
 const { typeDefs, resolvers } = require('./schemas');
@@ -25,6 +29,20 @@ app.use(express.json());
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
+
+app.delete(('/deletephoto', (req,res) => {
+  cloudinary.config({
+    cloud_name: "trackt",
+    api_key: "464351718111111",
+    api_secret: "96ghx_SKtHqWxFmItRvfLOT4tD8",
+  });
+  
+  cloudinary.uploader.destroy("", function (error, result) {
+    console.log(error, result);
+  });
+  
+  res.status(200).send({message: 'Deleted'});
+}));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));

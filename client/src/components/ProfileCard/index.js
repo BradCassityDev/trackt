@@ -6,16 +6,22 @@ import { UPDATE_USER } from "../../utils/mutations";
 import FriendButton from "../FriendButton";
 import ProfileDetails from '../ProfileDetails';
 import FriendRequests from '../FriendRequests';
+import {deletePhoto} from '../../utils/API.js';
 
 const ProfileCard = ({ user }) => {
     
   const [updateUser, { error }] = useMutation(UPDATE_USER);
 
-  function showUploadWidget() {
+  async function showUploadWidget() {
+    if (user.profilePhoto) {
+      await deletePhoto(user.username);
+    }
+
     window.cloudinary.openUploadWidget(
       {
         cloudName: "trackt",
         uploadPreset: "trackt",
+        public_id: user.username,
         cropping: true,
       },
       (error, result) => {
