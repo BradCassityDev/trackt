@@ -23,6 +23,7 @@ const FriendRequests = ({ friendRequests }) => {
                     id: friendId
                 }
             });
+            window.location.replace ("/");
         } catch (err) {
             console.log(err);
         }
@@ -30,8 +31,6 @@ const FriendRequests = ({ friendRequests }) => {
 
     // Reject Friend Request
     const rejectFriendRequest = async friendId => {
-        const userId = Auth.getProfile().data._id;
-
         console.log("Rejected: ",friendId);
         try {
             await rejectFriend({
@@ -39,6 +38,7 @@ const FriendRequests = ({ friendRequests }) => {
                     id: friendId
                 }
             });
+            window.location.replace ("/");
         } catch (err) {
             console.log(err);
         }
