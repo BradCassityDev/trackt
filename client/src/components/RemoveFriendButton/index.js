@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/react-hooks';
 import Button from 'react-bootstrap/Button';
 import Auth from '../../utils/auth';
 
-const RemoveFriendButton = ({ friendid }) => {
+const RemoveFriendButton = ({ friendid, setButtonState }) => {
 
     const [removeFriend, { error }] = useMutation(REMOVE_FRIEND);
     
@@ -20,6 +20,7 @@ const RemoveFriendButton = ({ friendid }) => {
                 }
             });
 
+            setButtonState(1);
         } catch (err) {
             console.log(err);
         }

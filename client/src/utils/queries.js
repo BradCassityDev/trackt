@@ -170,6 +170,10 @@ query users {
     firstName
     lastName
     profilePhoto
+    friendRequests {
+      _id
+      username
+    }
     friendCount
   }
 }

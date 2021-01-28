@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/react-hooks';
 import Button from 'react-bootstrap/Button';
 import Auth from '../../utils/auth';
 
-const FriendButton = ({ friendid }) => {
+const FriendButton = ({ friendid, peopleState, setButtonState, setPeopleState, setFriendState, setPendingFriendRequest }) => {
 
     const [addFriend, { error }] = useMutation(ADD_FRIEND);
     
@@ -20,7 +20,9 @@ const FriendButton = ({ friendid }) => {
                 }
             });
 
-            console.log('Friend request sent!');
+            setPendingFriendRequest(true);
+            setFriendState(true);
+            setButtonState(3);
         } catch (err) {
             console.log(err);
         }
