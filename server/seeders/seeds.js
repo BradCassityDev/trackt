@@ -7,7 +7,7 @@ db.once('open', async () => {
   await Goal.deleteMany({});
   await User.deleteMany({});
 
-  // create user data
+  // create user datagit 
   const userData = [];
 
   for (let i = 0; i < 50; i += 1) {
