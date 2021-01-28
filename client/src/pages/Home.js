@@ -65,7 +65,7 @@ const Home = () => {
           setComponentState(<MyGoalList user={user} goals={user.goals} username={activeProfile} />);
           break;
         case "People":
-          setComponentState(<PeopleList friendsList={user.friends} />);
+          setComponentState(<PeopleList friendsList={user.friends} setMenuState={setMenuState} />);
           break;
         case "Shame Board":
           setComponentState(<GoalList goals={goalListState} menuState={menuState} setGoalListState={setGoalListState} />);
