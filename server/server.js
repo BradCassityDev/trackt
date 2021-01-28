@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === 'production') {
 app.delete(('/deletephoto'), (req,res) => {
   console.log(req.body);
 
-  let publicId = `tract-user-pfp/${req.body.photo}`;
+  let publicId = `trackt-user-pfp/${req.body.photo}`;
 
   console.log(publicId);
 
