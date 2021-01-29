@@ -3,7 +3,7 @@ import { ADD_FRIEND, REJECT_FRIEND, REMOVE_FRIEND, ACCEPT_FRIEND } from '../../u
 import { useMutation } from '@apollo/react-hooks';
 import Button from 'react-bootstrap/Button';
 import Auth from '../../utils/auth';
-import Modal from 'react-bootstrap/modal';
+import Modal from 'react-bootstrap/Modal';
 
 const FriendRequests = ({ friendRequests }) => {
    
