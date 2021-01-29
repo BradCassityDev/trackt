@@ -6,6 +6,7 @@ import { ADD_GOAL, UPDATE_GOAL } from '../../utils/mutations';
 import { QUERY_GOAL } from '../../utils/queries';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Button from 'react-bootstrap/Button';
 
 // const mongoDate = date => {
 //   const year = date.getFullYear()
@@ -86,8 +87,11 @@ const GoalForm = () => {
     };
     
     // submit form
-    const handleFormUpdate = async event => {
-      event.preventDefault();
+    const handleFormUpdate = async () => {
+      
+      if (formState === "Failed") {
+        return;
+      }
   
       try {
         // formState.startDate= mongoDate(formState.startDate)
@@ -97,7 +101,7 @@ const GoalForm = () => {
           variables: { ...formState, _id: data.goal._id }
         });
         // window.location.replace ("/data.goal._id")
-        window.location.replace ("/")
+       // window.location.replace ("/")
 
       } catch (e) {
         console.error(e);
@@ -105,10 +109,41 @@ const GoalForm = () => {
 
     };
 
+    const updateStatus = async (value) => {
+
+      setFormState({
+        ...formState,
+        goalStatus: value
+      });
+
+      console.log(formState);
+      
+      try {
+
+          await updateGoal({
+            variables: { ...formState, goalStatus: value, _id: data.goal._id }
+          });
+          window.location.replace (`/`)
+
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    const blocked = ['Completed', 'Failed'];
+
     return (
         <div className="content-wrapper">
+            <div className="mb-3">
+              { userParam !== "new" && !blocked.includes(formState.goalStatus) ? 
+                <>
+                  <Button variant="success mr-3" onClick={()=>updateStatus('Completed')} >Completed Goal!</Button>
+                  <Button variant="danger" onClick={()=>updateStatus('Failed')} >I Give Up.</Button>
+                </> : <></>
+              }
+            </div>
+              
             <form >
-                
                 <label>Title:</label>
                 <input
                     type="text"
