@@ -3,6 +3,8 @@ import Auth from '../../utils/auth';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Link } from 'react-router-dom';
 import image from '../../images/placeholder-profile-pic.png';
+import FriendRequests from '../FriendRequests';
+import { Image } from "cloudinary-react";
 
 const FriendList = ({userInfo}) => {
     const {friendCount, friends} = userInfo;
@@ -17,8 +19,13 @@ const FriendList = ({userInfo}) => {
             <div className="card text-center profile-card">
                 <div className="card-body">
                 <h5 className="card-title">Friends List</h5>
-                    <span>({friendCount}) Friends</span>
+                    {Auth.getProfile().data.username === userInfo.username && (
+                            <div>
+                                <FriendRequests friendRequests={userInfo.friendRequests} />
+                            </div>
+                    )}
                     
+                    <span>({friendCount}) Friends</span>
                     <hr></hr>
                     <div className="row">
                         {friends && friends.map(friend => (
@@ -27,7 +34,13 @@ const FriendList = ({userInfo}) => {
                                     <div className="card friend-card">
                                         <div className="row">
                                             <div className="col-12">
-                                                <img src={friend.profilePhoto ? friend.profilePhoto : image} alt="profile pic" className="rounded-circle profile-image-sm"/>
+                                                {/* <img src={friend.profilePhoto ? friend.profilePhoto : image} alt="profile pic" className="rounded-circle profile-image-sm"/> */}
+                                                <Image
+                                                className="rounded-circle profile-image-sm"
+                                                cloudName="trackt"
+                                                public_id={`trackt-user-pfp/${friend.username}.jpg`}
+                                                onError={() => {console.log(this)}}
+                                                ></Image>
                                             </div>
                                         </div>
                                         <div className="row">

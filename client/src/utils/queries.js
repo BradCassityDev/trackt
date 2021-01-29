@@ -12,12 +12,12 @@ export const QUERY_ME = gql`
         goalDescription
         goalCategory
         goalStatus
-        startDate
-        dueDate
+        # startDate
+        # dueDate
         createdAt
         milestones{
             _id
-            milestoneTitle
+            title
             createdAt
         }
         commentCount
@@ -55,6 +55,7 @@ export const QUERY_USER = gql`
       _id
       username
       email
+      profilePhoto
       friendCount
       friends {
         _id
@@ -62,15 +63,23 @@ export const QUERY_USER = gql`
       }
       goals {
         _id
+        username
         goalTitle
         goalCategory
         goalStatus
         goalDescription
+        # startDate
+        # dueDate
+        createdAt
         comments {
           _id
           commentBody
           username
         }
+      }
+      friendRequests {
+        _id
+        username
       }
     }
   }
@@ -79,16 +88,17 @@ export const QUERY_GOALS = gql`
   query goals($username: String) {
     goals(username: $username) {
         _id
+        username
         goalTitle
         goalDescription
         goalCategory
         goalStatus
-        startDate
-        dueDate
+        # startDate
+        # dueDate
         createdAt
         milestones{
             _id
-            milestoneTitle
+            title
             createdAt
         }
         commentCount
@@ -105,10 +115,14 @@ export const QUERY_GOALS_TEMP = gql`
 query goals($username: String) {
   goals(username: $username) {
       _id
+      username
       goalTitle
       goalDescription
       goalCategory
       goalStatus
+      # startDate
+      # dueDate
+      createdAt
       milestones{
           _id
       }
@@ -125,19 +139,18 @@ export const QUERY_GOAL = gql`
   query goal($id: ID!) {
     goal(_id: $id) {
         _id
+        username
         goalTitle
         goalDescription
         goalCategory
         goalStatus
-        startDate
-        dueDate
+        # startDate
+        # dueDate
         createdAt
-        milestones{
-            _id
-            milestoneTitle
-            createdAt
+        milestones {
+          _id
+          title
         }
-        commentCount
         comments {
           _id
           createdAt
@@ -157,6 +170,10 @@ query users {
     firstName
     lastName
     profilePhoto
+    friendRequests {
+      _id
+      username
+    }
     friendCount
   }
 }

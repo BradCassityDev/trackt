@@ -10,10 +10,6 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import MyGoalList from '../components/MyGoalList';
 
-// Temp fake data
-import fakeGoalList from '../fakeGoalList';
-import fakeUser from '../fakeUser';
-import fakePeopleList from '../fakePeopleList';
 
 const Home = () => {
 
@@ -37,7 +33,6 @@ const Home = () => {
     userParam = Auth.getProfile().data.username;    
   }
   
-
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam }
   });
@@ -53,6 +48,7 @@ const Home = () => {
       setMenuState('My Goals');
     } else {
       setActiveProfile(user.username)
+      console.log("Friends", user.friends)
     }
       
 
@@ -69,7 +65,7 @@ const Home = () => {
           setComponentState(<MyGoalList user={user} goals={user.goals} username={activeProfile} />);
           break;
         case "People":
-          setComponentState(<PeopleList />);
+          setComponentState(<PeopleList friendsList={user.friends} setMenuState={setMenuState} />);
           break;
         case "Shame Board":
           setComponentState(<GoalList goals={goalListState} menuState={menuState} setGoalListState={setGoalListState} />);

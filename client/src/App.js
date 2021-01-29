@@ -13,6 +13,7 @@ import Signup from './pages/Signup';
 import Goal from './pages/Goal';
 import TempPage from './pages/TempPage';
 import NoMatch from './pages/NoMatch';
+import ScrollToTop from './components/ScrollToTop'
 
 // setup ApolloClient
 const client = new ApolloClient({
@@ -33,6 +34,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+        <ScrollToTop/>
         <div className="page-container">
           <Header />
           <div className="main-container">

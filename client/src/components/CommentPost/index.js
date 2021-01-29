@@ -7,7 +7,7 @@ const CommentPost = ({ comment }) => {
                 <div className="col-12">
                     <div className="post-header">
                         <span className="username">{comment.username}</span> <br />
-                        <span className="item-timestamp">{comment.createdAt}</span>
+                        {/* <span className="item-timestamp">{comment.createdAt}</span> */}
                     </div>
                     <p>{comment.commentBody}</p> 
                 </div>

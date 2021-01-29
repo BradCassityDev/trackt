@@ -29,8 +29,8 @@ export const ADD_USER = gql`
   }
 `;
 export const UPDATE_USER = gql`
-  mutation updateUser($username: String!, $displayName: String, $email: String!, $firstName: String $lastName: String, $password: String!, $profilePhoto: String) {
-    updateUser(username: $username, displayName: $displayName, email: $email, firstName: $firstName, lastName: $lastName, password: $password, profilePhoto: $profilePhoto) {
+  mutation updateUser($_id: ID,$username: String, $displayName: String, $email: String, $firstName: String $lastName: String, $password: String, $profilePhoto: String) {
+    updateUser(_id: $_id, username: $username, displayName: $displayName, email: $email, firstName: $firstName, lastName: $lastName, password: $password, profilePhoto: $profilePhoto) {
     _id
     username
     displayName
@@ -43,65 +43,54 @@ export const UPDATE_USER = gql`
   }
 `;
 export const ADD_GOAL = gql`
-  mutation addGoal($goalTitle: String!, $goalDescription: String!, $goalStatus: String!, $goalCategory: String, $startDate: Date, $dueDate: Date) {
-    addGoal(goalTitle: $goalTitle, goalDescription: $goalDescription, goalStatus: $goalStatus, goalCategory: $goalCategory, startDate: $startDate, dueDate: $dueDate) {
+  mutation addGoal($goalTitle: String!, $goalDescription: String!, $goalStatus: String!, $goalCategory: String) {
+    addGoal(goalTitle: $goalTitle, goalDescription: $goalDescription, goalStatus: $goalStatus, goalCategory: $goalCategory) {
       _id
       goalTitle
       goalDescription
       goalCategory
       goalStatus
-      startDate
-      dueDate
       createdAt
       username
-      commentCount
-      comments {
-        _id
-        commentBody
-      }
+      # commentCount
+      # comments {
+      #   _id
+      #   commentBody
+      # }
     }
   }
 `;
 export const UPDATE_GOAL = gql`
-  mutation updateGoal($goalTitle: String!, $goalDescription: String!, $goalStatus: String!, $goalCategory: String, $startDate: Date!, $dueDate: Date) {
-    updateGoal(goalTitle: $goalTitle, goalDescription: $goalDescription, goalStatus: $goalStatus, goalCategory: $goalCategory, startDate: $startDate, dueDate: $dueDate) {
-      _id
+    mutation updateGoal($_id: ID, $goalTitle: String, $goalDescription: String, $goalStatus: String, $goalCategory: String ) {
+    updateGoal(_id: $_id, goalTitle: $goalTitle, goalDescription: $goalDescription, goalStatus: $goalStatus, goalCategory: $goalCategory) {
+      
       goalTitle
       goalDescription
       goalCategory
       goalStatus
-      startDate
-      dueDate
       createdAt
       username
-      commentCount
-      comments {
-        _id
-        commentBody
-      }
     }
   }
 `;
 export const ADD_MILESTONE = gql`
-  mutation addMilestone($goalId: ID!, $milestoneTitle: String!) {
-    addMilestone(goalId: $goalId, milestoneTitle: $milestoneTitle) {
+  mutation addMilestone($goalId: ID!, $title: String!) {
+    addMilestone(goalId: $goalId, title: $title) {
       _id
       milestones {
         _id
-        milestoneTitle
-        createdAt
+        title
       }
     }
   }
 `;
 export const DELETE_MILESTONE = gql`
-  mutation deleteMilestone($goalId: ID!, $milestoneTitle: String!) {
-    deleteMilestone(goalId: $goalId, milestoneTitle: $milestoneTitle) {
-      _id
-      milestones {
+  mutation deleteMilestone($goalId: ID, $_id: ID!) {
+    deleteMilestone(goalId: $goalId, _id: $_id) {
+        goalTitle
+      milestones{
         _id
-        milestoneTitle
-        createdAt
+        title
       }
     }
   }
@@ -110,7 +99,6 @@ export const ADD_COMMENT = gql`
   mutation addComment($goalId: ID!, $commentBody: String!) {
     addComment(goalId: $goalId, commentBody: $commentBody) {
       _id
-      commentCount
       comments {
         _id
         commentBody
@@ -146,9 +134,22 @@ export const ACCEPT_FRIEND = gql`
     }
   }
 `;
+export const REJECT_FRIEND = gql`
+  mutation rejectFriend($id: ID!) {
+    rejectFriend(friendId: $id) {
+      _id
+      username
+      friendCount
+      friends {
+        _id
+        username
+      }
+    }
+  }
+`;
 export const REMOVE_FRIEND = gql`
   mutation removeFriend($id: ID!) {
-    removeFriend(id: $id) {
+    removeFriend(friendId: $id) {
       _id
       username
       friends {
