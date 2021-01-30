@@ -127,7 +127,18 @@ const resolvers = {
         throw new AuthenticationError('You need to be logged in!');
       },
 
+      updateMilestone: async (parent, { goalId, _id, status, title }, context) => {
+        if (context.user) {
+          const updatedGoal = await Goal.findOneAndUpdate(
+            { _id: goalId, "milestones._id": _id},
+            {$set: {"milestones.$.status": status}}
+          );
       
+          return updatedGoal;
+        }
+      
+        throw new AuthenticationError('You need to be logged in!');
+      },
     deleteMilestone: async (parent, { goalId, _id }, context) => {
       if (context.user) {
         const updatedGoal = await Goal.findOneAndUpdate(
