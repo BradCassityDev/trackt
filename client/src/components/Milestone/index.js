@@ -91,16 +91,25 @@ const Milestone = ({ goalId, milestone }) => {
 
     // };
     const mStatus = ['Completed'];
-
+    if (milestone.status) {
+        console.log (true)
+    }
     return (
         <div className={"milestone-row " + completeState}>            
             <form className="milestone-form">
                 <div className="milestone-form-fields">
                 { userParam !== mStatus.includes(formState.status) ? 
                 <>
-                    <input className="form-check-input" type="checkbox" id="markcomplete" value="option1"
+                {milestone.status ? <input className="form-check-input" type="checkbox" id="markcomplete" defaultChecked="true" value="option1" 
+                    onClick={()=>completeMilestone('Completed')}
+                    ></input> : 
+                    <input className="form-check-input" type="checkbox" id="markcomplete" value="option1" 
                     onClick={()=>completeMilestone('Completed')}
                     ></input>
+                }
+                    {/* <input className="form-check-input" type="checkbox" id="markcomplete" value="option1" 
+                    onClick={()=>completeMilestone('Completed')}
+                    ></input> */}
                     <label className="form-check-label" for="markcomplete"></label>
                     <span className="milestone-title">{milestone.title}</span>
                 </> : <></>

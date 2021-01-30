@@ -18,6 +18,7 @@ export const QUERY_ME = gql`
         milestones{
             _id
             title
+            status
             createdAt
         }
         commentCount
@@ -99,6 +100,7 @@ export const QUERY_GOALS = gql`
         milestones{
             _id
             title
+            status
             createdAt
         }
         commentCount
@@ -125,6 +127,8 @@ query goals($username: String) {
       createdAt
       milestones{
           _id
+          title
+          status
       }
       comments {
       _id
@@ -150,6 +154,7 @@ export const QUERY_GOAL = gql`
         milestones {
           _id
           title
+          status
         }
         comments {
           _id

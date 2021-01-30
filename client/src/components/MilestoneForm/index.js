@@ -31,6 +31,8 @@ const handleAddMilestone = async event => {
         });
 
         setTitle('');
+        window.location.replace(`/goal/${goalId}`)
+
     } catch (err) {
         console.log(err);
     }
