@@ -34,6 +34,30 @@ const Milestone = ({ goalId, milestone }) => {
 
     };
 
+
+    const completeMilestone = async (value) => {
+
+        setFormState({
+          ...formState,
+          status: value
+        });
+  
+        
+        try {
+            const {data} = await completeMS({
+                variables: {
+                    goalId: goalId,
+                    _id: milestone._id, 
+                    status: 'complete',
+                    title: milestone.title
+                }
+            });
+            // window.location.replace (`/`)
+        } catch (e) {
+          console.error(e);
+        }
+    }
+
     return (
         <div className={"milestone-row " + completeState}>
             <form className="milestone-form">
