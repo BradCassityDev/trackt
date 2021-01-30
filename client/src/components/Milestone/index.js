@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
-import { DELETE_MILESTONE } from '../../utils/mutations';
+import { DELETE_MILESTONE, UPDATE_MILESTONE } from '../../utils/mutations';
 
 const Milestone = ({ goalId, milestone }) => {
 
     // Set complete state
     const [completeState, setCompleteState] = useState();
     const [deleteMS] = useMutation(DELETE_MILESTONE);
+    const [completeMS] = useMutation(UPDATE_MILESTONE);
 
     // Handle milestone delete
     const deleteMilestone = async event => {
@@ -36,13 +37,7 @@ const Milestone = ({ goalId, milestone }) => {
 
 
     const completeMilestone = async (value) => {
-
-        setFormState({
-          ...formState,
-          status: value
-        });
   
-        
         try {
             const {data} = await completeMS({
                 variables: {
@@ -62,7 +57,7 @@ const Milestone = ({ goalId, milestone }) => {
         <div className={"milestone-row " + completeState}>
             <form className="milestone-form">
                 <div className="milestone-form-fields">
-                    <input className="form-check-input" type="checkbox" id="markcomplete" value="option1"></input>
+                    <input className="form-check-input" type="checkbox" id="markcomplete" value="option1" onClick={()=>completeMilestone('Completed')}></input>
                     <label className="form-check-label" for="markcomplete">Mark Complete</label>
                     <span className="milestone-title">{milestone.title}</span>
                 </div>
@@ -79,3 +74,4 @@ const Milestone = ({ goalId, milestone }) => {
 };
 
 export default Milestone;
+
