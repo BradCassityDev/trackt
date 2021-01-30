@@ -6,7 +6,7 @@ import Auth from '../../utils/auth';
 
 const RemoveFriendButton = ({ friendid, setButtonState }) => {
 
-    const [removeFriend, { error }] = useMutation(REMOVE_FRIEND);
+    const [removeFriend ] = useMutation(REMOVE_FRIEND);
     
     // Add Friend Event Handler
     const removeFriendHandler = async event => {

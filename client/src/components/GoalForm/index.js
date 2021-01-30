@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Auth from '../../utils/auth';
 import { useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { ADD_GOAL, UPDATE_GOAL } from '../../utils/mutations';
@@ -16,7 +15,7 @@ const GoalForm = () => {
       variables: { id: userParam }
     });
   
-    const [addGoal, { error }] = useMutation(ADD_GOAL);
+    const [addGoal] = useMutation(ADD_GOAL);
     const [updateGoal] = useMutation(UPDATE_GOAL);
 
 

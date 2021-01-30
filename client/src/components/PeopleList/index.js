@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Auth from '../../utils/auth';
 import { QUERY_USERS } from '../../utils/queries'
 import PeopleCard from '../PeopleCard';
-import { useQuery, useMutation } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/react-hooks';
 
-const PeopleList = ({ friendsList, setMenuState }) => {
+const PeopleList = ({ friendsList }) => {
     // Query Goals
     const { loading, data } = useQuery(QUERY_USERS);
 

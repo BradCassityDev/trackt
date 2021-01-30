@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ADD_FRIEND, REJECT_FRIEND, REMOVE_FRIEND, ACCEPT_FRIEND } from '../../utils/mutations';
+import React, { useState } from 'react';
+import { REJECT_FRIEND, ACCEPT_FRIEND } from '../../utils/mutations';
 import { useMutation } from '@apollo/react-hooks';
 import Button from 'react-bootstrap/Button';
 import Auth from '../../utils/auth';
@@ -8,8 +8,8 @@ import Modal from 'react-bootstrap/Modal';
 const FriendRequests = ({ friendRequests }) => {
    
     const [isOpen, setIsOpen] = useState(false);
-    const [acceptFriend, { acceptError }] = useMutation(ACCEPT_FRIEND);
-    const [rejectFriend, { rejError }] = useMutation(REJECT_FRIEND);
+    const [acceptFriend] = useMutation(ACCEPT_FRIEND);
+    const [rejectFriend] = useMutation(REJECT_FRIEND);
 
     // Accept Friend Request Handler
     const acceptFriendRequest = async friendId => {
