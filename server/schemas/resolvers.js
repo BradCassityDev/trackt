@@ -127,20 +127,57 @@ const resolvers = {
         throw new AuthenticationError('You need to be logged in!');
       },
 
+    //   updateMilestone: async (parent, {_id, status}, context) => {
+    //     if (context.user) {
+    //         //const image = args.image;
+    //         const milestone = await Milestone.findByIdAndUpdate(
+    //             _id,
+    //             { $set: { milestone: _id, status  } },
+    //             { new: true }
+    //         );
+    //         console.log(milestone)
+
+    //         return milestone;
+    //     }
+    //     throw new AuthenticationError("You need to be logged in");
+    // },
+      // updateMilestone: async (parent, { goalId, id, title, status }, context) => {
+      //   // args.startDate = mongoDate(args.startDate)
+      //   // args.dueDate = mongoDate(args.dueDate)
+      //   console.log(goal.milestones)
+      //   if (context.goal) {
+      //     return await goal.milestones.findByIdAndUpdate( _id, title, status, { new: true });
+      //   }
+  
+      //   throw new AuthenticationError('Not logged in');
+      // },
+      updateMilestone: async (parent, { goalId, _id, status, title }, context) => {
+        if (context.user) {
+          const updatedGoal = await Goal.findOneAndUpdate(
+            { _id: goalId },
+            { $set: { milestones: { _id, status, title } } },
+            { new: true }
+          );
       
-    deleteMilestone: async (parent, { goalId, _id }, context) => {
-      if (context.user) {
-        const updatedGoal = await Goal.findOneAndUpdate(
-          { _id: goalId },
-          { $pull: { milestones: { _id } } },
-          { new: true }
-        );
-    
-        return updatedGoal;
-      }
-    
-      throw new AuthenticationError('You need to be logged in!');
-  },
+          return updatedGoal;
+        }
+      
+        throw new AuthenticationError('You need to be logged in!');
+      },
+      
+      deleteMilestone: async (parent, { goalId, _id }, context) => {
+        if (context.user) {
+          const updatedGoal = await Goal.findOneAndUpdate(
+            { _id: goalId },
+            { $pull: { milestones: { _id } } },
+            { new: true }
+          );
+      
+          return updatedGoal;
+        }
+      
+        throw new AuthenticationError('You need to be logged in!');
+      },
       
       addComment: async (parent, { goalId, commentBody }, context) => {
           if (context.user) {

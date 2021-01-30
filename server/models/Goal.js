@@ -1,6 +1,9 @@
-const { Schema, model } = require('mongoose');
-const commentSchema = require('./Comment');
-const milestoneSchema = require('./Milestone');
+// const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
+
+// const commentSchema = require('./Comment');
+// const milestoneSchema = require('./Milestone');
 const dateFormat = require('../utils/dateFormat');
 
 const goalSchema = new Schema(
@@ -45,8 +48,20 @@ const goalSchema = new Schema(
       type: String,
       required: true
     },
-    milestones: [milestoneSchema],
-    comments: [commentSchema]
+    milestones: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Milestone'
+      }
+    ],
+    comments: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
+      }
+    ]
+    // milestones: [milestoneSchema],
+    // comments: [commentSchema]
   },
   {
     toJSON: {
@@ -59,6 +74,6 @@ goalSchema.virtual('commentCount').get(function() {
   return this.comment.length;
 });
 
-const Goal = model('Goal', goalSchema);
+const Goal = mongoose.model('Goal', goalSchema);
 
 module.exports = Goal;

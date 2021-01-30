@@ -1,4 +1,4 @@
-const { Schema } = require('mongoose');
+const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const milestoneSchema = new Schema(
@@ -9,7 +9,7 @@ const milestoneSchema = new Schema(
       maxlength: 280
     },
     status: {
-      type: String,
+      type: String
     },
     createdAt: {
       type: Date,
@@ -24,4 +24,7 @@ const milestoneSchema = new Schema(
   }
 );
 
-module.exports = milestoneSchema;
+// module.exports = milestoneSchema;
+const Milestone = mongoose.model('Milestone', milestoneSchema);
+
+module.exports = Milestone
