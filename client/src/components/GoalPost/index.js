@@ -1,13 +1,10 @@
 import React, {useState} from 'react';
 import Auth from '../../utils/auth';
-import image from '../../images/placeholder-profile-pic.png';
 import failStamp from '../../images/Fail.png';
 import CommentList from '../CommentList';
 import PostHeader from '../PostHeader';
 import Collapse from "react-bootstrap/Collapse";
-import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import { UPDATE_GOAL } from '../../utils/mutations';
 
 
 const GoalPost = ({ goal, username, profilePhoto }) => {
@@ -21,8 +18,6 @@ const GoalPost = ({ goal, username, profilePhoto }) => {
     console.log(goal.goalStatus);
     // const newStartDate = new Date(goal.startDate).toDateString()
     // const newDueDate = new Date(goal.dueDate).toDateString()
-    // console.log(newStartDate)
-    // console.log(newDueDate)
 
     return (
         <div className="card goal-post-card shadow-sm">

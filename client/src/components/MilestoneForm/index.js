@@ -9,7 +9,7 @@ const [title, setTitle] = useState();
 
 // Character count state
 
-const [addMilestone, { error }] = useMutation(ADD_MILESTONE);
+const [addMilestone] = useMutation(ADD_MILESTONE);
 
 // Update character count
 const handleFormChange = (event) => {

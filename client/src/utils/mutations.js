@@ -108,6 +108,20 @@ export const DELETE_MILESTONE = gql`
     }
   }
 `;
+
+export const UPDATE_MILESTONE = gql`
+  mutation updateMilestone($goalId: ID!, $_id: ID!, $status: String, $title:String) {
+    updateMilestone(goalId:$goalId, _id: $_id, status: $status, title:$title) {
+      _id
+      goalTitle
+      milestones
+        {_id
+        title
+        status}
+    
+    }
+  }	
+`;
 export const ADD_COMMENT = gql`
   mutation addComment($goalId: ID!, $commentBody: String!) {
     addComment(goalId: $goalId, commentBody: $commentBody) {

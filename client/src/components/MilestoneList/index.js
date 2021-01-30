@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import Auth from '../../utils/auth';
-
+import React from 'react';
 import Milestone from '../Milestone';
 import MilestoneForm from '../MilestoneForm';
 

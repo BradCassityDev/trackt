@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Auth from '../../utils/auth';
-import { useQuery, useMutation } from '@apollo/react-hooks';
-import image from '../../images/placeholder-profile-pic.png';
 import { Link } from 'react-router-dom';
-import { QUERY_GOALS_TEMP } from '../../utils/queries';
 import GoalPost from '../GoalPost';
 import GoalFilterMenu from '../GoalFilterMenu';
 
