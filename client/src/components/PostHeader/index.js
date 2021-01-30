@@ -4,7 +4,7 @@ import { Image } from "cloudinary-react";
 import image from '../../images/placeholder-profile-pic.png';
 
 function PostHeader ({ username, profilePhoto, createdAt }) {
-    console.log(profilePhoto)
+    // console.log(profilePhoto)
   return (
     <div className="post-header">
       <Link to={"/" + username} className="post-header-text">

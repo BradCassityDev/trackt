@@ -35,7 +35,7 @@ const GoalForm = () => {
 
     useEffect(() => {
       if(!loading) {
-        console.log('Goal Data: ', data.goal.dueDate);
+        // console.log('Goal Data: ', data.goal.dueDate);
 
         setFormState ({ 
             ...formState, 
