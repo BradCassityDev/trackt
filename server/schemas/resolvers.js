@@ -126,21 +126,32 @@ const resolvers = {
       
         throw new AuthenticationError('You need to be logged in!');
       },
-
+      updateMilestone: async (parent, { goalId, _id, title, status }, context) => {
+        if (context.user) {
+          const updatedGoal = await Goal.findOneAndUpdate(
+            { _id: goalId },
+            { findByIdAndUpdate: { milestones: { _id, title, status} } },
+            { new: true }
+          );
       
-    deleteMilestone: async (parent, { goalId, _id }, context) => {
-      if (context.user) {
-        const updatedGoal = await Goal.findOneAndUpdate(
-          { _id: goalId },
-          { $pull: { milestones: { _id } } },
-          { new: true }
-        );
-    
-        return updatedGoal;
-      }
-    
-      throw new AuthenticationError('You need to be logged in!');
-  },
+          return updatedGoal;
+        }
+        throw new AuthenticationError('You need to be logged in!');
+      },
+      
+      deleteMilestone: async (parent, { goalId, _id }, context) => {
+        if (context.user) {
+          const updatedGoal = await Goal.findOneAndUpdate(
+            { _id: goalId },
+            { $pull: { milestones: { _id } } },
+            { new: true }
+          );
+      
+          return updatedGoal;
+        }
+      
+        throw new AuthenticationError('You need to be logged in!');
+      },
       
       addComment: async (parent, { goalId, commentBody }, context) => {
           if (context.user) {

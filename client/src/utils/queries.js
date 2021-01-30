@@ -170,6 +170,7 @@ query users {
     firstName
     lastName
     profilePhoto
+    password
     friendRequests {
       _id
       username

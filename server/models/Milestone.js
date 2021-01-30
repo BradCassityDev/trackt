@@ -9,7 +9,7 @@ const milestoneSchema = new Schema(
       maxlength: 280
     },
     status: {
-      type: String,
+      type: String
     },
     createdAt: {
       type: Date,
