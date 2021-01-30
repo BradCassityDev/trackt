@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { ADD_GOAL, UPDATE_GOAL } from '../../utils/mutations';
 import { QUERY_GOAL } from '../../utils/queries';
-import DatePicker from "react-datepicker";
+//import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from 'react-bootstrap/Button';
 
