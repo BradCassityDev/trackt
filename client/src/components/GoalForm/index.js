@@ -4,21 +4,9 @@ import { useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { ADD_GOAL, UPDATE_GOAL } from '../../utils/mutations';
 import { QUERY_GOAL } from '../../utils/queries';
-//import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from 'react-bootstrap/Button';
 
-// const mongoDate = date => {
-//   const year = date.getFullYear()
-//   let month = date.getMonth()+1
-//   let day = date.getDate()+2
- 
-//   if (month < 10) month = "0"+ month
-//   if (day < 10) day = "0"+ day
- 
-//   return year + "-" + month + "-" + day
-//  }
- 
  
 const GoalForm = () => {
     let { id: userParam } = useParams();
@@ -42,8 +30,6 @@ const GoalForm = () => {
             goalTitle: data.goal.goalTitle,
             goalCategory: data.goal.goalCategory,
             goalStatus: data.goal.goalStatus,
-            // startDate: data.goal.startDate,
-            // endDate: data.goal.endDate,
             goalDescription: data.goal.goalDescription
         });
       }
@@ -71,13 +57,10 @@ const GoalForm = () => {
       event.preventDefault();
   
       try {
-        // formState.startDate= mongoDate(formState.startDate)
-        // formState.dueDate= mongoDate(formState.dueDate)
 
         await addGoal({
           variables: { ...formState }
         });
-        // window.location.replace ("/data.goal._id")
         window.location.replace ("/")
 
       } catch (e) {
@@ -94,14 +77,10 @@ const GoalForm = () => {
       }
   
       try {
-        // formState.startDate= mongoDate(formState.startDate)
-        // formState.dueDate= mongoDate(formState.dueDate)
 
        await updateGoal({
           variables: { ...formState, _id: data.goal._id }
         });
-        // window.location.replace ("/data.goal._id")
-       // window.location.replace ("/")
 
       } catch (e) {
         console.error(e);
@@ -192,29 +171,8 @@ const GoalForm = () => {
                     <option>Failed</option>
                 </select>
                 
-                {/* <label>Start Date:</label>
-                <br></br>
-                <DatePicker dateFormat="MM/dd/yyyy" selected={formState.startDate} onChange={date => setFormState({...formState, startDate: date})}/> */}
-                {/* <input
-                    type="text"
-                    placeholder="Start Date..."
-                    value={formState.startDate}
-                    onChange={handleChange}
-                    className="form-control"
-                ></input> */}
                 <br></br>
 
-                {/* <label>End Date:</label>
-                <br></br>
-                <DatePicker dateFormat="MM/dd/yyyy" selected={formState.dueDate} onChange={date => setFormState({...formState, dueDate: date})} />
-                <br></br> */}
-                {/* <input
-                    type="text"
-                    placeholder="End Date..."
-                    value={formState.dueDate}
-                    onChange={handleChange}
-                    className="form-control"
-                ></input> */}
 
                 <label>Description:</label>
                 <textarea
