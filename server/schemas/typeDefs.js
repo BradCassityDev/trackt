@@ -65,7 +65,6 @@ const typeDefs = gql`
     addMilestone(goalId: ID!, title: String!): Goal
     updateMilestone(goalId: ID, _id: ID!, title: String, status: String): Goal
     deleteMilestone(goalId: ID, _id: ID!): Goal
-    updateMilestone(goalId: ID, _id: ID!, title: String, status: String): Goal
     addComment(goalId: ID!, commentBody: String!): Goal
     addFriend(friendId: ID!): User
     acceptFriend(friendId: ID!): User
