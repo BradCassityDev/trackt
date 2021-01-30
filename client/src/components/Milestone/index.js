@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 import { useMutation } from '@apollo/react-hooks';
 import { DELETE_MILESTONE, UPDATE_MILESTONE } from '../../utils/mutations';
 
 const Milestone = ({ goalId, milestone }) => {
+    let { id: userParam } = useParams();
+
 
     // Set complete state
+    const [formState, setFormState] = useState({ _id: `${milestone._id}`, title: `${milestone.title}`, status: `${milestone.status}`});
+
     const [completeState, setCompleteState] = useState();
     const [deleteMS] = useMutation(DELETE_MILESTONE);
     const [completeMS] = useMutation(UPDATE_MILESTONE);
@@ -37,7 +43,6 @@ const Milestone = ({ goalId, milestone }) => {
 
 
     const completeMilestone = async (value) => {
-  
         try {
             const {data} = await completeMS({
                 variables: {
@@ -53,13 +58,27 @@ const Milestone = ({ goalId, milestone }) => {
         }
     }
 
+    
+    const mStatus = ['Completed'];
+
     return (
-        <div className={"milestone-row " + completeState}>
+        <div className={"milestone-row " + completeState}>            
             <form className="milestone-form">
                 <div className="milestone-form-fields">
-                    <input className="form-check-input" type="checkbox" id="markcomplete" value="option1" onClick={()=>completeMilestone('Completed')}></input>
-                    <label className="form-check-label" for="markcomplete">Mark Complete</label>
+                { userParam !== mStatus.includes(formState.status) ? 
+                <>
+                {milestone.status ? <input className="form-check-input" type="checkbox" id="markcomplete" defaultChecked="true" value="option1" 
+                    onClick={()=>completeMilestone('Completed')}
+                    ></input> : 
+                    <input className="form-check-input" type="checkbox" id="markcomplete" value="option1" 
+                    onClick={()=>completeMilestone('Completed')}
+                    ></input>
+                }
+                    
+                    <label className="form-check-label" for="markcomplete"></label>
                     <span className="milestone-title">{milestone.title}</span>
+                </> : <></>
+                }
                 </div>
             </form>
             <button 

@@ -84,6 +84,19 @@ export const ADD_MILESTONE = gql`
     }
   }
 `;
+export const UPDATE_MILESTONE = gql`
+  mutation updateMilestone($goalId: ID!, $_id: ID!, $status: String, $title:String) {
+    updateMilestone(goalId:$goalId, _id: $_id, status: $status, title:$title) {
+      _id
+      goalTitle
+      milestones
+        {_id
+        title
+        status}
+    
+    }
+  }	
+`;
 export const DELETE_MILESTONE = gql`
   mutation deleteMilestone($goalId: ID, $_id: ID!) {
     deleteMilestone(goalId: $goalId, _id: $_id) {
