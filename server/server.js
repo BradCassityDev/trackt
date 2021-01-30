@@ -61,7 +61,7 @@ app.post("/uploadphoto", (req, res) => {
     api_secret: "96ghx_SKtHqWxFmItRvfLOT4tD8",
   });
   cloudinary.uploader.unsigned_upload(
-    "./images/placeholder-profile-pic.png",
+    "./images/placeholder-profile-pic.jpg",
     "trackt",
     { public_id: req.body.username },
     function (error, result) {

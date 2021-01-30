@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import Auth from "../../utils/auth";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/react-hooks";
 import image from "../../images/placeholder-profile-pic.png";
 import { UPDATE_USER } from "../../utils/mutations";
-import FriendButton from "../FriendButton";
 import ProfileDetails from '../ProfileDetails';
-import FriendRequests from '../FriendRequests';
 import {deletePhoto} from '../../utils/API.js';
 
 const ProfileCard = ({ user }) => {
@@ -19,11 +17,11 @@ const ProfileCard = ({ user }) => {
     email: user.email
   });
 
+  // Cloudinary Functionality
   async function showUploadWidget() {
-    if (user.profilePhoto) {
-      await deletePhoto(user.username);
-    }
-
+    // Delete user photo everytime before adding new photo
+    await deletePhoto(user.username);
+    
     window.cloudinary.openUploadWidget(
       {
         cloudName: "trackt",
@@ -31,12 +29,12 @@ const ProfileCard = ({ user }) => {
         public_id: user.username,
         cropping: true,
       },
-      (error, result) => {
+      async (error, result) => {
         if (!error && result && result.event === "success") {
           const pfp = result.info.secure_url;
-          console.log(pfp);
+ 
           user.profilePhoto = pfp
-          updateUser({
+          await updateUser({
               variables: {
                   profilePhoto: user.profilePhoto,
                   _id: user._id
@@ -47,13 +45,10 @@ const ProfileCard = ({ user }) => {
     );
   }
   
-  console.log(user.friendRequests);
-
   // Form change handler
   const handleFormChange = (event) => {
     event.preventDefault();
   };
-
 
   // Handle user edit form submit
   const handleEditUserSubmit = async (event) => {
@@ -61,6 +56,7 @@ const ProfileCard = ({ user }) => {
     setFormState({...formState, [name]: value});
   };
 
+  // Render Card Details
   const renderCardDetails = () => {
     if (/*Auth.getProfile().data.username !== user.username*/ true) {
       return (
