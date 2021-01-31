@@ -56,10 +56,11 @@ const GoalForm = () => {
   
       try {
 
-        await addGoal({
+        let newGoal = await addGoal({
           variables: { ...formState }
         });
-        window.location.replace ("/")
+        
+        window.location.replace (`/goal/${newGoal.data.addGoal._id}`)
 
       } catch (e) {
         console.error(e);
