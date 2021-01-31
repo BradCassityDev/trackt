@@ -43,12 +43,18 @@ const Milestone = ({ goalId, milestone }) => {
 
 
     const completeMilestone = async (value) => {
+        if(formState.status === "complete") {
+            formState.status = "";
+        } else {
+            formState.status = "complete";
+        }
+
         try {
             const {data} = await completeMS({
                 variables: {
                     goalId: goalId,
                     _id: milestone._id, 
-                    status: 'complete',
+                    status: formState.status,
                     title: milestone.title
                 }
             });
@@ -68,15 +74,19 @@ const Milestone = ({ goalId, milestone }) => {
                 { userParam !== mStatus.includes(formState.status) ? 
                 <>
                 {milestone.status ? <input className="form-check-input" type="checkbox" id="markcomplete" defaultChecked="true" value="option1" 
-                    onClick={()=>completeMilestone('Completed')}
+                    onClick={()=>completeMilestone('Complete')}
                     ></input> : 
                     <input className="form-check-input" type="checkbox" id="markcomplete" value="option1" 
-                    onClick={()=>completeMilestone('Completed')}
+                    onClick={()=>completeMilestone('Complete')}
                     ></input>
                 }
                     
                     <label className="form-check-label" for="markcomplete"></label>
-                    <span className="milestone-title">{milestone.title}</span>
+                    {milestone.status ? 
+                        <span className="milestone-title completed">{milestone.title}</span>
+                        :
+                        <span className="milestone-title">{milestone.title}</span>
+                    }
                 </> : <></>
                 }
                 </div>
