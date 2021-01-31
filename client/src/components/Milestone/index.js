@@ -44,10 +44,10 @@ const Milestone = ({ goalId, milestone }) => {
 
     const completeMilestone = async (value) => {
 
-        setFormState({
-          ...formState,
-          status: value
-        });
+        // setFormState({
+        //   ...formState,
+        //   status: value
+        // });
   
         
         try {
