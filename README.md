@@ -27,7 +27,7 @@ Get in shape, get out of debt, or get another degree. Whatever your goals Trackt
 - Boost your motivation at home, or on the go with our social media app to see your friends cheering you on.
 - Gain support, recommendations, and valuable connections from our community of goal setters and achievers.
 - Get Inspired to Achieve MORE while you encourage your friends in their pursuits.
-- <a href="https://drive.google.com/file/d/1ajnWOlqbuERJcHII_iXKAnSL6rxoCCJ6/view?usp=sharing" target="_blank"><strong>View Demo»</strong></a>
+- <a href="https://drive.google.com/file/d/1lcgkgBAzrLYk7FcM8WcPfGAR4eVFi6eU/view" target="_blank"><strong>View Demo»</strong></a>
 
 
 ### Set Goals
