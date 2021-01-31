@@ -4,7 +4,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Link } from 'react-router-dom';
 import image from '../../images/placeholder-profile-pic.png';
 import FriendRequests from '../FriendRequests';
-import { Image } from "cloudinary-react";
+import {Image} from 'cloudinary-react';
 
 const FriendList = ({userInfo}) => {
     const {friendCount, friends} = userInfo;

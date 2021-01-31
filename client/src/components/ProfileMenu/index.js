@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const ProfileMenu = ({ menuState, setMenuState }) => {
 
@@ -6,8 +6,6 @@ const ProfileMenu = ({ menuState, setMenuState }) => {
     const handleMenuChange = event => {
         setMenuState(event.target.innerText);
     };
-
-    useEffect(() => {}, [menuState]);
     
     return (
         <div className="content-wrapper">
