@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { QUERY_USER, QUERY_ME, QUERY_GOALS_TEMP } from '../utils/queries';
+import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 import ProfileCard from '../components/ProfileCard';
 import FriendList from '../components/FriendList';
@@ -83,7 +83,7 @@ const Home = () => {
   }
 
   return (
-    <div className="row">
+    <div className="row remove-margin">
       <div className="col-12 col-md-4">
         <ProfileCard user={user} />
         <FriendList userInfo={user} />
